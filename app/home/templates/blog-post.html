@@ -22,16 +22,16 @@
 	<!--
 		Load CSS
 	-->
-	<link rel="stylesheet" href="css/basic.css" />
-	<link rel="stylesheet" href="css/layout.css" />
-	<link rel="stylesheet" href="css/blogs.css" />
-	<link rel="stylesheet" href="css/line-awesome.css" />
-	<link rel="stylesheet" href="css/magnific-popup.css" />
-	<link rel="stylesheet" href="css/animate.css" />
-	<link rel="stylesheet" href="css/simplebar.css" />
+	<link rel="stylesheet" href="{{url_for('static', filename='css/basic.css')}}" />
+	<link rel="stylesheet" href="{{url_for('static', filename='css/layout.css')}}" />
+	<link rel="stylesheet" href="{{url_for('static', filename='css/blogs.css')}}" />
+	<link rel="stylesheet" href="{{url_for('static', filename='css/line-awesome.css')}}" />
+	<link rel="stylesheet" href="{{url_for('static', filename='css/magnific-popup.css')}}" />
+	<link rel="stylesheet" href="{{url_for('static', filename='css/animate.css')}}" />
+	<link rel="stylesheet" href="{{url_for('static', filename='css/simplebar.css')}}" />
 	
 	<!-- theme colors -->
-	<link rel="stylesheet" href="css/theme-colors/green.css" />
+	<link rel="stylesheet" href="{{url_for('static', filename='css/theme-colors/orange.css')}}" />
 	<!--<link rel="stylesheet" href="css/theme-colors/blue.css" />-->
 	<!--<link rel="stylesheet" href="css/theme-colors/red.css" />-->
 	<!--<link rel="stylesheet" href="css/theme-colors/orange.css" />-->
@@ -46,7 +46,7 @@
 	<!--
 		Favicons
 	-->
-	<link rel="shortcut icon" href="images/favicons/favicon.ico">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicons/favicon.ico')}}">
 	
 </head>
 
@@ -74,44 +74,46 @@
 
 			<!-- logo -->
 			<div class="logo">
-				<a href="index.html"><span>P</span></a>
+				<a href="{{ url_for('home_bp.index')}}"><span>DD</span></a>
 			</div>
 
 			<!-- menu -->
 			<div class="top-menu">
 				<ul>
 					<li>
-						<a href="index.html#home-card">
+                        <!--<a href="{{ url_for('home_bp.index', _anchor = 'home-card')}}">-->
+						<a href="#home-card">
 							<span class="icon la la-home"></span>
 							<span class="link">Home</span>
 						</a>
 					</li>
 					<li>
-						<a href="index.html#about-card">
+						<a href="#about-card">
 							<span class="icon la la-user"></span>
 							<span class="link">About</span>
 						</a>
 					</li>
 					<li>
-						<a href="index.html#resume-card">
+                        <!--alt version <a href="{{ url_for('home_bp.index', _anchor = 'resume-card')}}">-->
+						<a href="#resume-card">
 							<span class="icon la la-gear"></span>
 							<span class="link">Resume</span>
 						</a>
 					</li>
 					<li>
-						<a href="index.html#works-card">
+						<a href="#works-card">
 							<span class="icon la la-eye"></span>
 							<span class="link">Portfolio</span>
 						</a>
 					</li>
 					<li class="active">
-						<a href="index.html#blog-card">
+						<a href="#blog-card">
 							<span class="icon la la-newspaper-o"></span>
 							<span class="link">Blog</span>
 						</a>
 					</li>
 					<li>
-						<a href="index.html#contacts-card">
+						<a href="#contacts-card">
 							<span class="icon la la-envelope"></span>
 							<span class="link">Contacts</span>
 						</a>
@@ -151,7 +153,7 @@
 					<div class="card-wrap col col-m-12 col-t-12 col-d-8 col-d-lg-6" data-simplebar>
 						
 						<!-- Blog Image -->
-						<div class="card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6" style="background-image: url(images/blog/blog1-inner.jpg);"></div>
+						<div class="card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6" style="background-image: url({{ url_for('static', filename='images/blog/blog1-inner.jpg')}});"></div>
 						
 						<!--
 							Inner Top
@@ -232,7 +234,7 @@
 
 											<!-- comment item -->
 											<li>
-												<img src="images/man1.jpg" alt="">
+												<img src="{{ url_for('static', filename='images/man1.jpg')}}" alt="">
 												<div class="comment-info">
 													<div class="name">
 														<h6>John Doe <span>1 hour ago</span></h6>
@@ -247,7 +249,7 @@
 
 											<!-- comment item -->
 											<li>
-												<img src="images/man1.jpg" alt="">
+												<img src="{{ url_for('static', filename='images/man1.jpg')}}" alt="">
 												<div class="comment-info">
 													<div class="name">
 														<h6>John Doe <span>3 hour ago</span></h6>
@@ -262,7 +264,7 @@
 
 											<!-- comment item -->
 											<li>
-												<img src="images/man1.jpg" alt="">
+												<img src="{{ url_for('static', filename='images/man1.jpg')}}" alt="">
 												<div class="comment-info">
 													<div class="name">
 														<h6>John Doe <span>6 hour ago</span></h6>
@@ -364,14 +366,14 @@
 	<!--
 		jQuery Scripts
 	-->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery.validate.js"></script>
-	<script src="js/jquery.magnific-popup.js"></script>
-	<script src="js/imagesloaded.pkgd.js"></script>
-	<script src="js/masonry.pkgd.js"></script>
-	<script src="js/masonry-filter.js"></script>
-	<script src="js/simplebar.js"></script>
-	<script src="js/typed.js"></script>
+	<script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+	<script src="{{url_for('static', filename='js/jquery.validate.js')}}"></script>
+	<script src="{{url_for('static', filename='js/jquery.magnific-popup.js')}}"></script>
+	<script src="{{url_for('static', filename='js/imagesloaded.pkgd.js')}}"></script>
+	<script src="{{url_for('static', filename='js/masonry.pkgd.js')}}"></script>
+	<script src="{{url_for('static', filename='js/masonry-filter.js')}}"></script>
+	<script src="{{url_for('static', filename='js/simplebar.js')}}"></script>
+	<script src="{{url_for('static', filename='js/typed.js')}}"></script>
 	
 	<!--
 		Google map api
@@ -381,7 +383,7 @@
 	<!--
 		Main Scripts
 	-->
-	<script src="js/scripts.js"></script>
+	<script src="{{url_for('static', filename='js/scripts.js')}}"></script>
 	
 </body>
 </html>
