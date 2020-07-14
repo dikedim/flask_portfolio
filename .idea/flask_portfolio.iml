@@ -5,6 +5,16 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/app/static" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/static/css" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/static/fonts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/static/images" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/static/js" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/static/less" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/static/images/blog" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/static/images/clients" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/static/images/favicons" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/static/images/works" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7 (flask_portfolio)" jdkType="Python SDK" />
@@ -14,7 +24,10 @@
     <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/app/templates" />
+        <option value="$MODULE_DIR$/app/home/templates" />
+        <option value="$MODULE_DIR$/app/mobile/templates" />
+        <option value="$MODULE_DIR$/app/photography/templates" />
+        <option value="$MODULE_DIR$/app/web/templates" />
       </list>
     </option>
   </component>
