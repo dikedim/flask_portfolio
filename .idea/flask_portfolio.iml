@@ -15,6 +15,7 @@
       <sourceFolder url="file://$MODULE_DIR$/app/static/images/clients" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/app/static/images/favicons" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/app/static/images/works" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/static/docs" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7 (flask_portfolio)" jdkType="Python SDK" />
@@ -28,6 +29,9 @@
         <option value="$MODULE_DIR$/app/mobile/templates" />
         <option value="$MODULE_DIR$/app/photography/templates" />
         <option value="$MODULE_DIR$/app/web/templates" />
+        <option value="$MODULE_DIR$/app/templates" />
+        <option value="$MODULE_DIR$/app/desktop/templates" />
+        <option value="$MODULE_DIR$/app/video/templates" />
       </list>
     </option>
   </component>

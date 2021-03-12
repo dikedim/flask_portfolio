@@ -6,12 +6,12 @@
 		Basic
 	-->
 	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
-	<title>Patrick - vCard / Resume / CV Template SHARED ON THEMELOCK.COM</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>DIKE DIM's Resume and Portfolio</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<meta name="description" content="vCard & Resume Template" />
-	<meta name="keywords" content="vcard, resposnive, resume, personal, card, cv, cards, portfolio" />
-	<meta name="author" content="beshleyua" />
+	<meta name="description" content="vCard & Resume for Dike T. Dim" />
+	<meta name="keywords" content="developer, programmer, researcher, resume, cv, cv, business card, portfolio" />
+	<meta name="author" content="cherniivolk" />
 	
 	<!--
 		Load Fonts
@@ -88,7 +88,8 @@
 						</a>
 					</li>
 					<li>
-						<a href="#about-card">
+                        <a href="{{ url_for('home_bp.index', _anchor = 'about-card')}}">
+						<! a href="#about-card">
 							<span class="icon la la-user"></span>
 							<span class="link">About</span>
 						</a>
@@ -155,7 +156,7 @@
 					<div class="card-wrap col col-m-12 col-t-12 col-d-8 col-d-lg-6" data-simplebar>
 						
 						<!-- Blog Image -->
-						<div class="card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6" style="background-image: url({{ url_for('static', filename='images/blog/blog1-inner.jpg')}});"></div>
+						<div class="card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6" style="background-image: url({{ url_for('static', filename='images/blog/5.jpg')}});"></div>
 						
 						<!--
 							Inner Top
