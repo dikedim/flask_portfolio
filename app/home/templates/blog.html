@@ -7,11 +7,11 @@
 	-->
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Dike Dim CV/Resume </title>
+	<title>DIKE DIM's Resume and Portfolio</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<meta name="description" content="Personal Portfolio and resume" />
-	<meta name="keywords" content="vcard, resposnive, resume, personal, card, cv, cards, portfolio" />
-	<meta name="author" content="beshleyua" />
+	<meta name="description" content="vCard & Resume for Dike T. Dim" />
+	<meta name="keywords" content="developer, programmer, researcher, resume, cv, cv, business card, portfolio" />
+	<meta name="author" content="cherniivolk" />
 
 	<!--
 		Load Fonts
@@ -46,7 +46,7 @@
 	<!--
 		Favicons
 	-->
-	<link rel="shortcut icon" href="images/favicons/favicon.ico">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicons/favicon.ico')}}">
 
 </head>
 
@@ -74,7 +74,7 @@
 
 			<!-- logo -->
 			<div class="logo">
-				<a href="#"><span>P</span></a>
+				<a href="#"><span>DD</span></a>
 			</div>
 
 			<!-- menu -->
@@ -111,7 +111,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#contacts-card">
+						<a href="{{ url_for('home_bp.index', _anchor='contactlocation')}}">
 							<span class="icon la la-envelope"></span>
 							<span class="link">Contacts</span>
 						</a>
@@ -190,7 +190,7 @@
 											</a>
 										</div>
 										<div class="desc">
-											<a href="{{ url_for('home_bp.blog_post')}}" class="name">By spite about do of do allow blush</a>
+											<a href="{{ url_for('home_bp.blog_post')}}" class="name">Back for the first time: Volgograd Chronicles</a>
 											<div class="category">Design</div>
 										</div>
 									</div>
@@ -205,12 +205,12 @@
 												<span class="info">
 													<span class="icon la la-newspaper-o"></span>
 												</span>
-												<span class="date"><strong>19</strong>Jun</span>
+												<span class="date"><strong>06</strong>Sept 2017</span>
 											</a>
 										</div>
 										<div class="desc">
-											<a href="{{ url_for('home_bp.blog_post')}}" class="name">Two Before Arrow Not Relied</a>
-											<div class="category">Coding</div>
+											<a href="{{ url_for('home_bp.blog_post')}}" class="name">Привет из Волгограда!</a>
+											<div class="category">Travel</div>
 										</div>
 									</div>
 								</div>
@@ -228,7 +228,7 @@
 											</a>
 										</div>
 										<div class="desc">
-											<a href="{{ url_for('home_bp.blog_post')}}" class="name">By spite about do of do allow blush</a>
+											<a href="{{ url_for('home_bp.blog_post')}}" class="name">Trip to the city of Lakes</a>
 											<div class="category">Travel</div>
 										</div>
 									</div>
@@ -247,8 +247,8 @@
 											</a>
 										</div>
 										<div class="desc">
-											<a href="{{ url_for('home_bp.blog_post')}}" class="name">Two Before Arrow Not Relied</a>
-											<div class="category">Coding</div>
+											<a href="{{ url_for('home_bp.blog_post')}}" class="name">Foray into Asia: Journey to Malaysia</a>
+											<div class="category">Travel</div>
 										</div>
 									</div>
 								</div>
@@ -266,7 +266,7 @@
 											</a>
 										</div>
 										<div class="desc">
-											<a href="{{ url_for('home_bp.blog_post')}}" class="name">By spite about do of do allow blush</a>
+											<a href="{{ url_for('home_bp.blog_post')}}" class="name">Home Sweet Home</a>
 											<div class="category">Design</div>
 										</div>
 									</div>
@@ -304,8 +304,8 @@
 											</a>
 										</div>
 										<div class="desc">
-											<a href="{{ url_for('home_bp.blog_post')}}" class="name">By spite about do of do allow blush</a>
-											<div class="category">Travel</div>
+											<a href="{{ url_for('home_bp.blog_post')}}" class="name">A dance with Fuzzy Logic</a>
+											<div class="category">Coding</div>
 										</div>
 									</div>
 								</div>
@@ -323,7 +323,7 @@
 											</a>
 										</div>
 										<div class="desc">
-											<a href="{{ url_for('home_bp.blog_post')}}" class="name">Two Before Arrow Not Relied</a>
+											<a href="{{ url_for('home_bp.blog_post')}}" class="name">The beer way</a>
 											<div class="category">Coding</div>
 										</div>
 									</div>
@@ -356,7 +356,7 @@
 								<h2 class="widget-title">Recent Posts</h2>
 								<ul>
 									<li>
-										<a href="#">By spite about do of do allow</a>
+										<a href="#">Back for the first time: Volgograd Chronicles</a>
 									</li>
 									<li>
 										<a href="#">Creativity Is More Than A Song And Dance Act</a>
@@ -377,7 +377,7 @@
 								<ul id="recentcomments">
 									<li class="recentcomments">
 										<span class="comment-author-link">Adam Doe</span> on
-										<a href="">Creativity Is More Than A Song And Dance Act</a>
+										<a href="">Back for the first time: Volgograd Chronicles</a>
 									</li>
 									<li class="recentcomments">
 										<span class="comment-author-link">JOHN Smith</span> on

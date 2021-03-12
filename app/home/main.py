@@ -19,11 +19,17 @@ def blog_post():
     return render_template("blog-post.html")
 
 
+@home_bp.errorhandler(404)
+def page_not_found(error):
+    return render_template('error_404.html'), 404
+
+
 @home_bp.route('/about', methods=['GET'])
 def about_card():
-    return redirect(url_for('home_bp.index') + '#about-card')
+    return render_template("index.html")
+#    return redirect(url_for('home_bp.index') + '#aboutcard')
 
 
 @home_bp.route('/resume', methods=['GET'])
 def resume_card():
-    return redirect(url_for('home_bp.index') + '#resume-card')
+    return redirect(url_for('home_bp.index') +  '#works-card' )
