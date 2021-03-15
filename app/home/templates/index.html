@@ -39,13 +39,8 @@
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/simplebar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/drop.css')}}">
 
-	<!-- theme colors -->
+	<!-- theme colors blue, green, red, orange, pink, purple -->
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-colors/blue.css')}}">
-	<!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-colors/blue.css')}}">-->
-	<!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-colors/red.css')}}">-->
-	<!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-colors/orange.css')}}">-->
-	<!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-colors/pink.css')}}">-->
-	<!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-colors/purple.css')}}">-->
 
 	<!--[if lt IE 9]>
 	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -205,9 +200,10 @@
 											<strong>Hello, I am Dike</strong>, a developer, researcher and IT enthusiast based in Abuja. <br />
 											I have rich experience in design, building, customization <br />
 											analysis & optimization. Also I am good at <strong>Flutter, Python, <br />
-											WordPress, Joomla, C/C++, CorelDraw, Matlab.</strong>
+											WordPress, Flask, C/C++, CorelDraw, Matlab.</strong>
 										</p>
 									</div>
+
 									<div class="circle-bts">
 										<a href="{{url_for('static', filename='docs/DIKEDIM.pdf') }}" target="_blank"><span><i class="icon la la-download"></i>Download CV</span></a>
 										<a href="https://github.com/dikedim" target="_blank"><i class="icon la la-github"></i></a>
@@ -293,7 +289,7 @@
 								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
 									<div class="service-item card-box">
 										<div class="icon"><i class="la la-camera-retro"></i></div>
-										<div class="name">Photgraphy</div>
+										<div class="name">Photography</div>
 										<p>
 											Amateur Full-day or half-day photo shoots with all necessary equipment.
 										</p>
@@ -1323,9 +1319,31 @@
 					-->
 					<div class="card-wrap col col-m-12 col-t-12 col-d-8 col-d-lg-6" data-simplebar>
 
+
 						<!-- Map -->
 						<div class="card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6">
+                            <style>
+                                #menu {
+                                    position: absolute;
+                                    background: #efefef;
+                                    padding: 10px;
+                                    font-family: 'Open Sans', sans-serif;
+                                }
+                            </style>
 							<div class="map" id="map"></div>
+                            <div id="menu">
+                                <input id="satellite-v9" type="radio" name="rtoggle" value="satellite" checked="checked">
+                                <!-- See a list of Mapbox-hosted public styles at https://docs.mapbox.com/api/maps/styles/#mapbox-styles -->
+                                <label for="satellite-v9">satellite</label>
+                                <input id="light-v10" type="radio" name="rtoggle" value="light">
+                                <label for="light-v10">light</label>
+                                <input id="dark-v10" type="radio" name="rtoggle" value="dark">
+                                <label for="dark-v10">dark</label>
+                                <input id="streets-v11" type="radio" name="rtoggle" value="streets">
+                                <label for="streets-v11">streets</label>
+                                <input id="outdoors-v11" type="radio" name="rtoggle" value="outdoors">
+                                <label for="outdoors-v11">outdoors</label>
+                            </div>
 						</div>
 
 						<!--
@@ -1505,109 +1523,12 @@
 	<!--
 		Google map api  Mapbox
 	-->
-	<!script src="https://maps.google.com/maps/api/js?sensor=false"><!/script> //TODO
-    <!div id='map' style='width: 400px; height: 300px;'><!/div>
-    <div id="menu">
-<input id="satellite-v9" type="radio" name="rtoggle" value="satellite" checked="checked">
-        <!-- See a list of Mapbox-hosted public styles at https://docs.mapbox.com/api/maps/styles/#mapbox-styles -->
-        <label for="satellite-v9">satellite</label>
-        <input id="light-v10" type="radio" name="rtoggle" value="light">
-        <label for="light-v10">light</label>
-        <input id="dark-v10" type="radio" name="rtoggle" value="dark">
-        <label for="dark-v10">dark</label>
-        <input id="streets-v11" type="radio" name="rtoggle" value="streets">
-        <label for="streets-v11">streets</label>
-        <input id="outdoors-v11" type="radio" name="rtoggle" value="outdoors">
-        <label for="outdoors-v11">outdoors</label>
-    </div>
-    <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiZGlrZWRpbSIsImEiOiJja201Zm9yeHMwZHg2MnhqeGY5Y3FjcjZ2In0.KVWOuFfUnn3G189s9CQ-tg';
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [7.4677, 9.0826],
-            zoom: 15.05,
-            pitch: 45
-        });
-        map.addControl(new mapboxgl.NavigationControl());
-        map.on('load', function() {
-            var geojsonData = {
-                "type": "FeatureCollection",
-                "features": [{
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [7.4677, 9.0826]
-                    }
-                }]
-            };
-            map.addLayer({
-                "id": "points",
-                "type": "circle",
-                "source": {
-                    "type": "geojson",
-                    "data": geojsonData
-                }
-            })
-        });
-        map.on('load', function () {
-            var layers = map.getStyle().layers;
+	<!--script src="https://maps.google.com/maps/api/js?sensor=false"><!/script-->
+    <!--div id='map' style='width: 400px; height: 300px;'></div-->
 
-            var labelLayerId;
-            for (var i = 0; i < layers.length; i++) {
-                if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
-                    labelLayerId = layers[i].id;
-                    break;
-                }
-            }
+    <!--script>
 
-            map.addLayer(
-            {
-                'id': '3d-buildings',
-                'source': 'composite',
-                'source-layer': 'building',
-                'filter': ['==', 'extrude', 'true'],
-                'type': 'fill-extrusion',
-                'minzoom': 15,
-                'paint': {
-                    'fill-extrusion-color': '#aaa',
-                    'fill-extrusion-height': [
-                        'interpolate',
-                        ['linear'],
-                        ['zoom'],
-                        15,
-                        0,
-                        15.05,
-                        ['get', 'height']
-                    ],
-                    'fill-extrusion-base': [
-                        'interpolate',
-                        ['linear'],
-                        ['zoom'],
-                        15,
-                        0,
-                        15.05,
-                        ['get', 'min_height']
-                    ],
-                    'fill-extrusion-opacity': 0.6
-                }
-            }, //TODO
-            labelLayerId
-            );
-        });
-        //TODO change maps style
-        var layerList = document.getElementById('menu');
-        var inputs = layerList.getElementsByTagName('input');
-
-        function switchLayer(layer) {
-            var layerId = layer.target.id;
-            map.setStyle('mapbox://styles/mapbox/' + layerId);
-        }
-
-        for (var i = 0; i < inputs.length; i++) {
-            inputs[i].onclick = switchLayer;
-        }
-    </script>
+    </script-->
 
 
 	<!--

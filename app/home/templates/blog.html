@@ -30,13 +30,8 @@
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/animate.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/simplebar.css')}}">
 
-	<!-- theme colors -->
+	<!-- theme colors blue, red, orange, pink, purple, green -->
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-colors/green.css')}}">
-	<!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-colors/blue.css')}}">-->
-	<!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-colors/red.css')}}">-->
-	<!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-colors/orange.css')}}">-->
-	<!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-colors/pink.css')}}">-->
-	<!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-colors/purple.css')}}">-->
 
 	<!--[if lt IE 9]>
 	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -74,32 +69,33 @@
 
 			<!-- logo -->
 			<div class="logo">
-				<a href="#"><span>DD</span></a>
+				<a href="{{ url_for('home_bp.index')}}"><span>DD</span></a>
 			</div>
 
 			<!-- menu -->
 			<div class="top-menu">
 				<ul>
 					<li>
-						<a href="#home-card">
+						<a href="{{ url_for('.index')}}">
 							<span class="icon la la-home"></span>
 							<span class="link">Home</span>
 						</a>
 					</li>
 					<li>
-						<a href="#about-card">
+						<a href="{{ url_for('.index', _anchor='about-card')}}">
 							<span class="icon la la-user"></span>
 							<span class="link">About</span>
 						</a>
 					</li>
 					<li>
+                        (# {{ url_for('.index', _anchor='resume-card')}} #}
 						<a href="#resume-card">
-							<span class="icon la la-gear"></span>
+							<span class="icon la la-gear visually-hidden"></span>
 							<span class="link">Resume</span>
 						</a>
 					</li>
 					<li>
-						<a href="#works-card">
+						<a href="{{ url_for('.index',  _anchor='works-card')}}">
 							<span class="icon la la-eye"></span>
 							<span class="link">Portfolio</span>
 						</a>
@@ -111,7 +107,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="{{ url_for('home_bp.index', _anchor='contactlocation')}}">
+						<a href="{{ url_for('.index', _anchor='contacts-card')}}">
 							<span class="icon la la-envelope"></span>
 							<span class="link">Contacts</span>
 						</a>
@@ -121,10 +117,12 @@
 
 			<!-- Started socials -->
 			<div class="social">
-				<a target="_blank" href="https://dribbble.com/"><span class="icon la la-dribbble"></span></a>
-				<a target="_blank" href="https://facebook.com/"><span class="icon la la-facebook"></span></a>
-				<a target="_blank" href="https://github.com/"><span class="icon la la-github"></span></a>
-				<a target="_blank" href="https://stackoverflow.com/"><span class="icon la la-stack-overflow"></span></a>
+				<a target="_blank" href="https://dribbble.com/dikedim"><span class="icon la la-dribbble"></span></a>
+				<!--a target="_blank" href="https://facebook.com/"><span class="icon la la-facebook"></span></a-->
+				<a target="_blank" href="https://github.com/dikedim"><span class="icon la la-github"></span></a>
+                <a target="_blank" href="https://join.skype.com/invite/uxeOpsNAkv9i"><span class="icon la la-skype"></span></a>
+                <a target="_blank" href="https://wa.me/+2347089822232 "><span class="icon la la-whatsapp"></span></a>
+				<a target="_blank" href="https://stackoverflow.com/users/15378614/dike-dim"><span class="icon la la-stack-overflow"></span></a>
 			</div>
 
 			<!-- Mobile Menu -->
@@ -455,12 +453,20 @@
 	<!--
 		Google map api
 	-->
-	<script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+	<!--script src="https://maps.google.com/maps/api/js?sensor=false"></script
+
 
 	<!--
 		Main Scripts
 	-->
 	<script src="{{ url_for('static', filename='js/scripts.js')}}"></script>
+    {% if scrollToAnchor %}
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                document.location.hash = '#{{ scrollToAnchor }}';
+            });
+        </script>
+    {% endif %}
 
 </body>
 </html>
