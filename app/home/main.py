@@ -25,11 +25,27 @@ def page_not_found(error):
 
 
 @home_bp.route('/about', methods=['GET'])
-def about_card():
+def about():
     return render_template("index.html")
+#    return redirect(url_for('home_bp.index') + '#about-card')
 #    return redirect(url_for('home_bp.index') + '#aboutcard')
 
 
 @home_bp.route('/resume', methods=['GET'])
-def resume_card():
-    return redirect(url_for('home_bp.index') +  '#works-card' )
+def resume():
+    return render_template("index.html")
+#    return redirect(url_for('home_bp.index') + '#resume-card')
+
+
+@home_bp.route('/contacts')
+def contacts():
+    return render_template('index.html')
+#    return redirect(url_for('home_bp.index'))
+#    values = {"data": "works page <br><a href= #works-card>works page</a>"}
+#    return render_template('index.html', **values)
+
+
+@home_bp.route('/portfolio')
+def works():
+    return render_template("index.html")
+#    return redirect(url_for('home_bp.index') + '#works-card')

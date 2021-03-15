@@ -1,6 +1,6 @@
 /*
-*   Author: beshleyua
-*   Author URL: http://themeforest.net/user/beshleyua
+*   Author: cherniivolk
+*   Author URL: https://dikedim.com
 */
 
 
@@ -342,7 +342,96 @@ $(function () {
 */
 
 function initMap() {
-	var myLatlng = new google.maps.LatLng(48.859003, 2.345275); // <- Your latitude and longitude
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZGlrZWRpbSIsImEiOiJja201Zm9yeHMwZHg2MnhqeGY5Y3FjcjZ2In0.KVWOuFfUnn3G189s9CQ-tg';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [7.4677, 9.0826],
+            zoom: 15.05,
+            pitch: 45
+        });
+        map.addControl(new mapboxgl.NavigationControl());
+        map.on('load', function() {
+            var geojsonData = {
+                "type": "FeatureCollection",
+                "features": [{
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "7.4677, 9.0826Point",
+                        "coordinates": [7.4677, 9.0826]
+                    }
+                }]
+            };
+            map.addLayer({
+                "id": "points",
+                "type": "circle",
+                "source": {
+                    "type": "geojson",
+                    "data": geojsonData
+                }
+            })
+        });
+        map.on('load', function () {
+            var layers = map.getStyle().layers;
+
+            var labelLayerId;
+            for (var i = 0; i < layers.length; i++) {
+                if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+                    labelLayerId = layers[i].id;
+                    break;
+                }
+            }
+
+            map.addLayer(
+            {
+                'id': '3d-buildings',
+                'source': 'composite',
+                'source-layer': 'building',
+                'filter': ['==', 'extrude', 'true'],
+                'type': 'fill-extrusion',
+                'minzoom': 15,
+                'paint': {
+                    'fill-extrusion-color': '#aaa',
+                    'fill-extrusion-height': [
+                        'interpolate',
+                        ['linear'],
+                        ['zoom'],
+                        15,
+                        0,
+                        15.05,
+                        ['get', 'height']
+                    ],
+                    'fill-extrusion-base': [
+                        'interpolate',
+                        ['linear'],
+                        ['zoom'],
+                        15,
+                        0,
+                        15.05,
+                        ['get', 'min_height']
+                    ],
+                    'fill-extrusion-opacity': 0.6
+                }
+            }, //TODO
+            labelLayerId
+            );
+        });
+        //TODO change maps style
+        var layerList = document.getElementById('menu');
+        var inputs = layerList.getElementsByTagName('input');
+
+        function switchLayer(layer) {
+            var layerId = layer.target.id;
+            map.setStyle('mapbox://styles/mapbox/' + layerId);
+        }
+
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].onclick = switchLayer;
+        }
+        var marker = new mapboxgl.Marker()
+            .setLngLat([7.4677, 9.0826])
+            .addTo(map);
+	/*var myLatlng = new google.maps.LatLng(48.859003, 2.345275); // <- Your latitude and longitude
 	var styles = [
 		{
 			"stylers": [
@@ -389,5 +478,19 @@ function initMap() {
 		position: myLatlng,
 		map: map,
 		title: 'We are here!'
-	});
+	});*/
 }
+$(function () {
+    $('a[href*="#"]:not([href="#"])').click(function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 1000);
+                return false;
+            }
+        }
+    });
+});
