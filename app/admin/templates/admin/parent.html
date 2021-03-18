@@ -1,0 +1,104 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        Portfolio Dashboard - {% block title %}{% endblock %} || DikeDim.com
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon
+		============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('admin.static', filename='img/favicon.ico')}}">
+    <!-- Google Fonts
+		============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/bootstrap.min.css')}}">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/font-awesome.min.css')}}">
+	<!-- nalika Icon CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/nalika-icon.css')}}">
+    <!-- owl.carousel CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/owl.carousel.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/owl.theme.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/owl.transitions.css')}}">
+    <!-- animate CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/animate.css')}}">
+    <!-- normalize CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/normalize.css')}}">
+    <!-- meanmenu icon CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/meanmenu.min.css')}}">
+    <!-- main CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/main.css')}}">
+    <!-- morrisjs CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/morrisjs/morris.css')}}">
+    <!-- mCustomScrollbar CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/scrollbar/jquery.mCustomScrollbar.min.css')}}">
+    <!-- metisMenu CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/metisMenu/metisMenu.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/metisMenu/metisMenu-vertical.css')}}">
+    <!-- calendar CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/calendar/fullcalendar.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/calendar/fullcalendar.print.min.css')}}">
+    <!-- style CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='style.css')}}">
+    <!-- responsive CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('admin.static', filename='css/responsive.css')}}">
+    <!-- modernizr JS
+		============================================ -->
+    <script src="{{ url_for('admin.static', filename='js/vendor/modernizr-2.8.3.min.js')}}"></script>
+
+    <!-- Specific Page CSS goes HERE  -->
+    {% block stylesheets %}{% endblock stylesheets %}
+</head>
+
+
+<body>
+<!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+    {% include 'includes/navbar.html' %}
+    {% block content %}
+
+        {% include 'includes/mobilenav.html' %}
+
+    {% endblock content %}
+
+
+    {% include 'includes/js.html' %}
+
+
+  <!-- Specific Page JS goes HERE  -->
+  {% block javascripts %}{% endblock javascripts %}
+  <div class="footer-copyright-area">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="footer-copy-right">
+                      <p>Copyright © 2018 <a href="https://colorlib.com/wp/templates/">Colorlib</a> All rights reserved.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</body>
+
+</html>

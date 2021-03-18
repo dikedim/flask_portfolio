@@ -34,6 +34,8 @@
         <option value="$MODULE_DIR$/app/desktop/templates" />
         <option value="$MODULE_DIR$/app/video/templates" />
         <option value="$MODULE_DIR$/app/admin/templates" />
+        <option value="$MODULE_DIR$/app/admin/templates/admin" />
+        <option value="$MODULE_DIR$/app/admin/templates/includes" />
       </list>
     </option>
   </component>
