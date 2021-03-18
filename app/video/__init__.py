@@ -1,4 +1,4 @@
-"""Desktop dev pages."""
+"""Video dev pages."""
 from flask import Blueprint, render_template
 from flask import current_app as app
 #from import flask_portfolio.api import fetch_jobs

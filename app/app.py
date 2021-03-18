@@ -6,6 +6,7 @@ from .web import web_bp
 from .home.main import home_bp
 from .desktop import desktop_bp
 from .video import video_bp
+from app.admin import admin
 
 
 # app = Flask(__name__, static_url_path="")
@@ -16,6 +17,7 @@ app.register_blueprint(web_bp)
 app.register_blueprint(home_bp)
 app.register_blueprint(desktop_bp)
 app.register_blueprint(video_bp)
+app.register_blueprint(admin)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
