@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c1edacd-80a8-4de2-be4c-28b496cbd2a0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/admin/templates/admin/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/templates/admin/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/templates/admin/lock.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/templates/admin/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/templates/admin/mailbox.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/templates/admin/parent.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/templates/admin/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/templates/includes/js.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/templates/includes/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/flask_portfolio.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flask_portfolio.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +44,7 @@
           <entry key="js" value="38" />
           <entry key="less" value="60" />
           <entry key="py" value="2577" />
-          <entry key="txt" value="140" />
+          <entry key="txt" value="177" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -67,7 +53,7 @@
           <entry key="HTML" value="7307" />
           <entry key="JavaScript" value="38" />
           <entry key="Less" value="60" />
-          <entry key="PLAIN_TEXT" value="140" />
+          <entry key="PLAIN_TEXT" value="177" />
           <entry key="Python" value="2609" />
         </counts>
       </usages-collector>
@@ -122,7 +108,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/admin/templates/admin/mailbox-view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
+            <state relative-caret-position="15928">
               <caret line="875" column="14" selection-start-line="875" selection-start-column="14" selection-end-line="875" selection-end-column="14" />
               <folding>
                 <element signature="n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" />
@@ -523,7 +509,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616066990271</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Started work on admin dashboard">
+      <created>1616110140350</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1616110140350</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -539,12 +532,12 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49933776" visible="true" weight="0.12633263" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49933776" visible="true" weight="0.12633263" />
       <window_info id="Structure" order="1" sideWeight="0.50066227" side_tool="true" weight="0.26066098" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32939914" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49733475" visible="true" weight="0.31759655" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49733475" visible="true" weight="0.31759655" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.21888413" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -608,7 +601,8 @@
     <MESSAGE value="Add index page" />
     <MESSAGE value="Fixed navigation links" />
     <MESSAGE value="Started work on admin dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started work on admin dashboard" />
+    <MESSAGE value="Added more admin pages - login, mail" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more admin pages - login, mail" />
   </component>
   <component name="editorHistoryManager">
     <entry file="uml://JavaScript-modules-diagram/E:/Startup/projects/flask_apps/flask_portfolio/app/home/templates/index.html">
@@ -964,7 +958,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/templates/admin/mailbox-view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
+        <state relative-caret-position="15928">
           <caret line="875" column="14" selection-start-line="875" selection-start-column="14" selection-end-line="875" selection-end-column="14" />
           <folding>
             <element signature="n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" />
