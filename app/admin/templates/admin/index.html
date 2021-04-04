@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro">
-                        <a href="index.html"><img class="main-logo" src="{{ url_for('admin.static', filename='img/logo/logo.png')}}" alt="" /></a>
+                        <a href="{{ url_for('admin.index')}}"><img class="main-logo" src="{{ url_for('admin.static', filename='img/logo/logo.png')}}" alt="" /></a>
                     </div>
                 </div>
             </div>
@@ -172,15 +172,15 @@
 															<i class="icon nalika-down-arrow nalika-angle-dw"></i>
 														</a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                        <li><a href="register.html"><span class="icon nalika-home author-log-ic"></span> Register</a>
+                                                        <li><a href="{{ url_for('admin.register')}}"><span class="icon nalika-home author-log-ic"></span> Register</a>
                                                         </li>
                                                         <li><a href="#"><span class="icon nalika-user author-log-ic"></span> My Profile</a>
                                                         </li>
-                                                        <li><a href="lock.html"><span class="icon nalika-diamond author-log-ic"></span> Lock</a>
+                                                        <li><a href="{{ url_for('admin.lock')}}"><span class="icon nalika-diamond author-log-ic"></span> Lock</a>
                                                         </li>
                                                         <li><a href="#"><span class="icon nalika-settings author-log-ic"></span> Settings</a>
                                                         </li>
-                                                        <li><a href="login.html"><span class="icon nalika-unlocked author-log-ic"></span> Log Out</a>
+                                                        <li><a href="{{ url_for('admin.lock')}}"><span class="icon nalika-unlocked author-log-ic"></span> Log Out</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -584,7 +584,7 @@
                                     <ul class="mobile-menu-nav">
                                         <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
                                             <ul class="collapse dropdown-header-top">
-                                                <li><a href="index.html">Dashboard v.1</a></li>
+                                                <li><a href="{{ url_for('admin.index')}}">Dashboard</a></li>
                                                 <li><a href="index-1.html">Dashboard v.2</a></li>
                                                 <li><a href="index-3.html">Dashboard v.3</a></li>
                                                 <li><a href="product-list.html">Product List</a></li>
@@ -598,23 +598,23 @@
                                         </li>
                                         <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
                                             <ul id="demo" class="collapse dropdown-header-top">
-                                                <li><a href="mailbox.html">Inbox</a>
+                                                <li><a href="{{ url_for('admin.inbox')}}">Inbox</a>
                                                 </li>
-                                                <li><a href="mailbox-view.html">View Mail</a>
+                                                <li><a href="{{ url_for('admin.mail')}}">View Mail</a>
                                                 </li>
-                                                <li><a href="mailbox-compose.html">Compose Mail</a>
+                                                <li><a href="{{ url_for('admin.mail_compose')}}">Compose Mail</a>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li><a data-toggle="collapse" data-target="#others" href="#">Miscellaneous <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
                                             <ul id="others" class="collapse dropdown-header-top">
-                                                <li><a href="file-manager.html">File Manager</a></li>
+                                                <li><a href="{{ url_for('admin.file_manager')}}">File Manager</a></li>
                                                 <li><a href="contacts.html">Contacts Client</a></li>
                                                 <li><a href="projects.html">Project</a></li>
                                                 <li><a href="project-details.html">Project Details</a></li>
                                                 <li><a href="blog.html">Blog</a></li>
                                                 <li><a href="blog-details.html">Blog Details</a></li>
-                                                <li><a href="404.html">404 Page</a></li>
+                                                <li><a href="{{ url_for('admin.page_not_found')}}">404 Page</a></li>
                                                 <li><a href="500.html">500 Page</a></li>
                                             </ul>
                                         </li>
@@ -698,13 +698,13 @@
                                         </li>
                                         <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
                                             <ul id="Pagemob" class="collapse dropdown-header-top">
-                                                <li><a href="login.html">Login</a>
+                                                <li><a href="{{ url_for('admin.login')}}">Login</a>
                                                 </li>
-                                                <li><a href="register.html">Register</a>
+                                                <li><a href="{{ url_for('admin.register')}}">Register</a>
                                                 </li>
-                                                <li><a href="lock.html">Lock</a>
+                                                <li><a href="{{ url_for('admin.lock')}}">Lock</a>
                                                 </li>
-                                                <li><a href="password-recovery.html">Password Recovery</a>
+                                                <li><a href="{{ url_for('admin.password_recovery')}}">Password Recovery</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -1221,7 +1221,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="footer-copy-right">
-                            <p>Copyright © 2018 <a href="https://colorlib.com/wp/templates/">Colorlib</a> All rights reserved.</p>
+                            <p>Copyright © 2021 <a href="https://dikedim">Dike Dim</a> All rights reserved.</p>
                         </div>
                     </div>
                 </div>

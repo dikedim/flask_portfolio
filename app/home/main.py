@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask import current_app as app
 from app.admin.routes import *
+from app.admin import routes
 
 home_bp = Blueprint('home_bp', __name__, template_folder='templates')
 
