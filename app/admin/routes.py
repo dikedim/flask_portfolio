@@ -23,8 +23,8 @@ def logout():
     return render_template("admin/index.html")
 
 
-@admin.route('/admin/mail', methods=['GET'])
-def mail():
+@admin.route('/admin/inbox', methods=['GET'])
+def inbox():
     return render_template("admin/mailbox.html")
 
 
@@ -33,8 +33,8 @@ def mail_compose():
     return render_template("admin/mailbox-compose.html")
 
 
-@admin.route('/admin/inbox', methods=['GET'])
-def inbox():
+@admin.route('/admin/mail', methods=['GET'])
+def mail():
     return render_template("admin/mailbox-view.html")
 
 
@@ -46,3 +46,13 @@ def lock():
 @admin.route('/admin/register', methods=['GET'])
 def password_recovery():
     return render_template("admin/register.html")
+
+
+@admin.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
+
+
+@admin.route('/admin/files', methods=['GET'])
+def file_manager():
+    return render_template("admin/file-manager.html")
