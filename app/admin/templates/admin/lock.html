@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="back-link back-backend">
-                    <a href="index.html" class="btn btn-primary">Back to Dashboard</a>
+                    <a href="{{ url_for('admin.index')}}" class="btn btn-primary">Back to Dashboard</a>
                 </div>
             </div>
         </div>
@@ -25,11 +25,13 @@
                     <div class="panel-body text-center lock-inner">
                         <i class="fa fa-lock" aria-hidden="true"></i>
                         <br/>
-                        <h4><span class="text-success">3:43:15 PM</span> <strong>Friday, February 27, 2015</strong></h4>
-                        <p>Your are in lock screen. Main app was shut down and you need to enter your passwor to go back to app.</p>
+                        <h4><span class="text-success">{{ now.strftime("%H:%M:%S %p") }} </span> <strong>{{ now.strftime("%A, %B %d, %Y") }} </strong></h4>
+                        <p>Your are Locked out. Dashboard was shutdown due to inactivity, please re-enter your password.</p>
                         <form action="#" class="m-t">
                             <div class="form-group">
-                                <input type="password" required="" placeholder="******" class="form-control">
+                                <!input type="password" required="" placeholder="******" class="form-control">
+                                <label>Password</label>
+                                {{ form.password(class="form-control", type="password") }}
                             </div>
                             <button class="btn btn-primary block full-width" type="submit">Unlock</button>
                         </form>
@@ -40,7 +42,9 @@
         </div>
         <div class="row">
             <div class="col-md-12 col-md-12 col-sm-12 col-xs-12 text-center login-footer">
-                <p>Copyright © 2018 <a href="https://colorlib.com/wp/templates/">Colorlib</a> All rights reserved.</p>
+                <p style="color:white">
+                    Copyright © 2021 <a href="https://dikedim.com">Dike Dim</a> All rights reserved.
+                </p>
             </div>
         </div>
     </div>
