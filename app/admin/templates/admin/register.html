@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="back-link back-backend">
-                    <a href="index.html" class="btn btn-primary">Back to Dashboard</a>
+                    <a href="{{ url_for('admin.index')}}" class="btn btn-primary">Back to Dashboard</a>
                 </div>
             </div>
         </div>
@@ -22,8 +22,7 @@
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
             <div class="col-md-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="text-center custom-login">
-                    <h3>Registration</h3>
-                    <p>Admin template with very clean and aesthetic style prepared for your next app. </p>
+                    <h3> <a style="color:white"> Registration </a> </h3>
                 </div>
                 <div class="hpanel">
                     <div class="panel-body">
@@ -65,7 +64,9 @@
         </div>
         <div class="row">
             <div class="col-md-12 text-center">
-                <p>Copyright © 2021 <a href="https://dikedim">Dike Dim</a> All rights reserved.</p>
+                <p style="color:white">
+                    Copyright © 2021 <a href="https://dikedim.com">Dike Dim</a> All rights reserved.
+                </p>
             </div>
         </div>
     </div>
@@ -73,4 +74,12 @@
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}
+{% block javascripts %}
+    <!-- tab JS
+		============================================ -->
+    <script src="{{ url_for('admin.static', filename='js/tab.js')}}"></script>
+    <!-- icheck JS
+		============================================ -->
+    <script src="{{ url_for('admin.static', filename='js/icheck/icheck.min.js')}}"></script>
+    <script src="{{ url_for('admin.static', filename='js/icheck/icheck-active.js')}}"></script>
+{% endblock javascripts %}

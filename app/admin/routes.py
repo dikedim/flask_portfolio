@@ -1,6 +1,7 @@
 from app.admin import admin
 from flask import render_template
 from flask_login import (current_user, login_required,login_user, logout_user, confirm_login)
+from datetime import datetime
 
 
 @admin.route('/admin', methods=['GET'])
@@ -40,12 +41,12 @@ def mail():
 
 @admin.route('/admin/lock', methods=['GET'])
 def lock():
-    return render_template("admin/lock.html")
+    return render_template("admin/lock.html", now=datetime.utcnow())
 
 
-@admin.route('/admin/register', methods=['GET'])
+@admin.route('/admin/recovery', methods=['GET'])
 def password_recovery():
-    return render_template("admin/register.html")
+    return render_template("admin/password-recovery.html")
 
 
 @admin.errorhandler(404)
@@ -66,3 +67,8 @@ def file_manager():
 @admin.route('/admin/analytics', methods=['GET'])
 def analytics():
     return render_template("admin/analytics.html")
+
+
+@admin.route('/admin/pw', methods=['GET'])
+def password_meter():
+    return render_template("admin/password-meter.html")
