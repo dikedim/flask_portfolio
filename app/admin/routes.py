@@ -2,6 +2,8 @@ from app.admin import admin
 from flask import render_template
 from flask_login import (current_user, login_required,login_user, logout_user, confirm_login)
 from datetime import datetime
+from .models import User, login_manager
+from .forms import PostForm
 
 
 @admin.route('/admin', methods=['GET'])
@@ -69,6 +71,23 @@ def analytics():
     return render_template("admin/analytics.html")
 
 
+@admin.route('/admin/blog', methods=['GET'])
+def blogstats():
+    return render_template("admin/blog.html")
+
+
+@admin.route('/admin/create_post', methods=['GET'])
+def create_post():
+    post = PostForm()
+    return render_template("admin/blog_create.html", post=post)
+
+
 @admin.route('/admin/pw', methods=['GET'])
 def password_meter():
     return render_template("admin/password-meter.html")
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
+

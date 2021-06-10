@@ -14,7 +14,7 @@ if (typeof define === 'function' && define.amd) {
  } 
  }(function($) { 
 
-/*>>core*/
+/*>>app*/
 /**
  * 
  * Magnific Popup Core JS file
@@ -813,7 +813,7 @@ MagnificPopup.prototype = {
 		return mfp.scrollbarSize;
 	}
 
-}; /* MagnificPopup core prototype end */
+}; /* MagnificPopup app prototype end */
 
 
 
@@ -955,7 +955,7 @@ $.fn.magnificPopup = function(options) {
 	return jqEl;
 };
 
-/*>>core*/
+/*>>app*/
 
 /*>>inline*/
 

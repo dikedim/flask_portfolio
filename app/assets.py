@@ -9,7 +9,7 @@ def assemble_static(assets):
     gen_bundle = Bundle(
         'src/less/*.less',
         filters='less, cssmin',
-        output='dist/css/style.css'
+        output='dist/css/style.css',
         extra={'rel':   'stylesheet/less'}
     )
     assets.register('gen_bundle', gen_bundle)

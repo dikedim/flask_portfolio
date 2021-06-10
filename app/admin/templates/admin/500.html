@@ -22,8 +22,8 @@
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
             <div class="col-md-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="content-error">
-                    <h1>ERROR <span class="counter"> 404</span></h1>
-                    <p style="color: white">Oops, the page not found. Try checking the URL for error, then hit the refresh button on your browser or try found something else in our app.</p>
+                    <h1>Internal Server Error <span class="counter"> 500 </span></h1>
+                    <p style="color: white">The server encountered something unexpected that didn't allow it to complete the request. We apologize.</p>
                     <a href="#">Report Problem</a>
                 </div>
             </div>
@@ -38,11 +38,15 @@
         </div>
     </div>
 
+
 {% endblock content %}
 
-{% block javascripts %}
 <!-- Specific Page JS goes HERE  -->
-    <!-- counterup JS
+
+
+{% block javascripts %}
+
+        <!-- counterup JS
 		============================================ -->
     <script src="{{ url_for('admin.static', filename='js/counterup/jquery.counterup.min.js')}}"></script>
     <script src="{{ url_for('admin.static', filename='js/counterup/waypoints.min.js')}}"></script>
