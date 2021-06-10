@@ -26,14 +26,14 @@
     <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
     <option name="TEMPLATE_FOLDERS">
       <list>
+        <option value="$MODULE_DIR$/app/admin/templates" />
+        <option value="$MODULE_DIR$/app/desktop/templates" />
         <option value="$MODULE_DIR$/app/home/templates" />
         <option value="$MODULE_DIR$/app/mobile/templates" />
         <option value="$MODULE_DIR$/app/photography/templates" />
-        <option value="$MODULE_DIR$/app/web/templates" />
         <option value="$MODULE_DIR$/app/templates" />
-        <option value="$MODULE_DIR$/app/desktop/templates" />
         <option value="$MODULE_DIR$/app/video/templates" />
-        <option value="$MODULE_DIR$/app/admin/templates" />
+        <option value="$MODULE_DIR$/app/web/templates" />
         <option value="$MODULE_DIR$/app/admin/templates/admin" />
         <option value="$MODULE_DIR$/app/admin/templates/includes" />
       </list>

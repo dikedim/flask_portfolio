@@ -1,28 +1,20 @@
-from flask import Flask
-from flask_mail import Mail, Message
-from ..app import app
 from flask_wtf import FlaskForm
 from wtforms import TextField, BooleanField, TextAreaField, SubmitField, StringField
 from wtforms.validators import DataRequired
 
-mail = Mail(app)
-
-app.config['MAIL_SERVER']='mail.dikedim.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'shout@dikedim.com'
-app.config['MAIL_PASSWORD'] = '*****'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-
-app.config['SECRET_KEY'] = 'cghiedincicniernveomvtemfkvmto'
-# mail = Mail(app)
-
 
 class ContactForm(FlaskForm):
-    name = StringField("Name", validators=[DataRequired()])
-    email = StringField("Email", validators=[DataRequired()])
-    subject = StringField("Subject", validators=[DataRequired()])
-    message = TextAreaField("Message", validators=[DataRequired()])
-    submit = SubmitField("Send")
+    name = StringField("Name", validators=[DataRequired("Please enter your name")])
+    email = StringField("Email", validators=[DataRequired("Please enter your email address")])
+    subject = StringField("Subject", validators=[DataRequired("Please enter a subject")])
+    message = TextAreaField("Message", validators=[DataRequired(" Can't send a blank message")])
+    submit = SubmitField("Send Message")
 
+
+class Email:
+
+    def email_confirm(self):
+        body = "<html> <body> <p> {} </p> <br> <br>  <p> Lorem Ipsum is simply dummy text of the printing " \
+               "and typesetting industry.</p> </body> </html>"
+        return body
 
