@@ -173,11 +173,14 @@
 									<div class="post-box card-box">
 
 										<!-- blog detail -->
-										<h1>Procuring Education on Consulted Assurance in Do</h1>						
-										<div class="blog-detail">Posted 12 June 2016</div> 
+                                        {#% for post in posts %#}
+										    <h1>{{ post.title }}</h1>
+										    <div class="blog-detail">{# {  posts.date_posted.strftime('%Y-%B-%d') }#}</div>
 
-										<!-- blog content -->
-										<div class="blog-content">
+										    <div class="blog-content">{# { post.content }#}</div>
+                                        {#% endfor %#}
+                                        <!-- blog content -->
+										<!--div class="blog-content">
 											<p>
 												So striking at of to welcomed resolved. Northward by described up household therefore 
 												attention. Excellence decisively nay man yet impression for contrasted remarkably.
@@ -205,7 +208,7 @@
 												Unpleasant astonished an diminution up partiality. Noisy an their of meant. Death means 
 												up civil do an offer wound of.
 											</p>
-										</div>
+										</div-->
 
 									</div>
 								</div>

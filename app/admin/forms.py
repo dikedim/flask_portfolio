@@ -28,6 +28,8 @@ class RequestReset(FlaskForm):
 
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
+    slug = StringField('Slug', validators=[DataRequired()])
+    category = StringField('Category', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Post')
 

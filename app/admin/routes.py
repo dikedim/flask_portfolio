@@ -1,9 +1,10 @@
 from app.admin import admin
-from flask import render_template
+from flask import render_template, flash, redirect, url_for
 from flask_login import (current_user, login_required,login_user, logout_user, confirm_login)
 from datetime import datetime
-from .models import User, login_manager
+from .models import User, login_manager, da
 from .forms import PostForm
+from app.home.models import Posts
 
 
 @admin.route('/admin', methods=['GET'])
@@ -76,10 +77,16 @@ def blogstats():
     return render_template("admin/blog.html")
 
 
-@admin.route('/admin/create_post', methods=['GET'])
+@admin.route('/admin/create_post', methods=['GET', 'POST'])
 def create_post():
-    post = PostForm()
-    return render_template("admin/blog_create.html", post=post)
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Posts(title=form.title.data, content=form.content.data, author='Admin')
+        da.session.add(post)
+        da.session.commit()
+        flash('Your post has been created!', 'success')
+        return redirect(url_for('admin.index'))
+    return render_template('admin/blog_create.html', form=form)
 
 
 @admin.route('/admin/pw', methods=['GET'])
