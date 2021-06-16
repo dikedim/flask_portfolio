@@ -10,7 +10,7 @@ import app as ap
 from flask_wtf.csrf import CSRFError
 from dotenv import load_dotenv
 #import sqlalchemy as dba
-from .models import Posts
+from .models import Posts, Category
 from flask_sqlalchemy import SQLAlchemy
 
 load_dotenv()
@@ -22,24 +22,34 @@ MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')
 @home_bp.route('/', methods=['GET', 'POST'])
 def index():
     form = ContactForm()
+    # page = request.args.get('page', 1, type=int)
+    # post = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
+    post = Posts.query.all()
+    categories = Category.query.all()
     if request.method == 'POST':
         send_mail()
-        return render_template('index.html', success=True)
+        return render_template('index.html', success=True, posts=post, categories=categories)
     else:
         pass
 #    MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')
-        return render_template('index.html', MAP_BOX_KEY=MAP_BOX_KEY, form=form)
+        return render_template('index.html', mapapi=MAP_BOX_KEY, form=form, posts=post, categories=categories)
 
 
 @home_bp.route('/blog', methods=['GET'])
 def blog():
-    posts = Posts.query.all()
-    return render_template("blog.html", posts=posts)
+    # posts = Posts.query.all()
+    page = request.args.get('page', 1, type=int)
+    post = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
+    categories = Category.query.all()
+    # posts = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
+    return render_template("blog.html", posts=post, categories=categories)
 
 
-@home_bp.route('/blog_post', methods=['GET'])
-def blog_post():
-    return render_template("blog-post.html")
+@home_bp.route('/blog_post/<int:post_id>', methods=['GET'])
+def blog_post(posts_id):
+    # posts = Posts.query.get_or_404(posts_id)
+    post = Posts.query.filter_by(id=posts_id).one()
+    return render_template("blog-post.html", title=post.title, posts=post)
 
 
 @home_bp.route('/mapbox', methods=['GET'])

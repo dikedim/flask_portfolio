@@ -1053,32 +1053,32 @@
 										</div>
 										<div class="f_btn dropdown">
 											<label><input type="radio" name="fl_radio" value="web" />Web</label>
-                                            <!--div class="dropdown-content">
-                                                <a href="{{ url_for('web_bp.web_portfolio')}}">Web jobs</a>
-                                            </div-->
+                                            <div class="dropdown-content">
+                                                <a href="{{ url_for('web_bp.web')}}">Web jobs</a>
+                                            </div>
 										</div>
                                         <div class="f_btn dropdown">
 											<label><input type="radio" name="fl_radio" value="desktop" />Desktop</label>
                                             <!--div class="dropdown-content">
-                                                <a href="{{ url_for('web_bp.web_portfolio')}}">Desktop apps</a>
+                                                <a href="{{ url_for('desktop_bp.desktop')}}">Desktop apps</a>
                                             </div-->
 										</div>
 										<div class="f_btn dropdown">
 											<label><input type="radio" name="fl_radio" value="mobile" />Mobile</label>
                                             <!-- div class="dropdown-content">
-                                                <a href="{{ url_for('web_bp.web_portfolio')}}">Mobile apps</a>
+                                                <a href="{{ url_for('mobile_bp.mobile')}}">Mobile apps</a>
                                             </div-->
 										</div>
 										<div class="f_btn dropdown">
 											<label><input type="radio" name="fl_radio" value="video" />Video</label>
                                             <!-- div class="dropdown-content">
-                                                <a href="{{ url_for('web_bp.web_portfolio')}}">Video jobs</a>
+                                                <a href="{{ url_for('video_bp.video')}}">Video jobs</a>
                                             </div -->
 										</div>
 										<div class="f_btn">
 											<label><input type="radio" name="fl_radio" value="photo" />Photo</label>
                                             <!--div class="dropdown-content">
-                                                <a href="{{ url_for('web_bp.web_portfolio')}}">Photo apps</a>
+                                                <a href="{{ url_for('photo_bp.photo')}}">Photo apps</a>
                                             </div-->
 										</div>
 									</div>
@@ -1430,30 +1430,37 @@
 							<div class="row">
 
 								<!-- blog item -->
-								<div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
-									<div class="box-item card-box">
-										<div class="image">
-											<a href="{{ url_for('home_bp.blog_post')}}">
-												<img src="{{ url_for('static', filename='images/blog/blog1.jpg')}}" alt="" />
-												<span class="info">
-													<span class="icon la la-newspaper-o"></span>
-												</span>
-												<span class="date"><strong>20</strong>Jun</span>
-											</a>
-										</div>
-										<div class="desc">
-											<a href="{{ url_for('home_bp.blog_post')}}" class="name">By spite about do of do allow blush</a>
-											<div class="category">Mobile</div>
-										</div>
-									</div>
-								</div>
+                                {% for post in posts %}
+                                    {% for category in categories %}
+                                        <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                                            <div class="box-item card-box">
+                                                <div class="image">
+                                                    <a href="{{ url_for('home_bp.blog_post', post_id=post.id)}}">
+                                                        <img src="{{ url_for('static', filename='images/blog/blog1.jpg')}}" alt="" />
+                                                        <span class="info">
+                                                            <span class="icon la la-newspaper-o"></span>
+                                                        </span>
+                                                        <span class="date">
+                                                            <strong>{{ post.date_posted.strftime('%d') }}</strong>{{ post.date_posted.strftime('%b') }}
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                                <div class="desc">
+                                                    <!--a href="{# { url_for('home_bp.blog_post', post_id=post.id)}#}" class="name">By spite about do of do allow blush</a-->
+                                                    <a class="name" href="{{ url_for('.blog_post', post_id=post.id)}}">{{ post.title }}</a>
+                                                    <div class="category">{{ category.name }}</div>
 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
 								<!-- blog item -->
-								<div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+								<!--div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
 									<div class="box-item card-box">
 										<div class="image">
-											<a href="{{ url_for('home_bp.blog_post')}}">
-												<img src="{{ url_for('static', filename='images/blog/blog2.jpg')}}" alt="" />
+											<a href="{# { url_for('home_bp.blog_post', post_id=post.id)}#}">
+												<img src="{# { url_for('static', filename='images/blog/blog2.jpg')}#}" alt="" />
 												<span class="info">
 													<span class="icon la la-newspaper-o"></span>
 												</span>
@@ -1461,18 +1468,18 @@
 											</a>
 										</div>
 										<div class="desc">
-											<a href="{{ url_for('home_bp.blog_post')}}" class="name">Two Before Arrow Not Relied</a>
+											<a href="{# { url_for('home_bp.blog_post', post_id=post.id)}#}" class="name">Two Before Arrow Not Relied</a>
 											<div class="category">Coding</div>
 										</div>
 									</div>
-								</div>
+								</div-->
 
 								<!-- blog item -->
-								<div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+								<!--div-- class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
 									<div class="box-item card-box">
 										<div class="image">
-											<a href="{{ url_for('home_bp.blog_post')}}">
-												<img src="{{ url_for('static', filename='images/blog/blog3.jpg')}}" alt="" />
+											<a href="{# { url_for('home_bp.blog_post', post_id=post.id)}#}">
+												<img src="{# { url_for('static', filename='images/blog/blog3.jpg')}#}" alt="" />
 												<span class="info">
 													<span class="icon la la-newspaper-o"></span>
 												</span>
@@ -1480,11 +1487,11 @@
 											</a>
 										</div>
 										<div class="desc">
-											<a href="{{ url_for('home_bp.blog_post')}}" class="name">By spite about do of do allow blush</a>
+											<a href="{# { url_for('home_bp.blog_post', post_id=post.id)}#}" class="name">By spite about do of do allow blush</a>
 											<div class="category">Travel</div>
 										</div>
 									</div>
-								</div>
+								</div-->
 
 							</div>
 
@@ -1513,7 +1520,7 @@
 							<div class="map" id="map" style="width: 98%"></div>
 
                             <div id="menu">
-                                <input id="satellite-v9" type="radio" name="rtoggle" value="satellite" checked="checked">
+                                <input type="radio" id="satellite-v9" name="rtoggle" value="satellite" checked="checked">
                                 <!-- See a list of Mapbox-hosted public styles at https://docs.mapbox.com/api/maps/styles/#mapbox-styles -->
                                 <label for="satellite-v9">satellite</label>
                                 <input id="light-v10" type="radio" name="rtoggle" value="light">
@@ -1751,9 +1758,12 @@
 	<!--
 		Main Scripts
 	-->
-    <script> L.mapboxgl.accessToken ='{{ MAP_BOX_KEY }}'</script>
+    <!--script> L.mapboxgl.accessToken ='{{ MAP_BOX_KEY }}'</script-->
 	<script src="{{ url_for('static', filename='js/scripts.js')}}"></script>
     <script src="{{ url_for('static', filename='js/mapbox.js') }}"></script>
+    <script type="text/javascript">
+        mapbox = mapFunc({{ mapapi|tojson }})
+    </script>
 
 </body>
 </html>
