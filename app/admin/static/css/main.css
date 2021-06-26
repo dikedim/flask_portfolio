@@ -278,3 +278,8 @@ textarea {
         page-break-after: avoid;
     }
 }
+form textarea#content{
+    width: 100px;
+    height: 100px;
+    max-width: 300px;
+}

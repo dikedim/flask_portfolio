@@ -1,10 +1,410 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'layout.html' %}
 
-</body>
-</html>
+{% block body %}
+
+    <div class="active" >
+        <div class="row card-container">
+
+            <!--
+                Card Wrap
+            -->
+            <div class="card-wrap col col-m-12 col-t-12 col-d-8 col-d-lg-6" data-simplebar>
+
+                <!-- Work Image -->
+                <div class="card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6"
+                     style="background-image: url({{ url_for('static', filename='images/3.jpg') }});"></div>
+
+                <!--
+                    Inner Top
+                -->
+                <div class="content inner-top">
+                    <div class="row">
+                        <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                            <div class="title-bg">Portfolio</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--
+                    Works
+                -->
+                <div class="content works">
+                    <div class="row">
+                        <div class="col col-m-12 col-t-5 col-d-5 col-d-lg-5">
+
+                            <!-- title -->
+                            <div class="title"><span>My</span> Portfolio</div>
+
+                        </div>
+                        <div class="col col-m-12 col-t-7 col-d-7 col-d-lg-7">
+
+                            <!-- filters -->
+                            <div class="filter-menu filter-button-group">
+                                <div class="f_btn active">
+                                    <label><input type="radio" name="fl_radio" value="grid-item"/>All</label>
+                                </div>
+                                <div class="f_btn dropdown">
+                                    <label><input type="radio" name="fl_radio" value="web"/>Web</label>
+                                    <div class="dropdown-content">
+                                        <a href="{{ url_for('web_bp.web') }}">Web jobs</a>
+                                    </div>
+                                </div>
+                                <div class="f_btn dropdown">
+                                    <label><input type="radio" name="fl_radio" value="desktop"/>Desktop</label>
+                                    <!--div class="dropdown-content">
+                                                <a href="{{ url_for('desktop_bp.desktop')}}">Desktop apps</a>
+                                            </div-->
+                                </div>
+                                <div class="f_btn dropdown">
+                                    <label><input type="radio" name="fl_radio" value="mobile"/>Mobile</label>
+                                    <!-- div class="dropdown-content">
+                                                <a href="{{ url_for('mobile_bp.mobile')}}">Mobile apps</a>
+                                            </div-->
+                                </div>
+                                <div class="f_btn dropdown">
+                                    <label><input type="radio" name="fl_radio" value="video"/>Video</label>
+                                    <!-- div class="dropdown-content">
+                                                <a href="{{ url_for('video_bp.video')}}">Video jobs</a>
+                                            </div -->
+                                </div>
+                                <div class="f_btn">
+                                    <label><input type="radio" name="fl_radio" value="photo"/>Photo</label>
+                                    <!--div class="dropdown-content">
+                                                <a href="{{ url_for('photo_bp.photo')}}">Photo apps</a>
+                                            </div-->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- work items -->
+                    <div class="row grid-items">
+
+                        <!-- work item photo -->
+                        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item photo">
+                            <div class="box-item card-box">
+                                <div class="image">
+                                    <a href="{{ url_for('static', filename='images/works/work1.jpg') }}"
+                                       class="has-popup-image">
+                                        <img src="{{ url_for('static', filename='images/works/work1.jpg') }}" alt=""/>
+                                        <span class="info">
+													<span class="icon la la-camera-retro"></span>
+												</span>
+                                    </a>
+                                </div>
+                                <div class="desc">
+                                    <a href="{{ url_for('static', filename='images/works/work1.jpg') }}"
+                                       class="name has-popup-image">Motorcycle Helmet</a>
+                                    <div class="category">Photo</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- work item Kays video -->
+                        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item video">
+                            <div class="box-item card-box">
+                                <div class="image">
+                                    <a href="https://vimeo.com/97102654" class="has-popup-video">
+                                        <img src="{{ url_for('static', filename='images/works/kays_class2.jpg') }}"
+                                             alt=""/>
+                                        <span class="info">
+													<span class="icon la la-video-camera"></span>
+												</span>
+                                    </a>
+                                </div>
+                                <div class="desc">
+                                    <a href="https://vimeo.com/97102654" class="name has-popup-video">Online baking
+                                        classes</a>
+                                    <div class="category">Video</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- work item Alumni web -->
+                        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item web">
+                            <div class="box-item card-box">
+                                <div class="image">
+                                    <a href="https://yabanhotel.com.ng" class="has-popup-music">
+                                        <img src="{{ url_for('static', filename='images/works/ckcalum.jpg') }}" alt=""/>
+                                        <span class="info">
+													<span class="icon la la-globe"></span>
+												</span>
+                                    </a>
+                                </div>
+                                <div class="desc">
+                                    <a href="#" class="name has-popup">Alumni Website</a>
+                                    <div class="category">Web</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- work item mobile -->
+                        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item mobile">
+                            <div class="box-item card-box">
+                                <div class="image">
+                                    <a href="#popup-1" class="has-popup-media">
+                                        <img src="{{ url_for('static', filename='images/works/e-mgmt_app.jpg') }}"
+                                             alt=""/>
+                                        <span class="info">
+													<span class="icon la la-mobile-phone"></span>
+												</span>
+                                    </a>
+                                </div>
+                                <div class="desc">
+                                    <a href="#popup-1" class="name has-popup-media">e-School Management App</a>
+                                    <div class="category">Mobile</div>
+                                </div>
+                                <div id="popup-1" class="popup-box mfp-fade mfp-hide">
+                                    <div class="content">
+                                        <div class="image">
+                                            <img src="{{ url_for('static', filename='images/works/e-mgmt_app.jpg') }}"
+                                                 alt="">
+                                        </div>
+                                        <div class="desc">
+                                            <div class="post-box">
+                                                <h1>Mobile Application</h1>
+                                                <div class="blog-detail">Design</div>
+                                                <div class="blog-content">
+                                                    <p>
+                                                        With the advent of the nouveau coronavirus, the need for virtual
+                                                        solutions have arisen
+                                                        especially in the area of academics to prevent stagnation in the
+                                                        development of kids
+                                                        and young adults alike.
+                                                    </p>
+                                                    <p>
+                                                        With development starting before the disruption of life and
+                                                        activities due to pandemic,
+                                                        I was afforded the opportunity to virtualize the activities and
+                                                        interaction bew.
+                                                    </p>
+                                                    <blockquote>
+                                                        To stay above ever evolving challenges, there is a constant need
+                                                        to evolve.
+                                                    </blockquote>
+                                                    <p>
+                                                        Tile...............
+                                                    </p>
+                                                    <ul class="list-style">
+                                                        <li>Maintain same level of interaction between parents and
+                                                            educators.
+                                                        </li>
+                                                        <li>Provide a unified platform to get important information to
+                                                            all parents or concerned groups in timely fashion.
+                                                        </li>
+                                                        <li>Real-time feedback with valuable information at your
+                                                            fingertips at all times
+                                                        </li>
+                                                    </ul>
+                                                    <p>
+                                                        U.................
+                                                    </p>
+                                                </div>
+                                                <a href="#" class="button">
+                                                    <span class="text">View Project</span>
+                                                    <span class="arrow"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- work item photo -->
+                        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item photo">
+                            <div class="box-item card-box">
+                                <div class="image">
+                                    <a href="{{ url_for('static', filename='images/works/work5.jpg') }}"
+                                       class="has-popup-image">
+                                        <img src="{{ url_for('static', filename='images/works/work5.jpg') }}" alt=""/>
+                                        <span class="info">
+													<span class="icon la la-camera-retro"></span>
+												</span>
+                                    </a>
+                                </div>
+                                <div class="desc">
+                                    <a href="{{ url_for('static', filename='images/works/work5.jpg') }}"
+                                       class="name has-popup-image">Gereal Travels</a>
+                                    <div class="category">Photo</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- work item Yaban website -->
+                        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item web">
+                            <div class="box-item card-box">
+                                <div class="image">
+                                    <a href="https://yabanhotel.com.ng" class="has-popup-music">
+                                        <img src="{{ url_for('static', filename='images/works/yaban_site.jpg') }}"
+                                             alt=""/>
+                                        <span class="info">
+													<span class="icon la la-globe"></span>
+												</span>
+                                    </a>
+                                </div>
+                                <div class="desc">
+                                    <a href="#" class="name has-popup">Design Hotel Website</a>
+                                    <div class="category">Web</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- work item Tehetem website -->
+                        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item web">
+                            <div class="box-item card-box">
+                                <div class="image">
+                                    <a href="https://tehetem.com" class="has-popup-music">
+                                        <img src="{{ url_for('static', filename='images/works/tehetem_site.jpg') }}"
+                                             alt=""/>
+                                        <span class="info">
+													<span class="icon la la-globe"></span>
+												</span>
+                                    </a>
+                                </div>
+                                <div class="desc">
+                                    <a href="#" class="name has-popup">General Contractor Website</a>
+                                    <div class="category">Web</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- work item Desktop-fuzzy -->
+                        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item desktop">
+                            <div class="box-item card-box">
+                                <div class="image">
+                                    <a href="https://w.soundcloud.com/player/?visual=true&url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F221650664&show_artwork=true"
+                                       class="has-popup-music">
+                                        <img src="{{ url_for('static', filename='images/works/fuzzy_io.jpg') }}"
+                                             alt=""/>
+                                        <span class="info">
+													<span class="icon la la-desktop"></span>
+												</span>
+                                    </a>
+                                </div>
+                                <div class="desc">
+                                    <a href="#" class="name has-popup">Fuzzy Index Inference Estimator</a>
+                                    <div class="category">Desktop</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- work item video -->
+                        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item video">
+                            <div class="box-item card-box">
+                                <div class="image">
+                                    <a href="https://vimeo.com/97102654" class="has-popup-video">
+                                        <img src="{{ url_for('static', filename='images/works/work6.jpg') }}" alt=""/>
+                                        <span class="info">
+													<span class="icon la la-video-camera"></span>
+												</span>
+                                    </a>
+                                </div>
+                                <div class="desc">
+                                    <a href="https://vimeo.com/97102654" class="name has-popup-video">Architecture</a>
+                                    <div class="category">Video</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- work item mobile logistics aggregator -->
+                        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item mobile">
+                            <div class="box-item card-box">
+                                <div class="image">
+                                    <a href="#popup-2" class="has-popup-media">
+                                        <img src="{{ url_for('static', filename='images/works/work7.jpg') }}" alt=""/>
+                                        <span class="info">
+													<span class="icon la la-mobile-phone"></span>
+												</span>
+                                    </a>
+                                </div>
+                                <div class="desc">
+                                    <a href="#popup-2" class="name has-popup-media">Logistics Aggregator</a>
+                                    <div class="category">Mobile</div>
+                                </div>
+                                <div id="popup-2" class="popup-box mfp-fade mfp-hide">
+                                    <div class="content">
+                                        <div class="image">
+                                            <img src="{{ url_for('static', filename='images/works/work7.jpg') }}"
+                                                 alt="">
+                                        </div>
+                                        <div class="desc">
+                                            <div class="post-box">
+                                                <h1>Mobile Application</h1>
+                                                <div class="blog-detail">Mobile</div>
+                                                <div class="blog-content">
+                                                    <p>
+                                                        Eliminating the difficulty in hauling things ranging from
+                                                        personal effects to equipment
+                                                        over varied distances all tailored to your specifications.
+                                                    </p>
+                                                    <p>
+                                                        Forfeited you engrossed but gay sometimes explained. Another as
+                                                        studied it to evident.
+                                                        Merry sense given he be arise. Conduct at an replied removal an
+                                                        amongst. Remaining
+                                                        determine few her two cordially admitting old.
+                                                    </p>
+                                                    <blockquote>
+                                                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+                                                        posuere cubilia
+                                                        Curae; Pellentesque suscipit.
+                                                    </blockquote>
+                                                    <p>
+                                                        Tiled say decay spoil now walls meant house. My mr interest
+                                                        thoughts screened of outweigh
+                                                        removing. Evening society musical besides inhabit ye my. Lose
+                                                        hill well up will he over on.
+                                                        Increasing sufficient everything men him admiration unpleasing
+                                                        sex.
+                                                    </p>
+                                                    <ul class="list-style">
+                                                        <li>Personally filter hauling requests from drivers</li>
+                                                        <li>Specify your requirements without leaving your
+                                                            comfort-zone
+                                                        </li>
+                                                        <li>Real-time updates and the progress of your haulage.</li>
+                                                    </ul>
+                                                    <p>
+                                                        Sleep easy being assured of timely delivery and paying what you
+                                                        are comfortable with.
+                                                    </p>
+                                                </div>
+                                                <a href="#" class="button">
+                                                    <span class="text">View Project</span>
+                                                    <span class="arrow"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- work item Mcity -->
+                        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item web">
+                            <div class="box-item card-box">
+                                <div class="image">
+                                    <a href="https://mcity.com.ng" class="has-popup-music">
+                                        <img src="{{ url_for('static', filename='images/works/mcity_site.jpg') }}"
+                                             alt=""/>
+                                        <span class="info">
+													<span class="icon la la-globe"></span>
+												</span>
+                                    </a>
+                                </div>
+                                <div class="desc">
+                                    <a href="{{ url_for('static', filename='images/works/work1.jpg') }}"
+                                       class="name has-popup-image">Local Business Directory</a>
+                                    <div class="category">Web</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
