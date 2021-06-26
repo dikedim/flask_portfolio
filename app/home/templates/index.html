@@ -1088,31 +1088,88 @@
 
 							<!-- work items -->
 							<div class="row grid-items">
-
+                                {# { job.title }#}
+                                {# { job.content }#}
+                                {#{ job.link }#}
 								<!-- work item photo -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item photo">
-									<div class="box-item card-box">
-										<div class="image">
-											<a href="{{ url_for('static', filename='images/works/work1.jpg')}}" class="has-popup-image">
-												<img src="{{ url_for('static', filename='images/works/work1.jpg')}}" alt="" />
-												<span class="info">
-													<span class="icon la la-camera-retro"></span>
-												</span>
-											</a>
-										</div>
-										<div class="desc">
-											<a href="{{ url_for('static', filename='images/works/work1.jpg')}}" class="name has-popup-image">Motorcycle Helmet</a>
-											<div class="category">Photo</div>
-										</div>
-									</div>
-								</div>
+                                {% for job in jobs %}
+                                    {#% for jobtype in jobtypes %#}
+                                        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item photo">
+                                            <div class="box-item card-box">
+                                                <div class="image">
+                                                    <!--a href="{{ url_for('static', filename='images/works/work2.jpg') }}"
+                                                       class="has-popup-image"-->
+                                                    <a href="{{ url_for('home_bp.jobs', job_id=job.id)}}">
+                                                        <img src="{{ url_for('static', filename='images/works/work2.jpg') }}"
+                                                             alt=""/>
+                                                        <span class="info">
+                                                            {% if job.jobtype_id == '3' %}
+													            <span class="icon la la-camera-retro"></span>
+                                                            {% elif job.jobtype_id == '4' %}
+                                                                <a href="{# { url_for('.blog_post', job_id=job.id)}}" class="name has-popup">{{ job.title }#}"></a>
+                                                            {% elif jobtypes.name == '1' %}
+                                                                <div class="post-box">
+														            <h1>Mobile Application</h1>
+														            <div class="blog-detail">Design</div>
+                                                                    <div class="blog-content">
+                                                                        <p>
+																            With the advent of the nouveau coronavirus,
+                                                                            the need for virtual solutions have arisen
+                                                                            especially in the area of academics to
+                                                                            prevent stagnation in the development of
+                                                                            kids and young adults alike.
+															            </p>
+                                                                    </div>
+                                                                </div>
+                                                            {%elif job.jobtype_id == '2' %}
+                                                                <span class="icon la la-video-camera"></span>
+                                                            {% elif jobtypes.desktop %}
+                                                                <span class="icon la la-desktop"></span>
+                                                            {% endif %}
+												        </span>
+                                                    </a>
+                                                </div>
+                                                <div class="desc">
+                                                    <a href="{{ url_for('static', filename='images/works/work1.jpg') }}"
+                                                       class="name has-popup-image">{{ job.title }}t</a>
+                                                    {% for jobtype in jobtypes %}
+                                                        <div class="category">{{ jobtypes.name }}</div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                {% endfor %}
+
+                                <!-- work item Alumni web -->
+                                {% for job in jobs %}
+                                    {% for jobtype in jobtypes %}
+                                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item web">
+                                        <div class="box-item card-box">
+                                            <div class="image">
+                                                <a href="{{ jobs.link }}" class="has-popup-music">
+                                                    <img src="{{ url_for('static', filename='images/works/ckcalum.jpg') }}"
+                                                         alt="{{ job.photo }}"/>
+                                                    <span class="info">
+                                                        <span class="icon la la-globe"></span>
+												    </span>
+                                                </a>
+                                            </div>
+                                            <div class="desc">
+                                                <a href="#" class="name has-popup">{{ job.title }}</a>
+                                                <div class="category">{{ jobtype.name }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        {% endfor %}
+                                {% endfor %}
 
 								<!-- work item Kays video -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item video">
+								<!--div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item video">
 									<div class="box-item card-box">
 										<div class="image">
 											<a href="https://vimeo.com/97102654" class="has-popup-video">
-												<img src="{{ url_for('static', filename='images/works/kays_class2.jpg')}}" alt="" />
+												<img src="{#{ url_for('static', filename='images/works/kays_class2.jpg')}#}" alt="" />
 												<span class="info">
 													<span class="icon la la-video-camera"></span>
 												</span>
@@ -1123,14 +1180,14 @@
 											<div class="category">Video</div>
 										</div>
 									</div>
-								</div>
+								</div-->
 
 								<!-- work item Alumni web -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item web">
+								<!--div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item web">
 									<div class="box-item card-box">
 										<div class="image">
 											<a href="https://yabanhotel.com.ng" class="has-popup-music">
-												<img src="{{ url_for('static', filename='images/works/ckcalum.jpg')}}" alt="" />
+												<img src="{# { url_for('static', filename='images/works/ckcalum.jpg')}#}" alt="" />
 												<span class="info">
 													<span class="icon la la-globe"></span>
 												</span>
@@ -1141,14 +1198,14 @@
 											<div class="category">Web</div>
 										</div>
 									</div>
-								</div>
+								</div-->
 
 								<!-- work item mobile -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item mobile">
+								<!--div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item mobile">
 									<div class="box-item card-box">
 										<div class="image">
 											<a href="#popup-1" class="has-popup-media">
-												<img src="{{ url_for('static', filename='images/works/e-mgmt_app.jpg')}}" alt="" />
+												<img src="{#{ url_for('static', filename='images/works/e-mgmt_app.jpg')}#}" alt="" />
 												<span class="info">
 													<span class="icon la la-mobile-phone"></span>
 												</span>
@@ -1161,7 +1218,7 @@
 										<div id="popup-1" class="popup-box mfp-fade mfp-hide">
 											<div class="content">
 												<div class="image">
-													<img src="{{ url_for('static', filename='images/works/e-mgmt_app.jpg')}}" alt="">
+													<img src="{#{ url_for('static', filename='images/works/e-mgmt_app.jpg')}#}" alt="">
 												</div>
 												<div class="desc">
 													<div class="post-box">
@@ -1201,10 +1258,10 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div-->
 
 								<!-- work item photo -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item photo">
+								<!--div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item photo">
 									<div class="box-item card-box">
 										<div class="image">
 											<a href="{{ url_for('static', filename='images/works/work5.jpg')}}" class="has-popup-image">
@@ -1219,10 +1276,10 @@
 											<div class="category">Photo</div>
 										</div>
 									</div>
-								</div>
+								</div-->
 
 								<!-- work item Yaban website -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item web">
+								<!--div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item web">
 									<div class="box-item card-box">
 										<div class="image">
 											<a href="https://yabanhotel.com.ng" class="has-popup-music">
@@ -1237,10 +1294,10 @@
 											<div class="category">Web</div>
 										</div>
 									</div>
-								</div>
+								</div-->
 
                                 <!-- work item Tehetem website -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item web">
+								<!--div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item web">
 									<div class="box-item card-box">
 										<div class="image">
 											<a href="https://tehetem.com" class="has-popup-music">
@@ -1255,10 +1312,10 @@
 											<div class="category">Web</div>
 										</div>
 									</div>
-								</div>
+								</div-->
 
                                 <!-- work item Desktop-fuzzy -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item desktop">
+								<!--div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item desktop">
 									<div class="box-item card-box">
 										<div class="image">
 											<a href="https://w.soundcloud.com/player/?visual=true&url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F221650664&show_artwork=true" class="has-popup-music">
@@ -1273,14 +1330,14 @@
 											<div class="category">Desktop</div>
 										</div>
 									</div>
-								</div>
+								</div-->
 
 								<!-- work item video -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item video">
+								<!--div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item video">
 									<div class="box-item card-box">
 										<div class="image">
 											<a href="https://vimeo.com/97102654" class="has-popup-video">
-												<img src="{{ url_for('static', filename='images/works/work6.jpg')}}" alt="" />
+												<img src="{#{ url_for('static', filename='images/works/work6.jpg')}#}" alt="" />
 												<span class="info">
 													<span class="icon la la-video-camera"></span>
 												</span>
@@ -1291,10 +1348,10 @@
 											<div class="category">Video</div>
 										</div>
 									</div>
-								</div>
+								</div-->
 
 								<!-- work item mobile logistics aggregator -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item mobile">
+								<!--div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item mobile">
 									<div class="box-item card-box">
 										<div class="image">
 											<a href="#popup-2" class="has-popup-media">
@@ -1354,10 +1411,10 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div-->
 
                                 <!-- work item Mcity -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item web">
+								<!--div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item web">
 									<div class="box-item card-box">
 										<div class="image">
 											<a href="https://mcity.com.ng" class="has-popup-music">
@@ -1372,7 +1429,7 @@
 											<div class="category">Web</div>
 										</div>
 									</div>
-								</div>
+								</div-->
 
 							</div>
 						</div>
@@ -1428,7 +1485,6 @@
 
 							<!-- blog items -->
 							<div class="row">
-
 								<!-- blog item -->
                                 {% for post in posts %}
                                     {% for category in categories %}
@@ -1638,7 +1694,7 @@
                                             {% endfor %}
 
                                             {% for message in form.subject.errors %}
-                                                 <div class="flash">{{ message }}</div>
+                                                 <div class="flasher">{{ message }}</div>
                                             {% endfor %}
 
                                             {% for message in form.message.errors %}

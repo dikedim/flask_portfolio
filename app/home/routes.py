@@ -10,7 +10,7 @@ import app as ap
 from flask_wtf.csrf import CSRFError
 from dotenv import load_dotenv
 #import sqlalchemy as dba
-from .models import Posts, Category
+from .models import Posts, Category, Jobs, JobType
 from flask_sqlalchemy import SQLAlchemy
 
 load_dotenv()
@@ -26,13 +26,16 @@ def index():
     # post = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
     post = Posts.query.all()
     categories = Category.query.all()
+    job = Jobs.query.all()
+    jobtype = JobType.query.all()
     if request.method == 'POST':
         send_mail()
-        return render_template('index.html', success=True, posts=post, categories=categories)
+        return render_template('index.html', success=True, posts=post, categories=categories, jobs=job, jobtypes=jobtype)
     else:
         pass
 #    MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')
-        return render_template('index.html', mapapi=MAP_BOX_KEY, form=form, posts=post, categories=categories)
+        return render_template('index.html', mapapi=MAP_BOX_KEY, form=form, posts=post, categories=categories,
+                               jobs=job, jobtypes=jobtype)
 
 
 @home_bp.route('/blog', methods=['GET'])
@@ -50,6 +53,13 @@ def blog_post(posts_id):
     # posts = Posts.query.get_or_404(posts_id)
     post = Posts.query.filter_by(id=posts_id).one()
     return render_template("blog-post.html", title=post.title, posts=post)
+
+
+@home_bp.route('/jobs/', methods=['GET'])
+def jobs():
+    job = Jobs.query.all()
+    jobtype = JobType.query.all()
+    return render_template("jobs.html", job=job, jobtype=jobtype)
 
 
 @home_bp.route('/mapbox', methods=['GET'])
