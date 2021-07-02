@@ -1127,19 +1127,6 @@
                                                                 <span class="icon la la-globe"></span>
                                                                 <!--a href="{# { url_for('.jobs', job_id=job.id)}}" class="name has-popup">{{ job.title }#}"></a-->
                                                             {% elif job.jobtype_id == 1 %}
-                                                                <!--div class="post-box">
-														            <h1>Mobile Application</h1>
-														            <div class="blog-detail">Design</div>
-                                                                    <div class="blog-content">
-                                                                        <p>
-																            With the advent of the nouveau coronavirus,
-                                                                            the need for virtual solutions have arisen
-                                                                            especially in the area of academics to
-                                                                            prevent stagnation in the development of
-                                                                            kids and young adults alike.
-															            </p>
-                                                                    </div>
-                                                                </div-->
                                                                 <span class="icon la la-mobile-phone"></span>
                                                             {% elif job.jobtype_id == 2 %}
                                                                 <span class="icon la la-video-camera"></span>
@@ -1150,20 +1137,88 @@
                                                 </a>
                                             </div>
                                             <div class="desc">
-                                                <a href="{{ url_for('static', filename='images/works/work1.jpg') }}"
-                                                   class="name has-popup-image">{{ job.title }}</a>
+                                                <!--a href="{# { url_for('static', filename='images/works/work1.jpg') }#}"
+                                                   class="name has-popup-image">{# { job.title }#}</a-->
                                                 {% if job.jobtype_id == 1 %}
+                                                    <a href="#popup-1" class="name has-popup-media">{{ job.title }}</a>
                                                     <div class="category"> Mobile</div>
                                                 {% elif job.jobtype_id == 2 %}
+                                                    <a href="https://vimeo.com/97102654" class="name has-popup-video">
+                                                        {{ job.title }}
+                                                    </a>
                                                     <div class="category"> Video</div>
                                                 {% elif job.jobtype_id == 3 %}
+                                                    <a href="{{ url_for('static', filename='images/works/work5.jpg') }}"
+                                                       class="name has-popup-image">
+                                                        {{ job.title }}
+                                                    </a>
                                                     <div class="category"> Photo</div>
                                                 {% elif job.jobtype_id == 4 %}
+                                                    <a href="#" class="name has-popup">{{ job.title }}</a>
                                                     <div class="category"> Web</div>
                                                 {% elif job.jobtype_id == 5 %}
+                                                    <a href="#" class="name has-popup">{{ job.title }}</a>
                                                     <div class="category"> Desktop</div>
                                                 {% endif %}
                                             </div>
+                                            {% if job.jobtype_id == 1 %}
+                                                <div id="popup-1" class="popup-box mfp-fade mfp-hide">
+                                                    <div class="content">
+                                                        <div class="image">
+                                                            <img src="
+                                                                    {{ url_for('static', filename='images/works/e-mgmt_app.jpg')}}"
+                                                                 alt="">
+                                                        </div>
+                                                        <div class="desc">
+                                                            <div class="post-box">
+                                                                <h1>Mobile Application</h1>
+                                                                <div class="blog-detail">Design</div>
+                                                                <div class="blog-content">
+                                                                    <p>
+                                                                        With the advent of the nouveau coronavirus, the
+                                                                        need for virtual solutions have arisen
+                                                                        especially in the area of academics to prevent
+                                                                        stagnation in the development of kids
+                                                                        and young adults alike.
+                                                                    </p>
+                                                                    <p>
+                                                                        With development starting before the disruption
+                                                                        of life and activities due to pandemic,
+                                                                        I was afforded the opportunity to virtualize the
+                                                                        activities and interaction bew.
+                                                                    </p>
+                                                                    <blockquote>
+                                                                        To stay above ever evolving challenges, there is
+                                                                        a constant need to evolve.
+                                                                    </blockquote>
+                                                                    <p>
+                                                                        Tile...............
+                                                                    </p>
+                                                                    <ul class="list-style">
+                                                                        <li>Maintain same level of interaction between
+                                                                            parents and educators.
+                                                                        </li>
+                                                                        <li>Provide a unified platform to get important
+                                                                            information to all parents or concerned
+                                                                            groups in timely fashion.
+                                                                        </li>
+                                                                        <li>Real-time feedback with valuable information
+                                                                            at your fingertips at all times
+                                                                        </li>
+                                                                    </ul>
+                                                                    <p>
+                                                                        U.................
+                                                                    </p>
+                                                                </div>
+                                                                <a href="#" class="button">
+                                                                    <span class="text">View Project</span>
+                                                                    <span class="arrow"></span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 {% endfor %}
