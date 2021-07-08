@@ -22,7 +22,7 @@ class Posts(db.Model):
     subtitle = db.Column(db.String(255))
     content = db.Column(db.Text)
     author = db.Column(db.String(255))
-    photo = db.Column(db.String(20), nullable=False, default='default.jpg')
+    photo = db.Column(db.String(255), nullable=False, default='default.jpg')
     date_posted = db.Column(db.DateTime)
     slug = db.Column(db.String(255))
     created_on = db.Column(db.DateTime(), default=datetime.utcnow)

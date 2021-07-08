@@ -1,5 +1,7 @@
 from flask import Flask
 # from views import *
+import os
+from fastapi import FastAPI
 from .mobile import mobile_bp
 from .photography import photo_bp
 from .web import web_bp
@@ -14,9 +16,11 @@ from flask_wtf.csrf import CSRFProtect
 from .home.models import db
 from .admin.models import da
 from .admin.models import login_manager
+from dotenv import load_dotenv
 
 
 # app = Flask(__name__, static_url_path="")
+# dotenv_path = os.path.join('BASE_DIR', 'app/')
 def register_admin(app):
     da.init_app(app)
     login_manager.init_app(app)
@@ -47,6 +51,7 @@ def create_app():
     register_admin(app)
     register_blog(app)
     register_blueprints(app)
+    load_dotenv()
 
     return app
 

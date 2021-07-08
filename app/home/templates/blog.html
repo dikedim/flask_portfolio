@@ -184,7 +184,15 @@
 											            <a href="{{ url_for('home_bp.blog_post', post_id=post.id)}}">
 												            <img src="{{ url_for('static', filename='images/blog/blog1.jpg')}}" alt="">
 												            <span class="info">
-													            <span class="icon la la-newspaper-o"></span>
+													            {% if post.category_id == 1 %} {# travel #}
+                                                                    <span class="icon la la-motorcycle"></span>
+                                                                {% elif post.category_id == 2 %} {# photography #}
+                                                                    <span class="icon la la-camera"></span>
+                                                                {% elif post.category_id == 3 %} {# coding #}
+                                                                    <span class="icon la la-book"></span>
+                                                                {% elif post.category_id == 3 %} {# writing #}
+                                                                    <span class="icon la la-newspaper-o"></span>
+                                                                {% endif %}
 												            </span>
 												            <span class="date"><strong>{{ post.date_posted.strftime('%d') }}</strong>{{ post.date_posted.strftime('%b') }}</span>
 											            </a>
@@ -206,7 +214,6 @@
                                         {#% endfor %#}
                                     {% endfor %}
                                 {% endblock %}
-
 							</div>
 
 							<!--div class="pager">
@@ -214,17 +221,21 @@
 								<a class="page-numbers" href="#">2</a>
 								<a class="next page-numbers" href="#">Next</a>
 							</div-->
-                            {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-                                {% if page_num %}
-                                    {% if posts.page == page_num %}
-                                        <a class="btn btn-info mb-4" href="{{ url_for('.blog', page=page_num) }}">{{ page_num }}</a>
+                            <div class="pager">
+                                {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                                    {% if page_num %}
+                                        {% if posts.page == page_num %}
+                                            <a class="btn btn-info mb-4"
+                                               href="{{ url_for('.blog', page=page_num) }}">{{ page_num }}</a>
+                                        {% else %}
+                                            <a class="btn btn-outline-info mb-4"
+                                               href="{{ url_for('.blog', page=page_num) }}">{{ page_num }}</a>
+                                        {% endif %}
                                     {% else %}
-                                        <a class="btn btn-outline-info mb-4" href="{{ url_for('.blog', page=page_num) }}">{{ page_num }}</a>
+                                        ...
                                     {% endif %}
-                                {% else %}
-                                    ...
-                                {% endif %}
-                            {% endfor %}
+                                {% endfor %}
+                            </div>
 
 						</div>
 
