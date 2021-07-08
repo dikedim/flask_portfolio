@@ -1,11 +1,20 @@
 from app.admin import admin, maildaemon
-from flask import (render_template, flash, redirect, url_for, request)
-from flask_login import (current_user, login_required,login_user, logout_user, confirm_login)
+import os
+import imghdr
+from dotenv import load_dotenv
+from flask import (render_template, flash, redirect, url_for, request, abort)
+from werkzeug.utils import secure_filename
+from flask_login import (current_user, login_required, login_user, logout_user, confirm_login)
 from datetime import datetime
-from .models import User, login_manager, da
+from .models import User, login_manager, da, db
 from .forms import PostForm, EmailForm, LoginForm, JobForm
 from app.home.models import Posts, Jobs
 from flask_mail import Message, Mail
+
+
+load_dotenv()
+JOB_IMAGES = os.environ.get('JOB_IMAGES')
+IMAGE_EXTENSIONS = os.environ.get('IMPAGE_EXTENSIONS')
 
 
 @admin.route('/admin', methods=['GET'])
@@ -135,11 +144,46 @@ def compose_mail():
 @admin.route('/admin/addjob', methods=['GET', 'POST'])
 def addjob():
     form = JobForm()
+    listStat = [('1', 'Mobile'), ('2', 'Video'), ('3', 'Photo'), ('4', 'Web'), ('5', 'Desktop')]
+    form.process()
     if form.validate_on_submit():
-        job = Jobs(title=form.title.data, content=form.content.data, link=form.link.data, photo=form.photo.data,
-                   jobtype=form.category.data)
-        da.session.add(job)
-        da.session.commit()
+        #upload_image()
+        m = request.files['photo']
+        m.save(os.path.join('JOB_IMAGES', secure_filename(m.filename)))
+        job = Jobs(title=form.title.data, content=form.content.data, link=form.link.data, photo=request.form.get('photo'))
+        db.session.add(job)
+        db.session.commit()
         flash('Your post has been created!', 'success')
         return redirect(url_for('admin.index'))
     return render_template('admin/jobs.html', form=form)
+
+
+#def upload_image():
+#    m = JobForm()
+#    job_image = request.files['photo']
+#    filename = secure_filename(job_image.filename)
+#    if filename != '':
+#        file_extension = os.path.splitext(filename)[1]
+#        if file_extension not in 'IMAGE_EXTENSIONS' or file_extension != validate_(job_image.stream):
+#            abort(400)
+#        job_image.save(os.path.join('JOB_IMAGES', filename))
+#        # filename = secure_filename(m.photo.data.filename)
+#        # m.photo.data.save(JOB_IMAGES + filename)
+#        print('file uploaded')
+#    return redirect(url_for('addjob'))
+#
+#
+#def validate_(stream):
+#    header = stream.read(512)
+#    stream.seek(0)
+#    format_ = imghdr.what(None, header)
+#    if not format_:
+#        return None
+#    return '.' + (format_ if format_ != 'jpeg' else 'jpg')
+#
+#
+#def upload():
+#    f = request.files['photo']
+#    f.save(secure_filename(f.filename))
+#    return 'file uploaded successfully'
+#

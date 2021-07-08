@@ -1,41 +1,123 @@
 /* Dropdown Button */
 .dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+    display: none;
+    padding: 0px;
+    position: absolute;
+    background-color: #262628;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+nav {
+    font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+    margin: 50px auto;
+    width: 200px;
+}
+
+.menu-item {
+    width: 200px;
+}
+
+/*Menu Header Styles*/
+.menu-item h4 {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 7px 12px;
+    background: #b90329;
+    border-bottom: 1px solid white;
+}
+
+.menu-item h4 a {
+    color: white;
+    display: block;
+    text-decoration: none;
+    width: 200px;
+}
+
+.menu-item h4:hover {
+    background: #cc002c;
+}
+
+/*ul Styles*/
+.menu-item ul {
+    background: #fff;
+    font-size: 13px;
+    line-height: 30px;
+    height: 0px;
+    list-style-type: none;
+    overflow: hidden;
+    padding: 0px;
+
+    /*Animation*/
+    -webkit-transition: height 1s ease;
+    -moz-transition: height 1s ease;
+    -o-transition: height 1s ease;
+    -ms-transition: height 1s ease;
+    transition: height 1s ease;
+}
+
+.menu-item:hover ul {
+    height: 93px;
+}
+
+.menu-item ul a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #aaa;
+    display: block;
+    width: 200px;
+}
+
+/*li Styles*/
+.menu-item li {
+    border-bottom: 1px solid #eee;
+}
+
+.menu-item li:hover {
+    background: #eee;
+}

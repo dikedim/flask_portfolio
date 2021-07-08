@@ -1,6 +1,6 @@
 import os
 from app.home import home_bp, mailer
-from flask import (Blueprint, render_template, request, redirect, url_for, flash, jsonify)
+from flask import (Blueprint, render_template, request, redirect, url_for, flash, jsonify, send_from_directory, send_file)
 from flask import current_app as app
 from app.admin.routes import *
 from app.admin import routes
@@ -17,6 +17,7 @@ load_dotenv()
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')
+JOB_IMAGES = os.environ.get('JOB_IMAGES')
 
 
 @home_bp.route('/', methods=['GET', 'POST'])
@@ -113,3 +114,11 @@ def confirm_mail():
     msg.html = render_template('email_confirmation.html')
 
     mailer.send(msg)
+
+
+@home_bp.route('/jobs/<filename>')
+def job_photo(filename):
+    post = Posts()
+    #return send_from_directory(os.environ.get('JOB_IMAGES'), filename='work1.jpg')
+    return send_file('JOB_IMAGES', attachment_filename=post.photo)
+
