@@ -1603,7 +1603,7 @@
                                                                 <span class="icon la la-camera"></span>
                                                             {% elif post.category_id == 3 %} {# coding #}
                                                                 <span class="icon la la-book"></span>
-                                                            {% elif post.category_id == 3 %} {# writing #}
+                                                            {% elif post.category_id == 4 %} {# writing #}
                                                                 <span class="icon la la-newspaper-o"></span>
                                                             {% endif %}
                                                         </span>
@@ -1621,6 +1621,8 @@
                                                         <div class="category"> Photography </div>
                                                     {% elif post.category_id == 3 %}
                                                         <div class="category"> Coding </div>
+                                                    {% elif post.category_id == 4 %}
+                                                        <div class="category"> Writing </div>
                                                     {% endif %}
 
                                                 </div>
