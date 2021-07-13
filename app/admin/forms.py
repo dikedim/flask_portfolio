@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms.validators import InputRequired, Email, DataRequired, EqualTo
-from wtforms import PasswordField, StringField, SubmitField, TextAreaField, FileField, SelectField
+from wtforms import PasswordField, StringField, SubmitField, TextAreaField, FileField, SelectField, DateField
 
 
 class LoginForm(FlaskForm):
@@ -26,11 +26,14 @@ class RequestReset(FlaskForm):
     submit = SubmitField('Request Password Reset')
 
 
+post_categories = ('1', 'Travel'), ('2', 'Photography'), ('3', 'Coding'), ('4', 'Writing')
+
+
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     slug = StringField('Slug', validators=[DataRequired()])
-    category = SelectField('Category', validators=[DataRequired()], choices=[(
-        'web', 'web'), ('mobile', 'mobile'), ('desktop', 'desktop'), ('photo', 'photo'), ('video', 'video')])
+    subtitle = StringField('subtitle')
+    category = SelectField(u'Category', validators=[DataRequired()], choices=post_categories, coerce=int)
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Post')
 

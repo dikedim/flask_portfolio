@@ -13,14 +13,40 @@ from .home import mailer
 # from .home.main import *
 # from .home.forms import *
 from flask_wtf.csrf import CSRFProtect
-from .home.models import db
+from .home.models import db, Category, JobType
 from .admin.models import da
 from .admin.models import login_manager
 from dotenv import load_dotenv
+from sqlalchemy import event
+from sqlalchemy.event import listen
 
 
 # app = Flask(__name__, static_url_path="")
 # dotenv_path = os.path.join('BASE_DIR', 'app/')
+# @event.listens_for(Category.__table__, 'after_create')
+def post_category_values(*args, **kwargs):
+    db.session.add(Category(name='Travel'))
+    db.session.add(Category(name='Photography'))
+    db.session.add(Category(name='Coding'))
+    db.session.add(Category(name='Writing'))
+    db.session.commit()
+
+
+event.listen(Category.__table__, 'after_create', post_category_values)
+
+
+def job_category_values(*args, **kwargs):
+    db.session.add(JobType(name='Mobile'))
+    db.session.add(JobType(name='Video'))
+    db.session.add(JobType(name='Photography'))
+    db.session.add(JobType(name='Web'))
+    db.session.add(JobType(name='Desktop'))
+    db.session.commit()
+
+
+event.listen(JobType.__table__, 'after_create', job_category_values)
+
+
 def register_admin(app):
     da.init_app(app)
     login_manager.init_app(app)
@@ -51,6 +77,7 @@ def create_app():
     register_admin(app)
     register_blog(app)
     register_blueprints(app)
+    # insert_initial_values()
     load_dotenv()
 
     return app

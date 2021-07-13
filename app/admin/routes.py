@@ -99,7 +99,8 @@ def blogstats():
 def create_post():
     form = PostForm()
     if form.validate_on_submit():
-        post = Posts(title=form.title.data, content=form.content.data, author='Admin')
+        post = Posts(title=form.title.data, content=form.content.data, author='Admin', slug=form.slug.data,
+                     subtitle=form.subtitle.data, category_id=form.category.data)
         da.session.add(post)
         da.session.commit()
         flash('Your post has been created!', 'success')
@@ -144,13 +145,17 @@ def compose_mail():
 @admin.route('/admin/addjob', methods=['GET', 'POST'])
 def addjob():
     form = JobForm()
-    listStat = [('1', 'Mobile'), ('2', 'Video'), ('3', 'Photo'), ('4', 'Web'), ('5', 'Desktop')]
-    form.process()
+    #listStat = [('1', 'Mobile'), ('2', 'Video'), ('3', 'Photo'), ('4', 'Web'), ('5', 'Desktop')]
+    #form.process()
     if form.validate_on_submit():
         #upload_image()
         m = request.files['photo']
-        m.save(os.path.join('JOB_IMAGES', secure_filename(m.filename)))
-        job = Jobs(title=form.title.data, content=form.content.data, link=form.link.data, photo=request.form.get('photo'))
+        m.save(os.path.join(JOB_IMAGES, secure_filename(m.filename)))
+        photo_ = request.form.get('photo')
+        filename = secure_filename(form.photo.data.filename)
+        photos = form.photo.data.save(JOB_IMAGES + filename)
+        job = Jobs(title=form.title.data, content=form.content.data, link=form.link.data,
+                   photo=photos, jobtype_id=form.category.data)
         db.session.add(job)
         db.session.commit()
         flash('Your post has been created!', 'success')
@@ -180,7 +185,7 @@ def addjob():
 #    if not format_:
 #        return None
 #    return '.' + (format_ if format_ != 'jpeg' else 'jpg')
-#
+
 #
 #def upload():
 #    f = request.files['photo']
