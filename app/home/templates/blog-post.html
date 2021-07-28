@@ -174,10 +174,10 @@
 
 										<!-- blog detail -->
                                         {#% for post in posts %#}
-										    <h1>{{ post.title }}</h1>
-										    <div class="blog-detail">{# {  posts.date_posted.strftime('%Y-%B-%d') }#}</div>
+										    <h1>{{ posts.title }}</h1>
+										    <div class="blog-detail">{{  posts.date_posted.strftime('%Y-%B-%d') }}</div>
 
-										    <div class="blog-content">{# { post.content }#}</div>
+										    <div class="blog-content">{{ posts.content }}</div>
                                         {#% endfor %#}
                                         <!-- blog content -->
 										<!--div class="blog-content">

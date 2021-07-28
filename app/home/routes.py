@@ -1,6 +1,7 @@
 import os
 from app.home import home_bp, mailer
-from flask import (Blueprint, render_template, request, redirect, url_for, flash, jsonify, send_from_directory, send_file)
+from flask import (Blueprint, render_template, request, redirect, url_for, flash, jsonify, send_from_directory,
+                   send_file, current_app)
 from flask import current_app as app
 from app.admin.routes import *
 from app.admin import routes
@@ -50,9 +51,9 @@ def blog():
 
 
 @home_bp.route('/blog_post/<int:post_id>', methods=['GET'])
-def blog_post(posts_id):
+def blog_post(post_id):
     # posts = Posts.query.get_or_404(posts_id)
-    post = Posts.query.filter_by(id=posts_id).one()
+    post = Posts.query.filter_by(id=post_id).one()
     return render_template("blog-post.html", title=post.title, posts=post)
 
 
@@ -83,6 +84,16 @@ def handle_csrf_error(e):
     return jsonify({"error": e.description}), 400
 
 
+def confirm_mail():
+    forms = ContactForm()
+    msg = Message("Re: Confirmation of email receipt from https://dikedim.com",
+                  sender=('Dike Dim', "shout@dikedim.com"),
+                  recipients=[forms.email.data])
+    msg.html = render_template('email_confirmation.html')
+
+    mailer.send(msg)
+
+
 # @home_bp.route('/', methods=['GET', 'POST'])
 def send_mail():
     form = ContactForm()
@@ -99,26 +110,17 @@ def send_mail():
                   %s
                   """ % (form.name.data, form.email.data, form.message.data)
             mailer.send(msg)
-            confirm_mail()
+            # TODO #confirm_mail()
             return render_template('index.html', success=True)
 
     elif request.method == 'GET':
         return render_template('index.html', form=form, MAP_BOX_KEY=MAP_BOX_KEY)
 
 
-def confirm_mail():
-    forms = ContactForm()
-    msg = Message("Re: Confirmation of email receipt from https://dikedim.com",
-                  sender=('Dike Dim', "shout@dikedim.com"),
-                  recipients=[forms.email.data])
-    msg.html = render_template('email_confirmation.html')
-
-    mailer.send(msg)
-
-
-@home_bp.route('/jobs/<filename>')
+@home_bp.route('/<filename>')
 def job_photo(filename):
-    post = Posts()
-    #return send_from_directory(os.environ.get('JOB_IMAGES'), filename='work1.jpg')
-    return send_file('JOB_IMAGES', attachment_filename=post.photo)
+    #post = Posts()
+    #filename = post.photo
+    return send_from_directory(current_app.config['JOB_IMAGES'], filename)
+    #return send_file(JOB_IMAGES, attachment_filename=post.photo)
 

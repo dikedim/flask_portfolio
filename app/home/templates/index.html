@@ -1106,11 +1106,11 @@
                                             <div class="image">
                                                 {% if job.jobtype_id == 1 %}{# Mobile #}
                                                     <a href="#popup-1" class="has-popup-media">
-                                                        <img src="{{ job.photo }}"
+                                                        <img src="{{ url_for('.job_photo', filename=job.photo) }}"
                                                          alt="{{ url_for('static', filename='images/works/e-mgmt_app.jpg') }}"/>
                                                     {% elif job.jobtype_id == 2 %}{# Video #}
                                                     <a href="https://vimeo.com/97102654" class="has-popup-video">
-                                                        <img src=""
+                                                        <img src="{{ url_for('.job_photo', filename=job.photo) }}"
                                                              alt="{{ url_for('static', filename='images/works/kays_class2.jpg') }}"/>
                                                     {% elif job.jobtype_id == 3 %}{# Photo #}
                                                         <a href="{{ job.photo }}"
@@ -1933,12 +1933,12 @@
 	<!--
 		Main Scripts
 	-->
-    <!--script> L.mapboxgl.accessToken ='{{ MAP_BOX_KEY }}'</script-->
+    <!--script> L.mapboxgl.accessToken ='{# { MAP_BOX_KEY }#}'</script-->
 	<script src="{{ url_for('static', filename='js/scripts.js')}}"></script>
     <script src="{{ url_for('static', filename='js/mapbox.js') }}"></script>
-    <script type="text/javascript">
-        mapbox = mapFunc({{ mapapi|tojson }})
-    </script>
+    <!--script type="text/javascript">
+        mapbox = mapFunc({# { mapapi|tojson }#})
+    </script-->
 
 </body>
 </html>

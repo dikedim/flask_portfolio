@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, current_app
 # from views import *
 import os
 from fastapi import FastAPI
@@ -46,6 +46,10 @@ def job_category_values(*args, **kwargs):
 
 event.listen(JobType.__table__, 'after_create', job_category_values)
 
+app_folder = os.path.expanduser('/app')
+load_dotenv(os.path.join(app_folder, '.env'))
+UPLOAD_FOLDER = os.environ.get('UPLOAD_FOLDER')
+
 
 def register_admin(app):
     da.init_app(app)
@@ -71,6 +75,7 @@ def register_blueprints(app):
 def create_app():
     app = Flask(__name__, template_folder="templates")
     app.config.from_object('config.DevelopmentConfig')
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     mailer.init_app(app)
     csrf = CSRFProtect(app)
     csrf.init_app(app)

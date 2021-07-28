@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileRequired
 from wtforms.validators import InputRequired, Email, DataRequired, EqualTo
 from wtforms import PasswordField, StringField, SubmitField, TextAreaField, FileField, SelectField, DateField
 
@@ -58,10 +59,10 @@ class EmailForm(FlaskForm):
 class JobForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     link = StringField('link')
-    #category = StringField('Category', validators=[DataRequired()])
+    # category = StringField('Category', validators=[DataRequired()])
     category = SelectField(u'Category', choices=[('1', 'Mobile'), ('2', 'Video'), ('3', 'Photo'), ('4', 'Web'),
                                                  ('5', 'Desktop')])
     content = TextAreaField('Content')
-    photo = FileField("attachments")
+    photo = FileField("attachments", validators=[FileRequired()])
 
     submit = SubmitField('Post')

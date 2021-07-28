@@ -26,11 +26,19 @@ class Config:
     MAIL_SUPPRESS_SEND = False
     TESTING = False
     MAIL_ASCII_ATTACHMENTS = True
-    JOB_IMAGES = os.environ.get('JOB_IMAGES')
-    CLIENT_IMAGES = os.environ.get('CLIENT_IMAGES')
-    BLOG_IMAGES = os.environ.get('BLOG_IMAGES')
+
     MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')
     MAIL_DEFAULT_SENDER = MAIL_USERNAME
+    WTF_CSRF_ENABLED = True
+    WTF_CSRF_SECRET_KEY = os.environ.get('WTF_CSRF_SECRET_KEY')
+
+    #APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+    JOB_IMAGES = environ.get('JOB_IMAGES')
+    #JOB_IMAGES = os.path.join(APP_ROOT, os.environ.get('JOB_IMAGES'))
+    CLIENT_IMAGES = os.environ.get('CLIENT_IMAGES')
+    BLOG_IMAGES = environ.get('BLOG_IMAGES')
+    UPLOAD_FOLDER = os.environ.get('UPLOAD_FOLDER')
 
 
 class ProductionConfig(Config):
@@ -46,6 +54,7 @@ class DevelopmentConfig(Config):
     FLASK_DEBUG = True
     MAIL_SUPPRESS_SEND = False
     TESTING = False
+    JOB_IMAGES = os.environ.get('JOB_IMAGES')
 
 
 class TestingConfig(Config):

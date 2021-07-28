@@ -2,7 +2,7 @@ from app.admin import admin, maildaemon
 import os
 import imghdr
 from dotenv import load_dotenv
-from flask import (render_template, flash, redirect, url_for, request, abort)
+from flask import (render_template, flash, redirect, url_for, request, abort, current_app)
 from werkzeug.utils import secure_filename
 from flask_login import (current_user, login_required, login_user, logout_user, confirm_login)
 from datetime import datetime
@@ -13,8 +13,8 @@ from flask_mail import Message, Mail
 
 
 load_dotenv()
-JOB_IMAGES = os.environ.get('JOB_IMAGES')
-IMAGE_EXTENSIONS = os.environ.get('IMPAGE_EXTENSIONS')
+#JOB_IMAGES = os.environ.get('JOB_IMAGES')
+IMAGE_EXTENSIONS = os.environ.get('IMAGE_EXTENSIONS')
 
 
 @admin.route('/admin', methods=['GET'])
@@ -145,17 +145,17 @@ def compose_mail():
 @admin.route('/admin/addjob', methods=['GET', 'POST'])
 def addjob():
     form = JobForm()
-    #listStat = [('1', 'Mobile'), ('2', 'Video'), ('3', 'Photo'), ('4', 'Web'), ('5', 'Desktop')]
-    #form.process()
+    listStat = [('1', 'Mobile'), ('2', 'Video'), ('3', 'Photo'), ('4', 'Web'), ('5', 'Desktop')]
+    # form.process()
     if form.validate_on_submit():
-        #upload_image()
-        m = request.files['photo']
-        m.save(os.path.join(JOB_IMAGES, secure_filename(m.filename)))
-        photo_ = request.form.get('photo')
-        filename = secure_filename(form.photo.data.filename)
-        photos = form.photo.data.save(JOB_IMAGES + filename)
+        # upload_image()
+        m = form.photo.data
+        files_ = secure_filename(m.filename)
+        file_path = os.path.join(current_app.config['JOB_IMAGES'], 'works', files_).replace("\\", "/")
+        m.save(os.path.join(current_app.config['UPLOAD_FOLDER'], "works", files_))
         job = Jobs(title=form.title.data, content=form.content.data, link=form.link.data,
-                   photo=photos, jobtype_id=form.category.data)
+                   photo=file_path, jobtype_id=form.category.data)
+        #form.process()
         db.session.add(job)
         db.session.commit()
         flash('Your post has been created!', 'success')
@@ -191,4 +191,3 @@ def addjob():
 #    f = request.files['photo']
 #    f.save(secure_filename(f.filename))
 #    return 'file uploaded successfully'
-#

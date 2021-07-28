@@ -59,7 +59,7 @@ class Jobs(db.Model):
     title = db.Column(db.String(255))
     content = db.Column(db.Text)
     link = db.Column(db.String(255))
-    photo = db.Column(db.String(20), nullable=False)
+    photo = db.Column(db.String(255), nullable=False, default='default.jpg')
     _jobtypes = db.relationship('JobType', secondary='job_types', backref=db.backref('jobs', lazy='dynamic'))
     jobtype_id = db.Column(db.Integer(), db.ForeignKey('jobtypes.id'))
 
