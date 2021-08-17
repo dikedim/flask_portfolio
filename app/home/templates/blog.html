@@ -181,7 +181,7 @@
 								            <div class="col col-m-12 col-t-12 col-d-6 col-d-lg-6">
 									            <div class="box-item card-box">
 										            <div class="image">
-											            <a href="{{ url_for('home_bp.blog_post', post_id=post.id)}}">
+											            <a href="{{ url_for('home_bp.blog_post', slug=post.slug)}}">
 												            <img src="{{ url_for('static', filename='images/blog/blog1.jpg')}}" alt="">
 												            <span class="info">
 													            {% if post.category_id == 1 %} {# travel #}
@@ -194,11 +194,16 @@
                                                                     <span class="icon la la-newspaper-o"></span>
                                                                 {% endif %}
 												            </span>
-												            <span class="date"><strong>{{ post.date_posted.strftime('%d') }}</strong>{{ post.date_posted.strftime('%b') }}</span>
+                                                            <span class="date">
+                                                                <strong>
+                                                                    {{ post.date_posted.strftime('%d') }}
+                                                                </strong>{{ post.date_posted.strftime('%b') }} <br>{{ post.date_posted.strftime('%Y') }}
+
+                                                            </span>
 											            </a>
 										            </div>
 										            <div class="desc">
-											            <a class="name" href="{{ url_for('.blog_post', post_id=post.id)}}">{{ post.title }}</a>
+											            <a class="name" href="{{ url_for('.blog_post', slug=post.slug)}}">{{ post.title }}</a>
                                                         <!--div class="category">{# { url_for('.blog_post', category_id=category.id)}#}</div-->
                                                             <!--div class="category">{# { categories.name }#}</div-->
                                                         {% if post.category_id == 1 %}
@@ -255,21 +260,11 @@
 							<div class="widget widget_recent_entries">
 								<h2 class="widget-title">Recent Posts</h2>
 								<ul>
-									<li>
-										<a href="#">Back for the first time: Volgograd Chronicles</a>
-									</li>
-									<li>
-										<a href="#">Creativity Is More Than A Song And Dance Act</a>
-									</li>
-									<li>
-										<a href="#">Creativity Is More Than A Song And Dance Act</a>
-									</li>
-									<li>
-										<a href="#">Music Player Design</a>
-									</li>
-									<li>
-										<a href="#">Two Before Arrow Not Relied</a>
-									</li>
+                                    {% for post in posts.items %}
+                                        <li>
+                                            <a href="{{ url_for('.blog_post', slug=post.slug)}}">{{ post.title }}</a>
+                                        </li>
+                                    {% endfor %}
 								</ul>
 							</div>
 							<div class="widget widget_recent_comments">
@@ -283,18 +278,6 @@
 										<span class="comment-author-link">JOHN Smith</span> on
 										<a href="">By spite about do of do allow</a>
 									</li>
-									<li class="recentcomments">
-										<span class="comment-author-link">Adam Smith</span> on
-										<a href="#">Creativity Is More Than A Song And Dance Act</a>
-									</li>
-									<li class="recentcomments">
-										<span class="comment-author-link">JESSE DOE</span> on
-										<a href="#">Music Player Design</a>
-									</li>
-									<li class="recentcomments">
-										<span class="comment-author-link">JESSE PITMAN</span> on
-										<a href="#">Music Player Design</a>
-									</li>
 								</ul>
 							</div>
 							<div class="widget widget_archive">
@@ -306,8 +289,9 @@
 							<div class="widget widget_categories">
 								<h2 class="widget-title"><span class="widget-title-span">Categories</span></h2>
 								<ul>
-									<li class="cat-item cat-item-2"><a href="#">Design</a></li>
-									<li class="cat-item cat-item-3"><a href="#">Music</a></li>
+                                    {% for category in categories %}
+									    <li class="cat-item cat-item-2"><a href="#">{{ category.name }}</a></li>
+                                    {% endfor %}
 								</ul>
 							</div>
 							<div class="widget widget_meta">

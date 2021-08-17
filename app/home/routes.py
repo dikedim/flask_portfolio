@@ -1,4 +1,4 @@
-import os
+import os, sqlalchemy
 from app.home import home_bp, mailer
 from flask import (Blueprint, render_template, request, redirect, url_for, flash, jsonify, send_from_directory,
                    send_file, current_app)
@@ -26,13 +26,17 @@ def index():
     form = ContactForm()
     # page = request.args.get('page', 1, type=int)
     # post = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
-    post = Posts.query.all()
+    #post = Posts.query.all()
+    post = Posts.query.order_by(Posts.date_posted.desc()).limit(10)
     categories = Category.query.all()
-    job = Jobs.query.all()
+    # jobber = Jobs.query.all()
     jobtype = JobType.query.all()
+    page = request.args.get('page', 1, type=int)
+    job = Jobs.query.order_by(Jobs.title.desc()).paginate(page=page, per_page=12, error_out=True)
     if request.method == 'POST':
         send_mail()
-        return render_template('index.html', success=True, posts=post, categories=categories, jobs=job, jobtypes=jobtype)
+        return render_template('index.html', success=True, posts=post, categories=categories, jobs=job,
+                               jobtypes=jobtype)
     else:
         pass
 #    MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')
@@ -45,16 +49,20 @@ def blog():
     # posts = Posts.query.all()
     page = request.args.get('page', 1, type=int)
     post = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
-    categories = Category.query.all()
+    category = Category.query.all()
     # posts = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
-    return render_template("blog.html", posts=post, categories=categories)
+    return render_template("blog.html", posts=post, categories=category)
 
 
-@home_bp.route('/blog_post/<int:post_id>', methods=['GET'])
-def blog_post(post_id):
+@home_bp.route('/blog/<string:slug>', methods=['GET'])
+def blog_post(slug):
     # posts = Posts.query.get_or_404(posts_id)
-    post = Posts.query.filter_by(id=post_id).one()
-    return render_template("blog-post.html", title=post.title, posts=post)
+    try:
+        #post = Posts.query.get_or_404(slug)
+        post = Posts.query.filter_by(slug=slug).one()
+        return render_template("blog-post.html", title=post.title, posts=post, slug=post.slug)
+    except sqlalchemy.orm.exc.NoResultFound:
+        abort(404)
 
 
 @home_bp.route('/jobs/', methods=['GET'])
@@ -121,6 +129,6 @@ def send_mail():
 def job_photo(filename):
     #post = Posts()
     #filename = post.photo
-    return send_from_directory(current_app.config['JOB_IMAGES'], filename)
+    return send_from_directory(current_app.config['JOB_IMAGES'], filename) ##not in use
     #return send_file(JOB_IMAGES, attachment_filename=post.photo)
 

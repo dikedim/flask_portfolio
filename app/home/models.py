@@ -22,7 +22,7 @@ class Posts(db.Model):
     subtitle = db.Column(db.String(255))
     content = db.Column(db.Text)
     author = db.Column(db.String(255))
-    photo = db.Column(db.String(255), nullable=False, default='default.jpg')
+    photo = db.Column(db.String(255), nullable=False, default='/static/images/blog/blog1.jpg')
     date_posted = db.Column(db.DateTime(), default=datetime.utcnow)
     slug = db.Column(db.String(255))
     created_on = db.Column(db.DateTime(), default=datetime.utcnow)
@@ -59,7 +59,7 @@ class Jobs(db.Model):
     title = db.Column(db.String(255))
     content = db.Column(db.Text)
     link = db.Column(db.String(255))
-    photo = db.Column(db.String(255), nullable=False, default='default.jpg')
+    photo = db.Column(db.String(255), nullable=False, default='/static/images/works/work1.jpg')
     _jobtypes = db.relationship('JobType', secondary='job_types', backref=db.backref('jobs', lazy='dynamic'))
     jobtype_id = db.Column(db.Integer(), db.ForeignKey('jobtypes.id'))
 

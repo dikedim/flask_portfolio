@@ -92,6 +92,8 @@ def analytics():
 
 @admin.route('/admin/blog', methods=['GET'])
 def blogstats():
+    post_count = Posts.query.count()
+    # counter for jinja  {{ post_query.count() }}
     return render_template("admin/blog.html")
 
 
@@ -148,9 +150,13 @@ def addjob():
     listStat = [('1', 'Mobile'), ('2', 'Video'), ('3', 'Photo'), ('4', 'Web'), ('5', 'Desktop')]
     # form.process()
     if form.validate_on_submit():
-        # upload_image()
         m = form.photo.data
         files_ = secure_filename(m.filename)
+        # upload_image()
+        #file_extension = os.path.splitext(files_)[1]
+        #if file_extension not in 'IMAGE_EXTENSIONS' or file_extension != validate_(m.stream):
+        #    abort(400)
+
         file_path = os.path.join(current_app.config['JOB_IMAGES'], 'works', files_).replace("\\", "/")
         m.save(os.path.join(current_app.config['UPLOAD_FOLDER'], "works", files_))
         job = Jobs(title=form.title.data, content=form.content.data, link=form.link.data,
@@ -178,16 +184,10 @@ def addjob():
 #    return redirect(url_for('addjob'))
 #
 #
-#def validate_(stream):
-#    header = stream.read(512)
-#    stream.seek(0)
-#    format_ = imghdr.what(None, header)
-#    if not format_:
-#        return None
-#    return '.' + (format_ if format_ != 'jpeg' else 'jpg')
-
-#
-#def upload():
-#    f = request.files['photo']
-#    f.save(secure_filename(f.filename))
-#    return 'file uploaded successfully'
+def validate_(stream):
+    header = stream.read(512)
+    stream.seek(0)
+    format_ = imghdr.what(None, header)
+    if not format_:
+        return None
+    return '.' + (format_ if format_ != 'jpeg' else 'jpg')

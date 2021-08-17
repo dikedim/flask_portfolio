@@ -152,7 +152,7 @@
 			<div class="card-inner card-started active" id="home-card">
 
 				<!-- Started Background -->
-				<div class="slide" style="background-image: url({{url_for('static', filename='images/bg.jpg')}});"></div>
+				<div id="particles-bg" class="slide" style="background-image: url({{url_for('static', filename='images/bg.jpg')}});"></div>
 
 				<div class="centrize full-width">
 					<div class="vertical-center">
@@ -446,69 +446,71 @@
 								</div>
 
 							</div>
-                            <div class="row">
-								<div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                            <div class="content pricing">
+                                <div class="row">
+                                    <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
 
-									<!-- title -->
-									<div class="title"><span>Additional</span> Gigs</div>
+                                        <!-- title -->
+                                        <div class="title"><span>Additional</span> Gigs</div>
 
-								</div>
-							</div>
+                                    </div>
+                                </div>
 
-                            <!-- pricing items -->
-							<div class="row pricing-items">
+                                <!-- pricing items -->
+                                <div class="row pricing-items">
 
-								<!-- pricing item -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
-									<div class="pricing-item card-box">
-										<div class="icon"><i class="la la-camera-retro"></i></div>
-										<div class="name">Basic Photography</div>
-										<div class="amount">
-											<span class="dollar">$</span>
-											<span class="number">98</span>
-											<span class="period">hour</span>
-										</div>
-										<div class="feature-list">
-											<ul>
-												<li>Photography <strong>new</strong></li>
-                                                <li class="disable">Color grading <strong>new</strong></li>
-                                                <li class="disable">Editing <strong>new</strong></li>
-                                                <li class="disable">Videography <strong>new</strong></li>
-                                                <li>3 revisions</li>
-											</ul>
-										</div>
-										<div class="lnks">
-											<a href="#" class="lnk">Buy <span>Pro</span></a>
-										</div>
-									</div>
-								</div>
+                                    <!-- pricing item -->
+                                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                                        <div class="pricing-item card-box">
+                                            <div class="icon"><i class="la la-camera-retro"></i></div>
+                                            <div class="name">Basic Photography</div>
+                                            <div class="amount">
+                                                <span class="dollar">$</span>
+                                                <span class="number">98</span>
+                                                <span class="period">hour</span>
+                                            </div>
+                                            <div class="feature-list">
+                                                <ul>
+                                                    <li>Photography <strong>new</strong></li>
+                                                    <li class="disable">Color grading <strong>new</strong></li>
+                                                    <li class="disable">Editing <strong>new</strong></li>
+                                                    <li class="disable">Videography <strong>new</strong></li>
+                                                    <li>3 revisions</li>
+                                                </ul>
+                                            </div>
+                                            <div class="lnks">
+                                                <a href="#" class="lnk">Buy <span>Pro</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
 
-								<!-- pricing item -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
-									<div class="pricing-item card-box">
-										<div class="icon"><i class="la la-video-camera"></i></div>
-										<div class="name">Complete Photography</div>
-										<div class="amount">
-											<span class="dollar">$</span>
-											<span class="number">150</span>
-											<span class="period">hour</span>
-										</div>
-										<div class="feature-list">
-											<ul>
-												<li>Photography <strong>new</strong></li>
-                                                <li>Color grading <strong>new</strong></li>
-                                                <li>Editing <strong>new</strong></li>
-                                                <li>Videography <strong>new</strong></li>
-                                                <li>Unlimited revisions</li>
-											</ul>
-										</div>
-										<div class="lnks">
-											<a href="#" class="lnk">Buy <span>Max</span></a>
-										</div>
-									</div>
-								</div>
+                                    <!-- pricing item -->
+                                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                                        <div class="pricing-item card-box">
+                                            <div class="icon"><i class="la la-video-camera"></i></div>
+                                            <div class="name">Complete Photography</div>
+                                            <div class="amount">
+                                                <span class="dollar">$</span>
+                                                <span class="number">150</span>
+                                                <span class="period">hour</span>
+                                            </div>
+                                            <div class="feature-list">
+                                                <ul>
+                                                    <li>Photography <strong>new</strong></li>
+                                                    <li>Color grading <strong>new</strong></li>
+                                                    <li>Editing <strong>new</strong></li>
+                                                    <li>Videography <strong>new</strong></li>
+                                                    <li>Unlimited revisions</li>
+                                                </ul>
+                                            </div>
+                                            <div class="lnks">
+                                                <a href="#" class="lnk">Buy <span>Max</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
 
-							</div>
+                                </div>
+                            </div>
 
 						</div>
 
@@ -1090,7 +1092,7 @@
 							<!-- work items -->
 							<div class="row grid-items">
 								<!-- work item -->
-                                {% for job in jobs %}
+                                {% for job in jobs.items %}
                                     {% if job.jobtype_id == 1 %}{# Mobile #}
                                         <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6 grid-item mobile">
                                     {% elif job.jobtype_id == 2 %}{# Video #}
@@ -1535,6 +1537,21 @@
 								</div-->
 
 							</div>
+                            <!--div class="pager">
+                                {#% for page_num in jobs.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %#}
+                                    {#% if page_num %#}
+                                        {#% if jobs.page == page_num %#}
+                                            <a class="btn btn-info mb-4"
+                                               href="{#  #}{ url_for('.index', page=page_num, _anchor='works-card') }}">{#  #}{ page_num }}</a>
+                                        {#% else %#}
+                                            <a class="btn btn-outline-info mb-4"
+                                               href="{#  #}{ url_for('.index', page=page_num, _anchor='works-card') }}">{#  #}{ page_num }}</a>
+                                        {#% endif %#}
+                                    {#% else %#}
+                                        ...
+                                    {#% endif %#}
+                                {#% endfor %#}
+                            </div-->
 						</div>
 					</div>
 				</div>
@@ -1594,8 +1611,8 @@
                                         <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
                                             <div class="box-item card-box">
                                                 <div class="image">
-                                                    <a href="{{ url_for('home_bp.blog_post', post_id=post.id)}}">
-                                                        <img src="{{ url_for('static', filename='images/blog/blog1.jpg')}}" alt="" />
+                                                    <a href="{{ url_for('home_bp.blog_post', slug=post.slug)}}">
+                                                        <img s src="{{ post.photo }}" alt="{{ url_for('static', filename='images/blog/blog1.jpg')}}" />
                                                         <span class="info">
                                                             {% if post.category_id == 1 %} {# travel #}
                                                                 <span class="icon la la-motorcycle"></span>
@@ -1614,7 +1631,7 @@
                                                 </div>
                                                 <div class="desc">
                                                     <!--a href="{# { url_for('home_bp.blog_post', post_id=post.id)}#}" class="name">By spite about do of do allow blush</a-->
-                                                    <a class="name" href="{{ url_for('.blog_post', post_id=post.id)}}">{{ post.title }}</a>
+                                                    <a class="name" href="{{ url_for('home_bp.blog_post', slug=post.slug)}}">{{ post.title }}</a>
                                                     {% if post.category_id == 1 %}
                                                         <div class="category">{# { categories.name }#} Travel</div>
                                                     {% elif post.category_id == 2 %}
@@ -1936,6 +1953,8 @@
     <!--script> L.mapboxgl.accessToken ='{# { MAP_BOX_KEY }#}'</script-->
 	<script src="{{ url_for('static', filename='js/scripts.js')}}"></script>
     <script src="{{ url_for('static', filename='js/mapbox.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/particles.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/particles-setting.js')}}"></script>
     <!--script type="text/javascript">
         mapbox = mapFunc({# { mapapi|tojson }#})
     </script-->

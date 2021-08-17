@@ -973,3 +973,12 @@ textarea.error::-webkit-input-placeholder {
 	}
 
 }
+
+.boxm {
+	width: auto;
+	height: 20%;
+}
+img {
+	width: 100%;
+	height: 100%;
+}
