@@ -132,3 +132,8 @@ def job_photo(filename):
     return send_from_directory(current_app.config['JOB_IMAGES'], filename) ##not in use
     #return send_file(JOB_IMAGES, attachment_filename=post.photo)
 
+
+@home_bp.route('/portfolio')
+def portfolio():
+    return render_template('portfolio.html')
+
