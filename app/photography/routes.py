@@ -1,8 +1,9 @@
 from flask import render_template
 from app.photography import photo_bp
+from app.home.models import Jobs
 
 
-@photo_bp.route('/photography', methods=['GET'])
+@photo_bp.route('/portfolio/photography', methods=['GET'])
 def photo():
     """Photography portfolio."""
 #    #jobs = fetch_jobs(app)[photo_id]
