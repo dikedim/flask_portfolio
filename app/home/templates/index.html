@@ -1040,13 +1040,11 @@
 						-->
 						<div class="content works">
 							<div class="row">
-								<div class="col col-m-12 col-t-5 col-d-5 col-d-lg-5">
-
+								<div align="left" class="col col-m-12 col-t-5 col-d-5 col-d-lg-3">
 									<!-- title -->
-									<div class="title"><span>My</span> Portfolio</div>
-
+									<div align="left" class="title"><span>My</span> Portfolio</div>
 								</div>
-								<div class="col col-m-12 col-t-7 col-d-7 col-d-lg-7">
+								<div align="right" class="col col-m-12 col-t-7 col-d-7 col-d-lg-9">
 
 									<!-- filters -->
                                     <nav></nav>
@@ -1069,7 +1067,7 @@
 										<div class="f_btn dropdown">
 											<label><input type="radio" name="fl_radio" value="mobile" />Mobile</label>
                                             <div class="dropdown-content">
-                                                <a href="{{ url_for('mobile_bp.mobile')}}">Mobile apps</a>
+                                                <a href="{{ url_for('mobile_bp.mobile')}}">Mobile jobs</a>
                                             </div>
 										</div>
 										<div class="f_btn dropdown">
@@ -1081,7 +1079,13 @@
 										<div class="f_btn">
 											<label><input type="radio" name="fl_radio" value="photo" />Photo</label>
                                             <div class=" dropdown-content menu-item">
-                                                <a href="{{ url_for('photo_bp.photo')}}">Photo apps</a>
+                                                <a href="{{ url_for('photo_bp.photo')}}">Photo jobs</a>
+                                            </div>
+										</div>
+                                        <div class="f_btn">
+											<label><input type="radio" name="fl_radio" value="design" />Design</label>
+                                            <div class=" dropdown-content menu-item">
+                                                <a href="#">UX/UI</a>
                                             </div>
 										</div>
 									</div>
@@ -1127,6 +1131,9 @@
                                                     <a href="https://w.soundcloud.com/player/?visual=true&url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F221650664&show_artwork=true"
                                                        class="has-popup-music">
                                                     <img src="{{ job.photo }}" alt="{{ job.photo }}"/>
+                                                    {% elif job.jobtype_id == 6 %}{# Design #}
+                                                        <a href="{{ job.photo }}"
+                                                       class="has-popup-image"> <img src="{{ job.photo }}" alt=""/>
                                                 {% endif %}
                                                 <!--a href="{# { url_for('static', filename='images/works/work2.jpg') }#}"
                                                        class="has-popup-image"-->
@@ -1145,6 +1152,8 @@
                                                         <span class="icon la la-video-camera"></span>
                                                     {% elif job.jobtype_id == 5 %}
                                                         <span class="icon la la-desktop"></span>
+                                                    {% elif job.jobtype_id == 6 %}
+                                                        <span class="icon la la-paint-brush"></span>
                                                     {% endif %}
                                                 </span>
                                                 </a>
@@ -1172,6 +1181,9 @@
                                                 {% elif job.jobtype_id == 5 %}
                                                     <a href="#" class="name has-popup">{{ job.title }}</a>
                                                     <div class="category"> Desktop</div>
+                                                {% elif job.jobtype_id == 6 %}
+                                                    <a href="#" class="name has-popup">{{ job.title }}</a>
+                                                    <div class="category"> Design</div>
                                                 {% endif %}
                                             </div>
                                             {% if job.jobtype_id == 1 %}
@@ -1236,13 +1248,15 @@
                                     {% if job.jobtype_id == 1 %}{# Mobile #}
                                         </div>
                                     {% elif job.jobtype_id == 2 %}{# Video #}
-                                        </div>>
+                                        </div>
                                     {% elif job.jobtype_id == 3 %}{# Photo #}
-                                        </div>>
+                                        </div>
                                     {% elif job.jobtype_id == 4 %}{# Web #}
-                                        </div>>
+                                        </div>
                                     {% elif job.jobtype_id == 5 %} {# Desktop #}
-                                        </div>>
+                                        </div>
+                                    {% elif job.jobtype_id == 6 %} {# Design #}
+                                        </div>
                                     {% endif %}
                                 {% endfor %}
 

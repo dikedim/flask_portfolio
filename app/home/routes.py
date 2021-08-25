@@ -54,6 +54,15 @@ def blog():
     return render_template("blog.html", posts=post, categories=category)
 
 
+@home_bp.route('/blog/archive', methods=['GET'])
+def archive():
+    page = request.args.get('page', 1, type=int)
+    post = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
+    category = Category.query.all()
+    # posts = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
+    return render_template("blog.html", posts=post, categories=category)
+
+
 @home_bp.route('/blog/<string:slug>', methods=['GET'])
 def blog_post(slug):
     # posts = Posts.query.get_or_404(posts_id)

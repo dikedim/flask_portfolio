@@ -7,7 +7,7 @@
 	-->
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>DIKE DIM's Blog</title>
+	<title>Blog Archive</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<meta name="description" content="vCard & Resume for Dike T. Dim" />
 	<meta name="keywords" content="developer, programmer, researcher, resume, cv, cv, business card, portfolio" />
@@ -284,13 +284,7 @@
 								<h2 class="widget-title">Archives</h2>
 								<ul>
                                     {% for post in posts.items %}
-									    <li>
-                                            <a href="{{ url_for('.archive') }}">
-                                                <span>
-                                                    {{ post.date_posted.strftime('%b ' '%Y') }}
-                                                </span>
-                                            </a>
-                                        </li>
+									    <li><a href="#"></a>{{ post.date_posted.strftime('%b ' '%Y') }}</li>
                                     {% endfor %}
 								</ul>
 							</div>
