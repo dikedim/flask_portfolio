@@ -41,6 +41,7 @@ def job_category_values(*args, **kwargs):
     db.session.add(JobType(name='Photography'))
     db.session.add(JobType(name='Web'))
     db.session.add(JobType(name='Desktop'))
+    # db.session.add(JobType(name='Design'))
     db.session.commit()
 
 

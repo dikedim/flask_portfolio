@@ -1,11 +1,13 @@
-from flask import render_template
+from flask import render_template, request
 from app.video import video_bp
 from app.home.models import Jobs
 
 
 @video_bp.route('/portfolio/video', methods=['GET'])
 def video():
-    return render_template("video_portfolio.html")
+    page = request.args.get('page', 1, type=int)
+    job = Jobs.query.filter_by(jobtype_id='2').paginate(page=page, per_page=10, error_out=True)
+    return render_template("video_portfolio.html", jobs=job)
 
 
 # @mobile_bp.route('portfolio/video/<int:id>', methods=['GET'])

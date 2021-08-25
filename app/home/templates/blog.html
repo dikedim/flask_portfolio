@@ -283,7 +283,9 @@
 							<div class="widget widget_archive">
 								<h2 class="widget-title">Archives</h2>
 								<ul>
-									<li><a href="#">August 2018</a></li>
+                                    {% for post in posts.items %}
+									    <li><a href="#"></a>{{ post.date_posted.strftime('%b ' '%Y') }}</li>
+                                    {% endfor %}
 								</ul>
 							</div>
 							<div class="widget widget_categories">
