@@ -27,7 +27,7 @@ class RequestReset(FlaskForm):
     submit = SubmitField('Request Password Reset')
 
 
-post_categories = ('1', 'Travel'), ('2', 'Photography'), ('3', 'Coding'), ('4', 'Writing')
+post_categories = ('0', ''), ('1', 'Travel'), ('2', 'Photography'), ('3', 'Coding'), ('4', 'Writing')
 
 
 class PostForm(FlaskForm):

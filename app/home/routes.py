@@ -2,15 +2,15 @@ import os, sqlalchemy
 from app.home import home_bp, mailer
 from flask import (Blueprint, render_template, request, redirect, url_for, flash, jsonify, send_from_directory,
                    send_file, current_app)
-from flask import current_app as app
+# from flask import current_app as app
 from app.admin.routes import *
 from app.admin import routes
-from .forms import ContactForm, Email
+from .forms import ContactForm, Email, OrderForm
 from flask_mail import Message, Mail
 import app as ap
 from flask_wtf.csrf import CSRFError
 from dotenv import load_dotenv
-#import sqlalchemy as dba
+# import sqlalchemy as dba
 from .models import Posts, Category, Jobs, JobType
 from flask_sqlalchemy import SQLAlchemy
 
@@ -142,7 +142,14 @@ def job_photo(filename):
     #return send_file(JOB_IMAGES, attachment_filename=post.photo)
 
 
-@home_bp.route('/portfolio')
+@home_bp.route('/portfolio', methods=['GET'])
 def portfolio():
     return render_template('portfolio.html')
+
+
+@home_bp.route('/order', methods=['GET', 'POST'])
+def order():
+    form = OrderForm()
+    return render_template('order.html', form=form)
+
 

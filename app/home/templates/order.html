@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    {{ form.plan.label }}
+    {{ form.plan }}
+    {{ form.sub_plan.label }}
+    {{ form.sub_plan }}
+    {{ form.name.label }}
+    {{ form.name (placeholder ="Please enter your full name")}}
+    {{ form.phone.label }}
+    {{ form.phone (placeholder ="Please enter your phone number") }}
+    {{ form.email.label }}
+    {{ form.email (placeholder ="Please enter your email")}}
+    {{ form.description.label }}
+    {# { form.content (rows="10", columns="80")}#}
+    {{ form.description (placeholder ="Please fill out description of the project")}}
+    {{ form.submit }}
+    {# { form.file }#}
+    <input type="submit">
+</form>
+</body>
+</html>

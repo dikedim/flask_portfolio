@@ -343,7 +343,7 @@
 											</ul>
 										</div>
 										<div class="lnks">
-											<a href="#" class="lnk">Buy <span>Basic</span></a>
+											<a href="{{ url_for('.order') }}" class="lnk">Buy <span>Basic</span></a>
 										</div>
 									</div>
 								</div>
@@ -374,7 +374,7 @@
 											</ul>
 										</div>
 										<div class="lnks">
-											<a href="#" class="lnk">Buy <span>Plus</span></a>
+											<a href="{{ url_for('.order') }}" class="lnk">Buy <span>Plus</span></a>
 										</div>
 									</div>
 								</div>
@@ -409,7 +409,7 @@
 											</ul>
 										</div>
 										<div class="lnks">
-											<a href="#" class="lnk">Buy <span>Pro</span></a>
+											<a href="{{ url_for('.order') }}" class="lnk">Buy <span>Pro</span></a>
 										</div>
 									</div>
 								</div>
@@ -440,7 +440,7 @@
 											</ul>
 										</div>
 										<div class="lnks">
-											<a href="#" class="lnk">Buy <span>Max</span></a>
+											<a href="{{ url_for('.order') }}" class="lnk">Buy <span>Max</span></a>
 										</div>
 									</div>
 								</div>
@@ -479,7 +479,7 @@
                                                 </ul>
                                             </div>
                                             <div class="lnks">
-                                                <a href="#" class="lnk">Buy <span>Pro</span></a>
+                                                <a href="{{ url_for('.order') }}" class="lnk">Buy <span>Pro</span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -504,7 +504,7 @@
                                                 </ul>
                                             </div>
                                             <div class="lnks">
-                                                <a href="#" class="lnk">Buy <span>Max</span></a>
+                                                <a href="{{ url_for('.order') }}" class="lnk">Buy <span>Max</span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -1042,7 +1042,12 @@
 							<div class="row">
 								<div align="left" class="col col-m-12 col-t-5 col-d-5 col-d-lg-3">
 									<!-- title -->
-									<div align="left" class="title"><span>My</span> Portfolio</div>
+									<!--div align="left" class="title">
+                                        <span>My</span> Portfolio
+                                    </div-->
+                                    <div align="left" class="title">
+                                        <a href="{{ url_for('.portfolio') }}"><span>My </span>Portfolio</a>
+                                    </div>
 								</div>
 								<div align="right" class="col col-m-12 col-t-7 col-d-7 col-d-lg-9">
 
