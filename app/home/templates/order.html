@@ -3,26 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Order</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/basic.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/blogs.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/line-awesome.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/magnific-popup.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/animate.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/simplebar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/drop.css')}}">
 </head>
 <body>
-<form method="post" enctype="multipart/form-data">
-    {{ form.hidden_tag() }}
-    {{ form.plan.label }}
-    {{ form.plan }}
-    {{ form.sub_plan.label }}
-    {{ form.sub_plan }}
-    {{ form.name.label }}
-    {{ form.name (placeholder ="Please enter your full name")}}
-    {{ form.phone.label }}
-    {{ form.phone (placeholder ="Please enter your phone number") }}
-    {{ form.email.label }}
-    {{ form.email (placeholder ="Please enter your email")}}
-    {{ form.description.label }}
-    {# { form.content (rows="10", columns="80")}#}
-    {{ form.description (placeholder ="Please fill out description of the project")}}
-    {{ form.submit }}
-    {# { form.file }#}
-    <input type="submit">
-</form>
+<div class="page">
+
+    <!--
+        Preloader
+    -->
+
+    <div class="content container-fluid contacts-form">
+        <div class="row">
+            <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                <!-- title -->
+                <div class="title"><span>Contact</span> Form</div>
+            </div>
+        </div>
+        <div class="content contacts-info">
+        <div class="contact_form card-box">
+            <form method="post" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                {{ form.plan.label }}
+                {{ form.plan }}
+                {{ form.sub_plan.label }}
+                {{ form.sub_plan }}
+                {{ form.name.label }}
+                <div class="center">
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                        <div class="group-val">
+                            {{ form.name (placeholder ="Please enter your full name") }}
+                        </div>
+                    </div>
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                        <div class="group-val">
+                            {{ form.phone.label }}
+                            {{ form.phone (placeholder ="Please enter your phone number") }}
+                        </div>
+                    </div>
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                        <div class="group-val">
+                            {{ form.email.label }}
+                            {{ form.email (placeholder ="Please enter your email") }}
+                        </div>
+                    </div>
+                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                        <div class="group-val">
+                            {{ form.description.label }}
+                            {# { form.content (rows="10", columns="80")}#}
+                            {{ form.description (placeholder ="Please fill out description of the project") }}
+                        </div>
+                    </div>
+                    {{ form.submit }}
+                    {# { form.file }#}
+                </div>
+                <input type="submit">
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+	<script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.validate.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.magnific-popup.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/imagesloaded.pkgd.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/masonry.pkgd.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/masonry-filter.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/simplebar.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/typed.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/particles.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/particles-setting.js')}}"></script>
 </body>
 </html>

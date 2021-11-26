@@ -18,6 +18,7 @@ load_dotenv()
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')
+
 JOB_IMAGES = os.environ.get('JOB_IMAGES')
 
 
@@ -32,6 +33,7 @@ def index():
     # jobber = Jobs.query.all()
     jobtype = JobType.query.all()
     page = request.args.get('page', 1, type=int)
+    MAP_BOX = 'pk.eyJ1IjoiZGlrZWRpbSIsImEiOiJja201Zm9yeHMwZHg2MnhqeGY5Y3FjcjZ2In0.KVWOuFfUnn3G189s9CQ-tg'
     job = Jobs.query.order_by(Jobs.title.desc()).paginate(page=page, per_page=12, error_out=True)
     if request.method == 'POST':
         send_mail()
@@ -151,5 +153,10 @@ def portfolio():
 def order():
     form = OrderForm()
     return render_template('order.html', form=form)
+
+
+@home_bp.route('/directions', methods=['GET'])
+def directions():
+    return render_template('directions.html')
 
 

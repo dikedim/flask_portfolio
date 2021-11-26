@@ -10,15 +10,16 @@
 	<title>DIKE DIM's Resume and Portfolio</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<meta name="description" content="vCard & Resume for Dike T. Dim" />
-	<meta name="keywords" content="Abuja, developer, programmer, researcher, resume, cv, cv, business card, portfolio" />
+	<meta name="keywords" content="Abuja, developer, programmer, researcher, resume, dike, cv, business card, portfolio" />
 	<meta name="author" content="cherniivolk" />
 
     <!--
 		Load Mapbox JS/CSS
 	-->
 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
 
 
     <!--
@@ -343,8 +344,9 @@
 											</ul>
 										</div>
 										<div class="lnks">
-											<a href="{{ url_for('.order') }}" class="lnk">Buy <span>Basic</span></a>
-										</div>
+                                            <a href="{{ url_for('.order') }}" class="lnk"
+                                               target="popup has-popup-media"> Buy <span>Basic</span></a>
+                                        </div>
 									</div>
 								</div>
 
@@ -1778,7 +1780,10 @@
 										<div class="icon"><i class="la la-map-marker"></i></div>
 										<div class="name">Address</div>
 										<p>
-											Abuja, Nigeria. {# add link for directions popup #}
+                                                <a  onclick="window.open('{{ url_for('.directions') }}', '_blank',
+                                                        'location=yes,height=570,width=720,scrollbars=yes,status=yes');">
+                                                    Abuja, Nigeria.
+                                                </a>
 										</p>
 									</div>
 								</div>
@@ -1971,6 +1976,7 @@
 	-->
     <!--script> L.mapboxgl.accessToken ='{# { MAP_BOX_KEY }#}'</script-->
 	<script src="{{ url_for('static', filename='js/scripts.js')}}"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
     <script src="{{ url_for('static', filename='js/mapbox.js') }}"></script>
     <script src="{{ url_for('static', filename='js/particles.js')}}"></script>
     <script src="{{ url_for('static', filename='js/particles-setting.js')}}"></script>
