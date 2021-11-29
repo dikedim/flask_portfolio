@@ -14,6 +14,9 @@ post_tags = db.Table('posts_tags', db.Column('posts_id', db.Integer, db.ForeignK
 job_types = db.Table('job_types', db.Column('jobs_id', db.Integer, db.ForeignKey('jobs.id')),
                      db.Column('jobtypes_id', db.Integer, db.ForeignKey('jobtypes.id')))
 
+post_comments = db.Table('posts_comments', db.Column('comments_id', db.Integer, db.ForeignKey('comments.id')),
+                         db.Column('posts_id', db.Integer, db.ForeignKey('posts.id')))
+
 
 class Posts(db.Model):
     __tablename__ = 'posts'
@@ -28,6 +31,10 @@ class Posts(db.Model):
     created_on = db.Column(db.DateTime(), default=datetime.utcnow)
     updated_on = db.Column(db.DateTime(), default=datetime.utcnow, onupdate=datetime.utcnow)
     category_id = db.Column(db.Integer(), db.ForeignKey('categories.id'))
+    comments = db.relationship('Comments', backref='title', lazy='dynamic')
+
+#    def get_comments(self):
+#        return Comments.query.filter_by(post_id=posts.id).order_by(Comments.posted_on.desc())
 
     def __repr__(self):
         return "<{}:{}>".format(self.id, self.title[:10])
@@ -71,7 +78,22 @@ class JobType(db.Model):
     __tablename__ = 'jobtypes'
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
-    #jobs = db.relationship('Jobs', backref='jobtypes', cascade='all,delete-orphan')
+#    #jobs = db.relationship('Jobs', backref='jobtypes', cascade='all,delete-orphan')
 
     def __repr__(self):
         return "<{}:{}>".format(self.id, self.name)
+
+
+class Comments(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    body = db.Column(db.Text)
+    posted_on = db.Column(db.DateTime(), default=datetime.utcnow)
+    avatar = db.Column(db.String(255), nullable=False, default='/static/images/man1.jpg')
+#    comments = db.relationship('Posts', secondary=post_comments, backref='comments', lazy=True)
+    post_id = db.Column(db.Integer(), db.ForeignKey('posts.id'))
+
+    def __repr__(self):
+        return "<Comments:{}>".format(self.id, self.name)
+

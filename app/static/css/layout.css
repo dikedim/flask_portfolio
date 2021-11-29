@@ -448,16 +448,16 @@
 
 }
 
-.card-inner .card-container {
+.card-inner .card-container .card-gradient {
 	height: 100%;
 }
 
-.card-inner .card-container .card-wrap {
+.card-inner .card-container .card-wrap .card-gradient {
 	background: linear-gradient(135deg, #1d1e21 0%, #3e4246 100%);
 	overflow: visible!important;
 }
 
-.card-inner .card-container .card-wrap .simplebar-scroll-content {
+.card-inner .card-container .card-wrap .simplebar-scroll-content .card-gradient{
 	max-height: 100%!important;
 }
 

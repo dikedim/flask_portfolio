@@ -31,3 +31,9 @@ class OrderForm(FlaskForm):
     phone = StringField("Phone")
     description = TextAreaField("Message", validators=[DataRequired(" Can't send a blank message")])
     submit = SubmitField("Send Request")
+
+
+class CommentForm(FlaskForm):
+    name = StringField("Name", validators=[DataRequired("Please enter your name")])
+    body = TextAreaField("Message", validators=[DataRequired(" Can't send a blank message")])
+    submit = SubmitField("Add Comment")

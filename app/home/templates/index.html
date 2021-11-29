@@ -39,6 +39,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/animate.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/simplebar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/drop.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.min.css')}}">
 
 	<!-- theme colors blue, green, red, orange, pink, purple -->
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-colors/blue.css')}}">
@@ -51,12 +52,44 @@
 	<!--
 		Favicons
 	-->
-	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicons/favicon.ico')}}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicons/fav.ico')}}">
 
 </head>
 
 <body>
 	<div class="page">
+        <!--div class="theme_panel">
+            <div class="toggle_bts">
+                <a class="toggle-theme-panel" href="#">
+                    <i class="icon la la-gear"></i>
+                </a>
+            </div>
+            <div class="theme_menu">
+                <h4>Color Switcher</h4>
+                <div class="segment">
+                    <ul class="theme layout_style">
+                        <li>
+                            <a title="theme-green" href="#" data-color="green" style="background-color: #5ac24e;"></a>
+                        </li>
+                        <li>
+                            <a title="theme-blue" href="#" data-color="blue" style="background-color: #65b4f3;"></a>
+                        </li>
+                        <li>
+                            <a title="theme-orange" href="#" data-color="orange" style="background-color: #f5a640;"></a>
+                        </li>
+                        <li>
+                            <a title="theme-pink" href="#" data-color="pink" style="background-color: #ee6192;"></a>
+                        </li>
+                        <li>
+                            <a title="theme-purple" href="#" data-color="purple" style="background-color: #bb68c8;"></a>
+                        </li>
+                        <li>
+                            <a title="theme-red" href="#" data-color="red" style="background-color: #ee534f;"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div-->
 
 		<!--
 			Preloader
@@ -869,11 +902,11 @@
 										<!-- resume item -->
 										<div class="resume-item">
 											<div class="name">Google</div>
-											<div class="date">2020 <span>|</span> Online</div>
+											<div class="date">2021 <span>|</span> Online</div>
 											<p>
-												Google IT Support Professional Certificate  <br />
+												Google IT Support Professional Certificate: Technical Support Fundamentals  <br />
                                                 Google | Coursera <br />
-                                                <a href="{{url_for('static', filename='docs/DIKEDIM.pdf') }}" target="_blank"><span><i class="icon la la-eye"></i> View certificate</span></a>
+                                                <a href="{{url_for('static', filename='docs/Coursera-AEZ556WTJFND.pdf') }}" target="_blank"><span><i class="icon la la-eye"></i> View certificate</span></a>
 											</p>
 										</div>
                                     </div>
@@ -1563,7 +1596,7 @@
                                     {#% if page_num %#}
                                         {#% if jobs.page == page_num %#}
                                             <a class="btn btn-info mb-4"
-                                               href="{#  #}{ url_for('.index', page=page_num, _anchor='works-card') }}">{#  #}{ page_num }}</a>
+                                               href="{#  #}{ f }}">{#  #}{ page_num }}</a>
                                         {#% else %#}
                                             <a class="btn btn-outline-info mb-4"
                                                href="{#  #}{ url_for('.index', page=page_num, _anchor='works-card') }}">{#  #}{ page_num }}</a>
@@ -1718,22 +1751,26 @@
 			<!--
 				Card - Contacts
 			-->
-            <section id="contactlocation">
-			    <div class="card-inner" id="contacts-card">
-				<div class="row card-container">
+        <section id="contactlocation">
+            <div class="card-inner" id="contacts-card">
+                <div class="row card-container">
 
-					<!--
-						Card Wrap
-					-->
-					<div class="card-wrap col col-m-12 col-t-12 col-d-8 col-d-lg-6" data-simplebar>
+                    <!--
+                        Card Wrap
+                    -->
+                    <div class="card-wrap col col-m-12 col-t-12 col-d-8 col-d-lg-6" data-simplebar>
 
 
-						<!-- Map -->
-						<div class="card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6">
-							<div class="map" id="map" style="width: 98%"></div>
+                        <!-- Map -->
+                        <div class="card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6">
+                            <script>
+                                let myMapbox = ['{{ mapapi[0] }}']
+                            </script>
+                            <div class="map" id="map"  style="width: 98%"></div>
 
                             <div id="menu">
-                                <input type="radio" id="satellite-v9" name="rtoggle" value="satellite" checked="checked">
+                                <input type="radio" id="satellite-v9" name="rtoggle" value="satellite"
+                                       checked="checked">
                                 <!-- See a list of Mapbox-hosted public styles at https://docs.mapbox.com/api/maps/styles/#mapbox-styles -->
                                 <label for="satellite-v9">satellite</label>
                                 <input id="light-v10" type="radio" name="rtoggle" value="light">
@@ -1745,100 +1782,100 @@
                                 <input id="outdoors-v11" type="radio" name="rtoggle" value="outdoors">
                                 <label for="outdoors-v11">outdoors</label>
                             </div>
-						</div>
+                        </div>
 
-						<!--
-							Inner Top
-						-->
-						<div class="content inner-top">
-							<div class="row">
-								<div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
-									<div class="title-bg">Contacts</div>
-								</div>
-							</div>
-						</div>
+                        <!--
+                            Inner Top
+                        -->
+                        <div class="content inner-top">
+                            <div class="row">
+                                <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                                    <div class="title-bg">Contacts</div>
+                                </div>
+                            </div>
+                        </div>
 
-						<!--
-							Contacts Info
-						-->
-						<div class="content contacts-info">
-							<div class="row">
-								<div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                        <!--
+                            Contacts Info
+                        -->
+                        <div class="content contacts-info">
+                            <div class="row">
+                                <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
 
-									<!-- title -->
-									<div class="title"><span>Get</span> in Touch</div>
+                                    <!-- title -->
+                                    <div class="title"><span>Get</span> in Touch</div>
 
-								</div>
-							</div>
+                                </div>
+                            </div>
 
-							<!-- contacts items -->
-							<div class="row contacts-items">
+                            <!-- contacts items -->
+                            <div class="row contacts-items">
 
-								<!-- contacts item -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
-									<div class="contacts-item card-box">
-										<div class="icon"><i class="la la-map-marker"></i></div>
-										<div class="name">Address</div>
-										<p>
-                                                <a  onclick="window.open('{{ url_for('.directions') }}', '_blank',
-                                                        'location=yes,height=570,width=720,scrollbars=yes,status=yes');">
-                                                    Abuja, Nigeria.
-                                                </a>
-										</p>
-									</div>
-								</div>
-
-								<!-- contacts item -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
-									<div class="contacts-item card-box">
-										<div class="icon"><i class="la la-at"></i></div>
-										<div class="name">Email</div>
+                                <!-- contacts item -->
+                                <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                                    <div class="contacts-item card-box">
+                                        <div class="icon"><i class="la la-map-marker"></i></div>
+                                        <div class="name">Address</div>
                                         <p>
-										    <a href="mailto: shout@dikedim.com">shout@dikedim.com</a>
+                                            <a href="_" onclick="window.open('{{ url_for('.directions') }}', '_blank',
+                                                    'location=yes,height=570,width=720,scrollbars=yes,status=yes');">
+                                                Abuja, Nigeria.
+                                            </a>
                                         </p>
-									</div>
-								</div>
+                                    </div>
+                                </div>
 
-								<!-- contacts item -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
-									<div class="contacts-item card-box">
-										<div class="icon"><i class="la la-phone"></i></div>
-										<div class="name">Phone</div>
-										<p>
-											<a href="tel: +2347089822232">+234 708 982 2232</a>
-										</p>
-									</div>
-								</div>
+                                <!-- contacts item -->
+                                <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                                    <div class="contacts-item card-box">
+                                        <div class="icon"><i class="la la-at"></i></div>
+                                        <div class="name">Email</div>
+                                        <p>
+                                            <a href="mailto: shout@dikedim.com">shout@dikedim.com</a>
+                                        </p>
+                                    </div>
+                                </div>
 
-								<!-- contacts item -->
-								<div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
-									<div class="contacts-item card-box">
-										<div class="icon"><i class="la la-check-square"></i></div>
-										<div class="name">Freelance</div>
-										<p>
-											Available
-										</p>
-									</div>
-								</div>
+                                <!-- contacts item -->
+                                <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                                    <div class="contacts-item card-box">
+                                        <div class="icon"><i class="la la-phone"></i></div>
+                                        <div class="name">Phone</div>
+                                        <p>
+                                            <a href="tel: +2347089822232">+234 708 982 2232</a>
+                                        </p>
+                                    </div>
+                                </div>
 
-							</div>
+                                <!-- contacts item -->
+                                <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                                    <div class="contacts-item card-box">
+                                        <div class="icon"><i class="la la-check-square"></i></div>
+                                        <div class="name">Freelance</div>
+                                        <p>
+                                            Available
+                                        </p>
+                                    </div>
+                                </div>
 
-						</div>
+                            </div>
 
-						<!--
-							Contacts Form
-						-->
-						<div class="content contacts-form">
-							<div class="row">
-								<div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                        </div>
 
-									<!-- title -->
-									<div class="title"><span>Contact</span> Form</div>
+                        <!--
+                            Contacts Form
+                        -->
+                        <div class="content contacts-form">
+                            <div class="row">
+                                <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
 
-								</div>
-							</div>
-							<div class="row">
-								<div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                                    <!-- title -->
+                                    <div class="title"><span>Contact</span> Form</div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
                                     {% block content %}
                                         {% if success %}
                                             <p>Thank you for your message. We'll get back to you shortly.</p>
@@ -1854,69 +1891,70 @@
                                             {% endfor %}
 
                                             {% for message in form.subject.errors %}
-                                                 <div class="flasher">{{ message }}</div>
+                                                <div class="flasher">{{ message }}</div>
                                             {% endfor %}
 
                                             {% for message in form.message.errors %}
                                                 <div class="flasher">{{ message }}</div>
                                             {% endfor %}
 
-									        <!-- form -->
-									        <div class="contact_form card-box">
-                                                <form action="{{ url_for('.index') + '#contacts-card' }}" method="POST" role="form">
-										            <!--form id="cform" method="post"-->
+                                            <!-- form -->
+                                            <div class="contact_form card-box">
+                                                <form action="{{ url_for('.index') + '#contacts-card' }}" method="POST"
+                                                      role="form">
+                                                    <!--form id="cform" method="post"-->
                                                     {{ form.hidden_tag() }}
                                                     {# { form.csrf_token }#}
-											        <div class="row">
-												        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
-													        <div class="group-val">
+                                                    <div class="row">
+                                                        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                                                            <div class="group-val">
                                                                 {{ form.name (placeholder="Full Name") }}
-														        <!--input type="text" name="name" placeholder="Full Name" /-->
-													        </div>
+                                                                <!--input type="text" name="name" placeholder="Full Name" /-->
+                                                            </div>
                                                         </div>
-												        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
-													        <div class="group-val">
+                                                        <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-6">
+                                                            <div class="group-val">
                                                                 {{ form.email(placeholder="Email Address") }}
-														        <!--input type="text" name="email" placeholder="Email Address" /-->
-													        </div>
-												        </div>
+                                                                <!--input type="text" name="email" placeholder="Email Address" /-->
+                                                            </div>
+                                                        </div>
                                                         <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
-													        <div class="group-val">
-                                                                {{ form.subject (placeholder="Enter a Subject")}}
-														        <!--textarea name="message" placeholder="Your Message"></textarea-->
-													        </div>
-												        </div>
+                                                            <div class="group-val">
+                                                                {{ form.subject (placeholder="Enter a Subject") }}
+                                                                <!--textarea name="message" placeholder="Your Message"></textarea-->
+                                                            </div>
+                                                        </div>
                                                         <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
-													        <div class="group-val">
-                                                                {{ form.message (placeholder="Your Message")}}
-														        <!--textarea name="message" placeholder="Your Message"></textarea-->
-													        </div>
-												        </div>
-											        </div>
+                                                            <div class="group-val">
+                                                                {{ form.message (placeholder="Your Message") }}
+                                                                <!--textarea name="message" placeholder="Your Message"></textarea-->
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="align-left">
                                                         {{ form.submit(class="button") }}
                                                         <span class="icon"><i class="la la-arrow-right"></i></span>
-												        <!--a href="#" class="button" onclick="$('#cform').submit(); return false;">
-													        <span class="text">Send Message</span>
-													        <span class="icon"><i class="la la-arrow-right"></i></span>
-												        </a-->
+                                                        <!--a href="#" class="button" onclick="$('#cform').submit(); return false;">
+                                                            <span class="text">Send Message</span>
+                                                            <span class="icon"><i class="la la-arrow-right"></i></span>
+                                                        </a-->
                                                     </div>
-										        </form>
-										        <div class="alert-success">
-											        <p>Thanks, your message is sent successfully.</p>
-										        </div>
-									        </div>
+                                                </form>
+                                                <div class="alert-success">
+                                                    <p>Thanks, your message is sent successfully.</p>
+                                                </div>
+                                            </div>
                                         {% endif %}
                                     {% endblock %}
-								</div>
-							</div>
-						</div>
+                                </div>
+                            </div>
+                        </div>
 
-					</div>
+                    </div>
 
-				</div>
-			</div>
-            </section>
+                </div>
+            </div>
+        </section>
 
 			<!--
 				Lines Grid

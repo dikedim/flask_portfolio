@@ -1,10 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+    <!--
+        Basic
+    -->
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>DIKE DIM's Resume and Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="description" content="vCard & Resume for Dike T. Dim"/>
+    <meta name="keywords"
+          content="Abuja, developer, programmer, researcher, resume, dike, cv, business card, portfolio"/>
+    <meta name="author" content="cherniivolk"/>
+
+
+    <!--
+		Load Fonts
+	-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=cyrillic"
+          rel="stylesheet">
+
+    <!--
+        Load CSS
+    -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/basic.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/blogs.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/line-awesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/simplebar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/drop.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.min.css') }}">
+
+    <!-- theme colors blue, green, red, orange, pink, purple -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/theme-colors/blue.css') }}">
+
+    <!--[if lt IE 9]>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+    <!--
+        Favicons
+    -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicons/fav.ico') }}">
+
 </head>
 <body>
+<div class="page">
+    <header class="header">
 
+        <!-- logo -->
+        <div class="logo">
+            <a href="{{ url_for('home_bp.index') }}"><span>DD</span></a>
+        </div>
+
+        <!-- menu -->
+        <div class="top-menu">
+            <ul>
+                <li class="active">
+                    <!--a href="#home-card"-->
+                    <a href="{{ url_for('home_bp.index') }}">
+                        <span class="icon la la-home"></span>
+                        <span class="link">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('.index', _anchor='about-card') }}">
+                        <span class="icon la la-user"></span>
+                        <span class="link">About</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('.index', _anchor='resume-card') }}">
+                        <span class="icon la la-gear"></span>
+                        <span class="link">Resume</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('.index', _anchor='works-card') }}">
+                        <span class="icon la la-eye"></span>
+                        <span class="link">Portfolio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('.portfolio') }}">
+                        <span class="icon la la-houzz"></span>
+                        <span class="link">Main Portfolio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('.index', _anchor='blog-card') }}">
+                        <span class="icon la la-newspaper-o"></span>
+                        <span class="link">Blog</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('.index', _anchor='contacts-card') }}">
+                        <span class="icon la la-envelope"></span>
+                        <span class="link">Contacts</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Started socials -->
+        <div class="social">
+            <a target="_blank" href="https://dribbble.com/dikedim"><span class="icon la la-dribbble"></span></a>
+            <!-- a target="_blank" href="https://facebook.com/"><span class="icon la la-facebook"></span></a-->
+            <a target="_blank" href="https://github.com/dikedim"><span class="icon la la-github"></span></a>
+            <a target="_blank" href="https://join.skype.com/invite/uxeOpsNAkv9i"><span class="icon la la-skype"></span></a>
+            <a target="_blank" href="https://wa.me/+2347089822232 "><span class="icon la la-whatsapp"></span></a>
+            <a target="_blank" href="https://stackoverflow.com/users/15378614/dike-dim"><span
+                    class="icon la la-stack-overflow"></span></a>
+        </div>
+
+        <!-- Mobile Menu -->
+        <span class="menu-btn">
+				<span class="m-line"></span>
+			</span>
+
+    </header>
+    <div class="container">
+
+        <!--
+            Card - Started
+        -->
+        <div class="card-inner card-started active" id="porfolio">
+            <div class="row card-container" data-simplebar>
+
+                <!--
+                    Card Wrap
+                -->
+                <div class="card-wrap blogs-content col col-m-12 col-t-12 col-d-9 col-d-lg-12">
+
+                    <!--
+                        Inner Top
+                    -->
+                    <div class="content inner-top">
+                        <div class="row">
+                            <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                                <div class="title-bg">My Portfolio</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Portfolio -->
+                    <div class="content blog">
+                        <div class="row">
+                            <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-9">
+
+                                <!-- title -->
+                                <div class="title"><span>All</span> Works</div>
+
+                            </div>
+                        </div>
+                        <div align="right" class="col col-m-12 col-t-7 col-d-7 col-d-lg-9">
+
+                            <!-- filters -->
+                            <nav></nav>
+                            <div class="filter-menu filter-button-group">
+                                <label><input type="radio" name="fl_radio" value="grid-item"/>All</label>
+                                <label><input type="radio" name="fl_radio" value="desktop"/>Desktop</label>
+                                <label><input type="radio" name="fl_radio" value="mobile"/>Mobile</label>
+                                <label><input type="radio" name="fl_radio" value="video"/>Video</label>
+                                <label><input type="radio" name="fl_radio" value="photo"/>Photo</label>
+                                <label><input type="radio" name="fl_radio" value="design"/>Design</label>
+                            </div>
+                        </div>
+
+                        <!-- Portfolio  items-->
+                        <div class="row">
+                            {% for job in jobs.items %}
+                                {% if job.jobtype_id == 1 %}{# Mobile #}
+                                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-4 grid-item mobile">
+                                    {% elif job.jobtype_id == 2 %}{# Video #}
+                                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-4 grid-item video">
+                                    {% elif job.jobtype_id == 3 %}{# Photo #}
+                                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-4 grid-item photo">
+                                    {% elif job.jobtype_id == 4 %}{# Web #}
+                                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-4 grid-item web">
+                                {% elif job.jobtype_id == 5 %} {# Desktop #}
+                                    <div class="col col-m-12 col-t-6 col-d-6 col-d-lg-4 grid-item desktop">
+                                {% endif %}
+                                <div class="box-item card-box">
+                                    <div class="image">
+                                        {% if job.jobtype_id == 1 %}{# Mobile #}
+                                            <a href="#popup-1" class="has-popup-media">
+                                            <img src="{{ url_for('.job_photo', filename=job.photo) }}"
+                                                 alt="{{ url_for('static', filename='images/works/e-mgmt_app.jpg') }}"/>
+                                            {% elif job.jobtype_id == 2 %}{# Video #}
+                                            <a href="https://vimeo.com/97102654" class="has-popup-video">
+                                            <img src="{{ url_for('.job_photo', filename=job.photo) }}"
+                                                 alt="{{ url_for('static', filename='images/works/kays_class2.jpg') }}"/>
+                                            {% elif job.jobtype_id == 3 %}{# Photo #}
+                                            <a href="{{ job.photo }}"
+                                               class="has-popup-image">
+                                            <img src="{{ job.photo }}"
+                                                 alt="{{ url_for('static', filename='images/works/work5.jpg') }}"/>
+                                            {% elif job.jobtype_id == 4 %}{# Web #}
+                                            <a href="" class="has-popup-music">
+                                            <img src="{{ job.photo }}"
+                                                 alt="{{ url_for('static', filename='images/works/ckcalum.jpg') }}"/>
+                                            {% elif job.jobtype_id == 5 %}{# Desktop #}
+                                            <a href="https://w.soundcloud.com/player/?visual=true&url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F221650664&show_artwork=true"
+                                               class="has-popup-music">
+                                            <img src="{{ job.photo }}" alt="{{ job.photo }}"/>
+                                            {% elif job.jobtype_id == 6 %}{# Design #}
+                                            <a href="{{ job.photo }}"
+                                               class="has-popup-image"> <img src="{{ job.photo }}" alt=""/>
+                                        {% endif %}
+                                        <!--a href="{# { url_for('static', filename='images/works/work2.jpg') }#}"
+                                                       class="has-popup-image"-->
+                                        <!--a href="{#{ url_for('home_bp.jobs', job_id=job.id) }#}">
+                                                    <img src="{#{ url_for('static', filename='images/works/work2.jpg') }#}"
+                                                         alt=""/-->
+                                        <span class="info">
+                                                    {% if job.jobtype_id == 3 %}
+                                                        <span class="icon la la-camera-retro"></span>
+                                                    {% elif job.jobtype_id == 4 %}
+                                                        <span class="icon la la-globe"></span>
+                                                        <!--a href="{# { url_for('.jobs', job_id=job.id)}}" class="name has-popup">{{ job.title }#}"></a-->
+                                                    {% elif job.jobtype_id == 1 %}
+                                                        <span class="icon la la-mobile-phone"></span>
+                                                    {% elif job.jobtype_id == 2 %}
+                                                        <span class="icon la la-video-camera"></span>
+                                                    {% elif job.jobtype_id == 5 %}
+                                                        <span class="icon la la-desktop"></span>
+                                                    {% elif job.jobtype_id == 6 %}
+                                                        <span class="icon la la-paint-brush"></span>
+                                                    {% endif %}
+                                                </span>
+                                        </a>
+                                    </div>
+                                    <div class="desc">
+                                        <!--a href="{# { url_for('static', filename='images/works/work1.jpg') }#}"
+                                                   class="name has-popup-image">{# { job.title }#}</a-->
+                                        {% if job.jobtype_id == 1 %}
+                                            <a href="#popup-1" class="name has-popup-media">{{ job.title }}</a>
+                                            <div class="category"> Mobile</div>
+                                        {% elif job.jobtype_id == 2 %}
+                                            <a href="https://vimeo.com/97102654" class="name has-popup-video">
+                                                {{ job.title }}
+                                            </a>
+                                            <div class="category"> Video</div>
+                                        {% elif job.jobtype_id == 3 %}
+                                            <a href="{{ url_for('static', filename='images/works/work5.jpg') }}"
+                                               class="name has-popup-image">
+                                                {{ job.title }}
+                                            </a>
+                                            <div class="category"> Photo</div>
+                                        {% elif job.jobtype_id == 4 %}
+                                            <a href="#" class="name has-popup">{{ job.title }}</a>
+                                            <div class="category"> Web</div>
+                                        {% elif job.jobtype_id == 5 %}
+                                            <a href="#" class="name has-popup">{{ job.title }}</a>
+                                            <div class="category"> Desktop</div>
+                                        {% elif job.jobtype_id == 6 %}
+                                            <a href="#" class="name has-popup">{{ job.title }}</a>
+                                            <div class="category"> Design</div>
+                                        {% endif %}
+                                    </div>
+                                    {% if job.jobtype_id == 1 %}
+                                        <div id="popup-1" class="popup-box mfp-fade mfp-hide">
+                                            <div class="content">
+                                                <div class="image">
+                                                    <img src="
+                                                                    {{ url_for('static', filename='images/works/e-mgmt_app.jpg') }}"
+                                                         alt="">
+                                                </div>
+                                                <div class="desc">
+                                                    <div class="post-box">
+                                                        <h1>Mobile Application</h1>
+                                                        <div class="blog-detail">Design</div>
+                                                        <div class="blog-content">
+                                                            <p>
+                                                                With the advent of the nouveau coronavirus, the
+                                                                need for virtual solutions have arisen
+                                                                especially in the area of academics to prevent
+                                                                stagnation in the development of kids
+                                                                and young adults alike.
+                                                            </p>
+                                                            <p>
+                                                                With development starting before the disruption
+                                                                of life and activities due to pandemic,
+                                                                I was afforded the opportunity to virtualize the
+                                                                activities and interaction bew.
+                                                            </p>
+                                                            <blockquote>
+                                                                To stay above ever evolving challenges, there is
+                                                                a constant need to evolve.
+                                                            </blockquote>
+                                                            <p>
+                                                                Tile...............
+                                                            </p>
+                                                            <ul class="list-style">
+                                                                <li>Maintain same level of interaction between
+                                                                    parents and educators.
+                                                                </li>
+                                                                <li>Provide a unified platform to get important
+                                                                    information to all parents or concerned
+                                                                    groups in timely fashion.
+                                                                </li>
+                                                                <li>Real-time feedback with valuable information
+                                                                    at your fingertips at all times
+                                                                </li>
+                                                            </ul>
+                                                            <p>
+                                                                U.................
+                                                            </p>
+                                                        </div>
+                                                        <a href="#" class="button">
+                                                            <span class="text">View Project</span>
+                                                            <span class="arrow"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                {% if job.jobtype_id == 1 %}{# Mobile #}
+                                    </div>
+                                    {% elif job.jobtype_id == 2 %}{# Video #}
+                                    </div>
+                                    {% elif job.jobtype_id == 3 %}{# Photo #}
+                                    </div>
+                                    {% elif job.jobtype_id == 4 %}{# Web #}
+                                    </div>
+                                {% elif job.jobtype_id == 5 %} {# Desktop #}
+                                    </div>
+                                {% elif job.jobtype_id == 6 %} {# Design #}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="pager">
+                            {% for page_num in jobs.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                                {% if page_num %}
+                                    {% if jobs.page == page_num %}
+                                        <a class="btn btn-info mb-4"
+                                           href="{{ url_for('.portfolio', page=page_num) }}">{{ page_num }}</a>
+                                    {% else %}
+                                        <a class="btn btn-outline-info mb-4"
+                                           href="{{ url_for('.portfolio', page=page_num) }}">{{ page_num }}</a>
+                                    {% endif %}
+                                {% else %}
+                                    ...
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+	<!--
+		jQuery Scripts
+	-->
+	<script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.validate.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.magnific-popup.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/imagesloaded.pkgd.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/masonry.pkgd.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/masonry-filter.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/simplebar.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/typed.js')}}"></script>
+
+	<!--
+		Google map api
+	-->
+	<!--script src="https://maps.google.com/maps/api/js?sensor=false"></script
+
+
+	<!--
+		Main Scripts
+	-->
+	<script src="{{ url_for('static', filename='js/scripts.js')}}"></script>
+    {% if scrollToAnchor %}
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                document.location.hash = '#{{ scrollToAnchor }}';
+            });
+        </script>
+    {% endif %}
 </body>
 </html>

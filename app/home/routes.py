@@ -5,13 +5,13 @@ from flask import (Blueprint, render_template, request, redirect, url_for, flash
 # from flask import current_app as app
 from app.admin.routes import *
 from app.admin import routes
-from .forms import ContactForm, Email, OrderForm
+from .forms import ContactForm, Email, OrderForm, CommentForm
 from flask_mail import Message, Mail
 import app as ap
 from flask_wtf.csrf import CSRFError
 from dotenv import load_dotenv
 # import sqlalchemy as dba
-from .models import Posts, Category, Jobs, JobType
+from .models import Posts, Category, Jobs, JobType, Comments, db
 from flask_sqlalchemy import SQLAlchemy
 
 load_dotenv()
@@ -32,8 +32,8 @@ def index():
     categories = Category.query.all()
     # jobber = Jobs.query.all()
     jobtype = JobType.query.all()
+    mapapi = MAP_BOX_KEY
     page = request.args.get('page', 1, type=int)
-    MAP_BOX = 'pk.eyJ1IjoiZGlrZWRpbSIsImEiOiJja201Zm9yeHMwZHg2MnhqeGY5Y3FjcjZ2In0.KVWOuFfUnn3G189s9CQ-tg'
     job = Jobs.query.order_by(Jobs.title.desc()).paginate(page=page, per_page=12, error_out=True)
     if request.method == 'POST':
         send_mail()
@@ -42,7 +42,7 @@ def index():
     else:
         pass
 #    MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')
-        return render_template('index.html', mapapi=MAP_BOX_KEY, form=form, posts=post, categories=categories,
+        return render_template('index.html', mapapi=mapapi, form=form, posts=post, categories=categories,
                                jobs=job, jobtypes=jobtype)
 
 
@@ -65,13 +65,30 @@ def archive():
     return render_template("blog.html", posts=post, categories=category)
 
 
-@home_bp.route('/blog/<string:slug>', methods=['GET'])
+@home_bp.route('/blog/<string:slug>', methods=['GET', 'POST'])
 def blog_post(slug):
+    form = CommentForm()
+    poster = Posts.query.filter_by(slug=slug).one()
+    postcom = Posts.query.all()
+    commenter = Comments.query.all()
     # posts = Posts.query.get_or_404(posts_id)
+    if request.method == 'POST':
+        if form.validate() == False:
+            flash('All fields are required.')
+            return render_template('index.html', form=form)
+        else:
+            comment = Comments(name=form.name.data, body=form.body.data)
+            db.session.add(comment)
+            db.session.commit()
+            return render_template('blog-post.html', success=True, posts=poster, postcomment=postcom, user=commenter)
+
     try:
-        #post = Posts.query.get_or_404(slug)
+        #        #post = Posts.query.get_or_404(slug)
         post = Posts.query.filter_by(slug=slug).one()
-        return render_template("blog-post.html", title=post.title, posts=post, slug=post.slug)
+#        postcom = Posts.query.all()
+#        comment = Comments.query.all()
+        return render_template("blog-post.html", title=post.title, posts=post, slug=post.slug, postcomment=postcom,
+                               form=form, user=commenter)
     except sqlalchemy.orm.exc.NoResultFound:
         abort(404)
 
@@ -85,7 +102,8 @@ def jobs():
 
 @home_bp.route('/mapbox', methods=['GET'])
 def mapbox():
-    return render_template("mapbox.html")
+    mapapi= MAP_BOX_KEY
+    return render_template("mapbox.html", mapapi=mapapi)
 
 
 @home_bp.errorhandler(404)
@@ -146,7 +164,10 @@ def job_photo(filename):
 
 @home_bp.route('/portfolio', methods=['GET'])
 def portfolio():
-    return render_template('portfolio.html')
+    jobtype = JobType.query.all()
+    page = request.args.get('page', 1, type=int)
+    job = Jobs.query.order_by(Jobs.title.desc()).paginate(page=page, per_page=12, error_out=True)
+    return render_template('portfolio.html', jobs=job, jobtypes=jobtype)
 
 
 @home_bp.route('/order', methods=['GET', 'POST'])
@@ -157,6 +178,7 @@ def order():
 
 @home_bp.route('/directions', methods=['GET'])
 def directions():
-    return render_template('directions.html')
+    mapboxl = MAP_BOX_KEY
+    return render_template('directions.html', mapboxl=mapboxl)
 
 

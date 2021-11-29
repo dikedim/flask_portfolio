@@ -42,7 +42,7 @@
 	<!--
 		Favicons
 	-->
-	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicons/favicon.ico')}}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicons/fav.ico')}}">
 	
 </head>
 
@@ -218,7 +218,7 @@
 								<div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
 
 									<!-- title -->
-									<div class="title"><span>Post</span> Comments</div>
+									<div class="title"><span>Past</span> Comments</div>
 
 								</div>
 							</div>
@@ -236,8 +236,8 @@
 												<img src="{{ url_for('static', filename='images/man1.jpg')}}" alt="">
 												<div class="comment-info">
 													<div class="name">
-														<h6>John Doe <span>1 hour ago</span></h6>
-														<a href="#">Reply</a>
+														<h6>{{ user.name }}<span>{{ user.posted_on }}</span></h6>
+														<a href="#reply">Reply</a>
 													</div>
 													<p>
 														Kept in sent gave feel will oh it we. Has pleasure procured men 
@@ -248,17 +248,23 @@
 
 											<!-- comment item -->
 											<li>
-												<img src="{{ url_for('static', filename='images/man1.jpg')}}" alt="">
-												<div class="comment-info">
-													<div class="name">
-														<h6>John Doe <span>3 hour ago</span></h6>
-														<a href="#">Reply</a>
-													</div>
-													<p>
-														Kept in sent gave feel will oh it we. Has pleasure procured men 
-														laughing shutters nay.
-													</p>
-												</div>
+                                                {% if postcomment.comments %}
+                                                    {% if postcomment.comments.count() > 0 %}
+                                                        <img src="{#  #}{ url_for('static', filename='images/man1.jpg') }}" alt="">
+                                                        <img src="{{ url_for('.job_photo', filename=comments.avatar) }}">
+                                                        <div class="comment-info">
+                                                            <div class="name">
+                                                                <h6>{{ user.name }}<span>{{ user.posted_on }}</span></h6>
+                                                                <a href="#reply">Reply</a>
+                                                            </div>
+                                                            <p>
+                                                                {% for comment in user.postcomment %}
+                                                                    {{ user.body }}
+                                                                {% endfor %}
+                                                            </p>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endif %}
 											</li>
 
 											<!-- comment item -->
@@ -267,7 +273,7 @@
 												<div class="comment-info">
 													<div class="name">
 														<h6>John Doe <span>6 hour ago</span></h6>
-														<a href="#">Reply</a>
+														<a href="#reply">Reply</a>
 													</div>
 													<p>
 														Kept in sent gave feel will oh it we. Has pleasure procured men 
@@ -292,31 +298,37 @@
 							</div>
 
 							<!-- comments -->
-							<div class="row">
+							<div class="row" id="reply">
 								<div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
 									<div class="post-box card-box comments-form">
 
 										<!-- comment form -->
-										<form id="cform" method="post">
-											<div class="row">
-												<div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
-													<div class="group-val">
-														<input type="text" name="name" placeholder="Full Name" />
-													</div>
-												</div>
-												<div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
-													<div class="group-val">
-														<textarea name="message" placeholder="Your Message"></textarea>
-													</div>
-												</div>
-											</div>
-											<div class="align-left">
-												<a href="#" class="button" onclick="$('#cform').submit(); return false;">
-													<span class="text">Add Comment</span>
-													<span class="arrow"></span>
-												</a>
-											</div>
-										</form>
+										<!--form id="cform" method="post"-->
+                                        <form action="{{ url_for('.blog_post', slug=slug) }}" method="POST" role="form">
+                                            {{ form.hidden_tag() }}
+                                            <div class="row">
+                                                <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                                                    <div class="group-val">
+                                                        <!--input type="text" name="name" placeholder="Full Name" /-->
+                                                        {{ form.name (placeholder="Full Name") }}
+                                                    </div>
+                                                </div>
+                                                <div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
+                                                    <div class="group-val">
+                                                        <!--textarea name="message" placeholder="Your Message"></textarea-->
+                                                        {{ form.body (placeholder="Your Message") }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="align-left">
+                                                {{ form.submit(class="button") }}
+                                                <!--a href="#" class="button" onclick="$('#cform').submit(); return false;">
+                                                    <span class="text">Add Comment</span>
+                                                    <span class="arrow"></span>
+                                                </a-->
+                                            </div>
+                                        </form>
+										<!--/form-->
 										<div class="alert-success">
 											<p>Thanks, your message is sent successfully.</p>
 										</div>
