@@ -18,6 +18,7 @@ from .admin.models import da
 from .admin.models import login_manager
 from dotenv import load_dotenv
 from sqlalchemy import event
+from flask_hcaptcha import hCaptcha
 from sqlalchemy.event import listen
 
 
@@ -78,11 +79,13 @@ def create_app():
     app.config.from_object('config.DevelopmentConfig')
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     mailer.init_app(app)
+    hcaptcha = hCaptcha(app)
     csrf = CSRFProtect(app)
     csrf.init_app(app)
     register_admin(app)
     register_blog(app)
     register_blueprints(app)
+    hcaptcha.init_app(app)
     # insert_initial_values()
     load_dotenv()
 

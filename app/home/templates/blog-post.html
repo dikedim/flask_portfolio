@@ -301,7 +301,6 @@
 							<div class="row" id="reply">
 								<div class="col col-m-12 col-t-12 col-d-12 col-d-lg-12">
 									<div class="post-box card-box comments-form">
-
 										<!-- comment form -->
 										<!--form id="cform" method="post"-->
                                         <form action="{{ url_for('.blog_post', slug=slug) }}" method="POST" role="form">
@@ -321,6 +320,7 @@
                                                 </div>
                                             </div>
                                             <div class="align-left">
+                                                {{ hcaptcha }}
                                                 {{ form.submit(class="button") }}
                                                 <!--a href="#" class="button" onclick="$('#cform').submit(); return false;">
                                                     <span class="text">Add Comment</span>

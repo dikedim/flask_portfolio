@@ -14,6 +14,7 @@ class Config:
     # FLASK_DEBUG = environ.get('FLASK_DEBUG')
     FLASK_DEBUG = False
 
+
     SQLALCHEMY_DATABASE_URI = environ.get("SQLALCHEMY_DATABASE_URI")
     SQLALCHEMY_ECHO = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -27,7 +28,9 @@ class Config:
     TESTING = False
     MAIL_ASCII_ATTACHMENTS = True
     MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')
-    MAP_BOX = os.getenv('MAP_BOX_KEY')
+    HCAPTCHA_ENABLED = True
+    HCAPTCHA_SITE_KEY = os.environ.get('HCAPTCHA_SITE_KEY')
+    HCAPTCHA_SECRET_KEY = os.environ.get('HCAPTCHA_SECRET_KEY')
 
 #    MAP_BOX = "pk.eyJ1IjoiZGlrZWRpbSIsImEiOiJja201Zm9yeHMwZHg2MnhqeGY5Y3FjcjZ2In0.KVWOuFfUnn3G189s9CQ-tg"
     MAIL_DEFAULT_SENDER = MAIL_USERNAME
