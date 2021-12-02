@@ -58,12 +58,26 @@ class EmailForm(FlaskForm):
 
 class JobForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
-    link = StringField('link')
+    link = StringField('Link')
     # category = StringField('Category', validators=[DataRequired()])
     category = SelectField(u'Category', choices=[('1', 'Mobile'), ('2', 'Video'), ('3', 'Photo'), ('4', 'Web'),
                                                  ('5', 'Desktop')])
     content = TextAreaField('Content')
-    photo = FileField("attachments", validators=[FileRequired(),
+    photo = FileField("Attachments", validators=[FileRequired(),
+                                                 FileAllowed(['jpg', 'jpeg', 'gif' 'png', 'tiff', 'bmp'],
+                                                             'Images only!')])
+
+    submit = SubmitField('Post')
+
+
+class BlogForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    link = StringField('Link')
+    slug = StringField('Slug')
+    # category = StringField('Category', validators=[DataRequired()])
+    category = SelectField(u'Category', choices=[('1', 'Travel'), ('2', 'Video'), ('3', 'Photo')])
+    content = TextAreaField('Content')
+    photo = FileField("Attachments", validators=[FileRequired(),
                                                  FileAllowed(['jpg', 'jpeg', 'gif' 'png', 'tiff', 'bmp'],
                                                              'Images only!')])
 

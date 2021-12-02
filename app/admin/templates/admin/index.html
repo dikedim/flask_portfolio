@@ -585,14 +585,12 @@
                                         <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
                                             <ul class="collapse dropdown-header-top">
                                                 <li><a href="{{ url_for('admin.index')}}">Dashboard</a></li>
-                                                <li><a href="index-1.html">Dashboard v.2</a></li>
-                                                <li><a href="index-3.html">Dashboard v.3</a></li>
-                                                <li><a href="product-list.html">Product List</a></li>
+                                                <li><a href="{{ url_for('admin.products')}}">Products</a></li>
                                                 <li><a href="product-edit.html">Product Edit</a></li>
                                                 <li><a href="product-detail.html">Product Detail</a></li>
-                                                <li><a href="product-cart.html">Product Cart</a></li>
-                                                <li><a href="product-payment.html">Product Payment</a></li>
-                                                <li><a href="analytics.html">Analytics</a></li>
+                                                <li><a href="{{ url_for('admin.cart')}}">Cart</a></li>
+                                                <li><a href="{{ url_for('admin.payment')}}">Payment</a></li>
+                                                <li><a href="{{ url_for('admin.analytics')}}">Analytics</a></li>
                                                 <li><a href="widgets.html">Widgets</a></li>
                                             </ul>
                                         </li>

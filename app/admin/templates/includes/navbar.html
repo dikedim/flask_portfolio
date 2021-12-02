@@ -28,16 +28,22 @@
 								   <span class="mini-click-non">Home</span>
 								</a>
                             <ul class="submenu-angle" aria-expanded="true">
-                                <li><a title="Dashboard v.1" href="{{ url_for('admin.index')}}"><span class="mini-sub-pro">Dashboard v.1</span></a></li>
-                                <li><a title="Dashboard v.2" href="{{ url_for('.addjob')}}"><span class="mini-sub-pro">Add portfolio</span></a></li>
-                                <li><a title="Dashboard v.3" href="index-2.html"> <span class="mini-sub-pro">Dashboard v.3</span></a></li>
-                                <li><a title="Product List" href="product-list.html"><span class="mini-sub-pro">Product List</span></a></li>
-                                <li><a title="Product Edit" href="product-edit.html"><span class="mini-sub-pro">Product Edit</span></a></li>
-                                <li><a title="Product Detail" href="product-detail.html"><span class="mini-sub-pro">Product Detail</span></a></li>
-                                <li><a title="Product Cart" href="product-cart.html"><span class="mini-sub-pro">Product Cart</span></a></li>
-                                <li><a title="Product Payment" href="product-payment.html"><span class="mini-sub-pro">Product Payment</span></a></li>
-                                <li><a title="Analytics" href="{{ url_for('.analytics') }}"><span class="mini-sub-pro">Analytics</span></a></li>
+                                <li><a title="Add Portfolio Item" href="{{ url_for('.addjob')}}"><span class="mini-sub-pro">Add portfolio</span></a></li>
+                                <li><a title="Product List" href="{{ url_for('admin.products')}}"><span class="mini-sub-pro">Products</span></a></li>
+                                <li><a title="Product Edit" href="{{ url_for('admin.product_edit')}}"><span class="mini-sub-pro">Product Edit</span></a></li>
+                                <li><a title="Product Detail" href="{{ url_for('admin.product_page')}}"><span class="mini-sub-pro">Product Detail</span></a></li>
+                                <li><a title="Product Cart" href="{{ url_for('admin.cart')}}"><span class="mini-sub-pro">Cart</span></a></li>
+                                <li><a title="Product Payment" href="{{ url_for('admin.payment')}}"><span class="mini-sub-pro">Payment</span></a></li>
+                                <li><a title="Analytics" href="{{ url_for('admin.analytics') }}"><span class="mini-sub-pro">Analytics</span></a></li>
                                 <li><a title="Widgets" href="widgets.html"><span class="mini-sub-pro">Widgets</span></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="{{ url_for('admin.inbox')}}" aria-expanded="false"><i class="icon nalika-mail icon-wrap"></i> <span class="mini-click-non">Mailbox</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Inbox" href="{{ url_for('admin.inbox')}}"><span class="mini-sub-pro">Inbox</span></a></li>
+                                <li><a title="View Mail" href="{{ url_for('admin.mail')}}"><span class="mini-sub-pro">View Mail</span></a></li>
+                                <li><a title="Compose Mail" href="{{ url_for('admin.mail_compose')}}"><span class="mini-sub-pro">Compose Mail</span></a></li>
                             </ul>
                         </li>
                         <li>

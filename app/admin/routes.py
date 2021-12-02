@@ -71,12 +71,12 @@ def password_recovery():
 
 
 @admin.errorhandler(404)
-def page_not_found(error):
+def page_not_found(e):
     return render_template('admin/404.html'), 404
 
 
 @admin.errorhandler(500)
-def internal_error(error):
+def internal_error(e):
     return render_template('admin/500.html'), 500
 
 
@@ -191,3 +191,28 @@ def validate_(stream):
     if not format_:
         return None
     return '.' + (format_ if format_ != 'jpeg' else 'jpg')
+
+
+@admin.route('/admin/products', methods=['GET', 'POST'])
+def products():
+    return render_template('admin/product-list.html')
+
+
+@admin.route('/admin/product/edit', methods=['GET', 'POST'])
+def product_edit():
+    return render_template('admin/product-edit.html')
+
+
+@admin.route('/admin/product/details', methods=['GET', 'POST'])
+def product_page():
+    return render_template('admin/product-detail.html')
+
+
+@admin.route('/admin/cart', methods=['GET', 'POST'])
+def cart():
+    return render_template('admin/product-cart.html')
+
+
+@admin.route('/admin/cart/payment', methods=['GET', 'POST'])
+def payment():
+    return render_template('admin/product-payment.html')

@@ -1931,6 +1931,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="alert-error flasher">
+                                                        {{ message }}
+                                                    </div>
                                                     <div class="align-left">
                                                         {{ hcaptcha }}
                                                         {{ form.submit(class="button") }}
@@ -1942,7 +1945,7 @@
                                                     </div>
                                                 </form>
                                                 <div class="alert-success">
-                                                    <p>Thanks, your message is sent successfully.</p>
+                                                    <p>{{ message }}</p>
                                                 </div>
                                             </div>
                                         {% endif %}

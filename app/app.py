@@ -1,7 +1,7 @@
 from flask import Flask, current_app
 # from views import *
 import os
-from fastapi import FastAPI
+from . import hcaptcha
 from .mobile import mobile_bp
 from .photography import photo_bp
 from .web import web_bp
@@ -18,8 +18,12 @@ from .admin.models import da
 from .admin.models import login_manager
 from dotenv import load_dotenv
 from sqlalchemy import event
-from flask_hcaptcha import hCaptcha
+from app.home.routes import page_not_found, internal_server_error
+#from flask_hcaptcha import hCaptcha
 from sqlalchemy.event import listen
+
+
+#hcaptcha = hCaptcha(app)
 
 
 # app = Flask(__name__, static_url_path="")
@@ -79,13 +83,14 @@ def create_app():
     app.config.from_object('config.DevelopmentConfig')
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     mailer.init_app(app)
-    hcaptcha = hCaptcha(app)
     csrf = CSRFProtect(app)
     csrf.init_app(app)
     register_admin(app)
     register_blog(app)
     register_blueprints(app)
     hcaptcha.init_app(app)
+    app.register_error_handler(404, page_not_found)
+    app.register_error_handler(500, internal_server_error)
     # insert_initial_values()
     load_dotenv()
 

@@ -12,14 +12,15 @@ from flask_wtf.csrf import CSRFError
 from dotenv import load_dotenv
 # import sqlalchemy as dba
 from .models import Posts, Category, Jobs, JobType, Comments, db
+from app.app import hcaptcha
 from flask_sqlalchemy import SQLAlchemy
 
 load_dotenv()
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')
-
 JOB_IMAGES = os.environ.get('JOB_IMAGES')
+CONTACT_MAIL = os.environ.get('CONTACT_MAIL')
 
 
 @home_bp.route('/', methods=['GET', 'POST'])
@@ -32,17 +33,23 @@ def index():
     categories = Category.query.all()
     # jobber = Jobs.query.all()
     jobtype = JobType.query.all()
-    mapapi = MAP_BOX_KEY
+    #mapapi = MAP_BOX_KEY
     page = request.args.get('page', 1, type=int)
     job = Jobs.query.order_by(Jobs.title.desc()).paginate(page=page, per_page=12, error_out=True)
     if request.method == 'POST':
-        send_mail()
-        return render_template('index.html', success=True, posts=post, categories=categories, jobs=job,
-                               jobtypes=jobtype)
+        if hcaptcha.verify():
+            send_mail()
+            message = 'Thanks, your message was sent successfully.'
+            return render_template('index.html', success=True, posts=post, categories=categories, jobs=job,
+                                   jobtypes=jobtype, message=message, mapapi=MAP_BOX_KEY)
+        else:
+            message = 'Please fill out the ReCaptcha!'
+        return render_template('index.html', success=False, mapapi=MAP_BOX_KEY, form=form, posts=post, categories=categories,
+                               jobs=job, jobtypes=jobtype, message=message)
     else:
         pass
 #    MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')
-        return render_template('index.html', mapapi=mapapi, form=form, posts=post, categories=categories,
+        return render_template('index.html', mapapi=MAP_BOX_KEY, form=form, posts=post, categories=categories,
                                jobs=job, jobtypes=jobtype)
 
 
@@ -74,14 +81,20 @@ def blog_post(slug):
     commenter = Comments.query.all()
     # posts = Posts.query.get_or_404(posts_id)
     if request.method == 'POST':
-        if form.validate() == False:
-            flash('All fields are required.')
-            return render_template('index.html', form=form)
-        else:
-            comment = Comments(name=form.name.data, body=form.body.data)
-            db.session.add(comment)
-            db.session.commit()
-            return render_template('blog-post.html', success=True, posts=poster, postcomment=postcom, user=commenter)
+        if hcaptcha.verify():
+            if form.validate():
+                message = 'Thanks, your message was sent successfully.'
+                comment = Comments(name=form.name.data, body=form.body.data)
+                db.session.add(comment)
+                db.session.commit()
+                return render_template('blog-post.html', success=True, posts=poster, postcomment=postcom,
+                                       user=commenter, message=message)
+            else:
+                message = 'Please fill out the ReCaptcha!'
+                flash('All fields are required.')
+                return render_template('index.html', form=form, message=message)
+
+
 
     try:
         #        #post = Posts.query.get_or_404(slug)
@@ -103,12 +116,11 @@ def jobs():
 
 @home_bp.route('/mapbox', methods=['GET'])
 def mapbox():
-    mapapi= MAP_BOX_KEY
-    return render_template("mapbox.html", mapapi=mapapi)
+    return render_template("mapbox.html", mapapi=MAP_BOX_KEY)
 
 
 @home_bp.errorhandler(404)
-def page_not_found(error):
+def page_not_found(e):
     return render_template('error_404.html'), 404
 
 
@@ -137,22 +149,24 @@ def send_mail():
     form = ContactForm()
     emailer = form.email.data
     name = request.args.get('name')
+    page = request.args.get('page', 1, type=int)
+    job = Jobs.query.order_by(Jobs.title.desc()).paginate(page=page, per_page=12, error_out=True)
     if request.method == 'POST':
         if form.validate() == False:
             flash('All fields are required.')
-            return render_template('index.html', form=form, MAP_BOX_KEY=MAP_BOX_KEY)
+            return render_template('index.html', form=form, mapapi=MAP_BOX_KEY)
         else:
-            msg = Message(form.subject.data, sender=(form.name.data, form.email.data), recipients=['shout@dikedim.com'])
+            msg = Message(form.subject.data, sender=(form.name.data, form.email.data), recipients=[CONTACT_MAIL])
             msg.body = """
                   From: %s &lt;%s&gt;
                   %s
                   """ % (form.name.data, form.email.data, form.message.data)
             mailer.send(msg)
             # TODO #confirm_mail()
-            return render_template('index.html', success=True)
+            return render_template('index.html', success=True, jobs=job, mapapi=MAP_BOX_KEY)
 
     elif request.method == 'GET':
-        return render_template('index.html', form=form, MAP_BOX_KEY=MAP_BOX_KEY)
+        return render_template('index.html', form=form, mapapi=MAP_BOX_KEY)
 
 
 @home_bp.route('/<filename>')
@@ -179,7 +193,6 @@ def order():
 
 @home_bp.route('/directions', methods=['GET'])
 def directions():
-    mapboxl = MAP_BOX_KEY
-    return render_template('directions.html', mapboxl=mapboxl)
+    return render_template('directions.html', mapboxl=MAP_BOX_KEY)
 
 

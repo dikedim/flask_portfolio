@@ -6,16 +6,13 @@
                             <div class="mobile-menu">
                                 <nav id="dropdown">
                                     <ul class="mobile-menu-nav">
-                                        <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
+                                        <li><a data-toggle="collapse" data-target="#Charts" href="{{ url_for('admin.index')}}">Home <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
                                             <ul class="collapse dropdown-header-top">
-                                                <li><a href="../admin/index.html">Dashboard v.1</a></li>
-                                                <li><a href="../admin/index-1.html">Dashboard v.2</a></li>
-                                                <li><a href="index-3.html">Dashboard v.3</a></li>
-                                                <li><a href="../admin/product-list.html">Product List</a></li>
-                                                <li><a href="../admin/product-edit.html">Product Edit</a></li>
-                                                <li><a href="../admin/product-detail.html">Product Detail</a></li>
-                                                <li><a href="../admin/product-cart.html">Product Cart</a></li>
-                                                <li><a href="../admin/product-payment.html">Product Payment</a></li>
+                                                <li><a href="{{ url_for('admin.products')}}">Product</a></li>
+                                                <li><a href="{{ url_for('admin.product_edit')}}">Product Edit</a></li>
+                                                <li><a href="{{ url_for('admin.product_page')}}">Product Detail</a></li>
+                                                <li><a href="{{ url_for('admin.Cart')}}">Cart</a></li>
+                                                <li><a href="{{ url_for('admin.payment')}}">Payment</a></li>
                                                 <li><a href="../admin/analytics.html">Analytics</a></li>
                                                 <li><a href="../admin/widgets.html">Widgets</a></li>
                                             </ul>
