@@ -285,7 +285,7 @@
 								<ul>
                                     {% for post in posts.items %}
 									    <li>
-                                            <a href="{{ url_for('.archive') }}">
+                                            <a href="{{ url_for('.archive', selected_date = post.date_posted.strftime('%b-%Y') ) }}">
                                                 <span>
                                                     {{ post.date_posted.strftime('%b ' '%Y') }}
                                                 </span>

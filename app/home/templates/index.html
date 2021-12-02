@@ -1817,7 +1817,7 @@
                                         <div class="icon"><i class="la la-map-marker"></i></div>
                                         <div class="name">Address</div>
                                         <p>
-                                            <a href="_" onclick="window.open('{{ url_for('.directions') }}', '_blank',
+                                            <a href="{{ url_for('.index', _anchor='contacts-card') }}" onclick="window.open('{{ url_for('.directions') }}', '_blank',
                                                     'location=yes,height=570,width=720,scrollbars=yes,status=yes');">
                                                 Abuja, Nigeria.
                                             </a>
@@ -1984,7 +1984,11 @@
 
 		</div>
 	</div>
-
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 	<!--
 		jQuery Scripts
 	-->

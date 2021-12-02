@@ -56,13 +56,14 @@ def blog():
     return render_template("blog.html", posts=post, categories=category)
 
 
-@home_bp.route('/blog/archive', methods=['GET'])
-def archive():
+@home_bp.route('/blog/archive/<selected_date>', methods=['GET'])
+def archive(selected_date):
+    selected_date = Posts.date_posted.strftime(selected_date, "%b-%Y")
     page = request.args.get('page', 1, type=int)
     post = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
     category = Category.query.all()
     # posts = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
-    return render_template("blog.html", posts=post, categories=category)
+    return render_template("blog.html", posts=post, categories=category, selected_date=selected_date)
 
 
 @home_bp.route('/blog/<string:slug>', methods=['GET', 'POST'])
