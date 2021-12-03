@@ -70,6 +70,11 @@ def password_recovery():
     return render_template("admin/password-recovery.html")
 
 
+@admin.route('/admin/pw_meter', methods=['GET'])
+def pw_meter():
+    return render_template("admin/password-meter.html")
+
+
 @admin.errorhandler(404)
 def page_not_found(e):
     return render_template('admin/404.html'), 404
@@ -193,6 +198,21 @@ def validate_(stream):
     return '.' + (format_ if format_ != 'jpeg' else 'jpg')
 
 
+@admin.route('/admin/portfolio', methods=['GET', 'POST'])
+def portfolio():
+    return render_template('admin/images-cropper.html')
+
+
+@admin.route('/admin/portfolio/edit', methods=['GET', 'POST'])
+def edit_portfolio():
+    return render_template('admin/images-cropper.html')
+
+
+@admin.route('/admin/portfolio/delete', methods=['GET', 'POST'])
+def delete_portfolio():
+    return render_template('admin/images-cropper.html')
+
+
 @admin.route('/admin/products', methods=['GET', 'POST'])
 def products():
     return render_template('admin/product-list.html')
@@ -216,3 +236,33 @@ def cart():
 @admin.route('/admin/cart/payment', methods=['GET', 'POST'])
 def payment():
     return render_template('admin/product-payment.html')
+
+
+@admin.route('/admin/blog', methods=['GET', 'POST'])
+def blog():
+    return render_template('admin/blog.html')
+
+
+@admin.route('/admin/blogpost', methods=['GET', 'POST'])
+def blogpost():
+    return render_template('admin/blog-details.html')
+
+
+@admin.route('/admin/map', methods=['GET', 'POST'])
+def mapbox():
+    return render_template('admin/google-map.html')
+
+
+@admin.route('/admin/cropper', methods=['GET', 'POST'])
+def imagecropper():
+    return render_template('admin/images-cropper.html')
+
+
+@admin.route('/admin/chart', methods=['GET', 'POST'])
+def chart():
+    return render_template('admin/images-cropper.html')
+
+
+@admin.route('/admin/upload', methods=['GET', 'POST'])
+def upload():
+    return render_template('admin/images-cropper.html')

@@ -24,22 +24,15 @@
                     <ul class="metismenu" id="menu1">
                         <li class="active">
                             <a class="has-arrow" href="{{ url_for('admin.index')}}">
-								   <i class="icon nalika-home icon-wrap"></i>
-								   <span class="mini-click-non">Home</span>
-								</a>
+								   <i class="icon nalika-home icon-wrap"></i><span class="mini-click-non">Home</span>
+                            </a>
                             <ul class="submenu-angle" aria-expanded="true">
-                                <li><a title="Add Portfolio Item" href="{{ url_for('.addjob')}}"><span class="mini-sub-pro">Add portfolio</span></a></li>
-                                <li><a title="Product List" href="{{ url_for('admin.products')}}"><span class="mini-sub-pro">Products</span></a></li>
-                                <li><a title="Product Edit" href="{{ url_for('admin.product_edit')}}"><span class="mini-sub-pro">Product Edit</span></a></li>
-                                <li><a title="Product Detail" href="{{ url_for('admin.product_page')}}"><span class="mini-sub-pro">Product Detail</span></a></li>
-                                <li><a title="Product Cart" href="{{ url_for('admin.cart')}}"><span class="mini-sub-pro">Cart</span></a></li>
-                                <li><a title="Product Payment" href="{{ url_for('admin.payment')}}"><span class="mini-sub-pro">Payment</span></a></li>
                                 <li><a title="Analytics" href="{{ url_for('admin.analytics') }}"><span class="mini-sub-pro">Analytics</span></a></li>
                                 <li><a title="Widgets" href="widgets.html"><span class="mini-sub-pro">Widgets</span></a></li>
                             </ul>
                         </li>
                         <li>
-                            <a class="has-arrow" href="{{ url_for('admin.inbox')}}" aria-expanded="false"><i class="icon nalika-mail icon-wrap"></i> <span class="mini-click-non">Mailbox</span></a>
+                            <a class="has-arrow" href="{{ url_for('admin.inbox')}}" aria-expanded="true"><i class="icon nalika-mail icon-wrap"></i> <span class="mini-click-non">Mailbox</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Inbox" href="{{ url_for('admin.inbox')}}"><span class="mini-sub-pro">Inbox</span></a></li>
                                 <li><a title="View Mail" href="{{ url_for('admin.mail')}}"><span class="mini-sub-pro">View Mail</span></a></li>
@@ -47,69 +40,59 @@
                             </ul>
                         </li>
                         <li>
-                            <a class="has-arrow" href="{{ url_for('admin.inbox')}}" aria-expanded="false"><i class="icon nalika-mail icon-wrap"></i> <span class="mini-click-non">Mailbox</span></a>
+                            <a class="has-arrow" href="#" aria-expanded="false"><i class="icon nalika-paperclip-document-outline icon-wrap"></i> <span class="mini-click-non">Blog</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="Inbox" href="{{ url_for('admin.inbox')}}"><span class="mini-sub-pro">Inbox</span></a></li>
-                                <li><a title="View Mail" href="{{ url_for('admin.mail')}}"><span class="mini-sub-pro">View Mail</span></a></li>
-                                <li><a title="Compose Mail" href="{{ url_for('admin.mail_compose')}}"><span class="mini-sub-pro">Compose Mail</span></a></li>
+                                <li><a title="Blog" href="{{ url_for('admin.blog')}}"><span class="mini-sub-pro">Blog</span></a></li>
+                                <li><a title="Blog Details" href="{{ url_for('admin.blogpost')}}"><span class="mini-sub-pro">Blog Details</span></a></li>
+                                <li><a title="Inbox" href="{{ url_for('admin.blogstats')}}"><span class="mini-sub-pro">Blog Stats</span></a></li>
                             </ul>
                         </li>
                         <li>
-                            <a class="has-arrow" href="{{ url_for('admin.inbox')}}" aria-expanded="false"><i class="icon nalika-diamond icon-wrap"></i> <span class="mini-click-non">Interface</span></a>
+                            <a class="has-arrow" href="#" aria-expanded="false"><i class="icon nalika-diamond icon-wrap"></i> <span class="mini-click-non">Portfolio</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="Google Map" href="google-map.html"><span class="mini-sub-pro">Google Map</span></a></li>
-                                <li><a title="Data Maps" href="data-maps.html"><span class="mini-sub-pro">Data Maps</span></a></li>
-                                <li><a title="Pdf Viewer" href="pdf-viewer.html"><span class="mini-sub-pro">Pdf Viewer</span></a></li>
-                                <li><a title="X-Editable" href="x-editable.html"><span class="mini-sub-pro">X-Editable</span></a></li>
-                                <li><a title="Code Editor" href="code-editor.html"><span class="mini-sub-pro">Code Editor</span></a></li>
-                                <li><a title="Tree View" href="tree-view.html"><span class="mini-sub-pro">Tree View</span></a></li>
-                                <li><a title="Preloader" href="preloader.html"><span class="mini-sub-pro">Preloader</span></a></li>
-                                <li><a title="Images Cropper" href="images-cropper.html"><span class="mini-sub-pro">Images Cropper</span></a></li>
+                                <li><a title="Data Maps" href="{{ url_for('admin.portfolio')}}"><span class="mini-sub-pro">Porfolio</span></a></li>
+                                <li><a title="Add Portfolio Item" href="{{ url_for('admin.addjob')}}"><span class="mini-sub-pro">Add portfolio</span></a></li>
+                                <li><a title="Add Portfolio Item" href="{{ url_for('admin.edit_portfolio')}}"><span class="mini-sub-pro">Edit portfolio</span></a></li>
+                                <li><a title="Add Portfolio Item" href="{{ url_for('admin.delete_portfolio')}}"><span class="mini-sub-pro">Delete portfolio</span></a></li>
                             </ul>
                         </li>
                         <li>
                             <a class="has-arrow" href="{{ url_for('admin.inbox')}}" aria-expanded="false"><i class="icon nalika-pie-chart icon-wrap"></i> <span class="mini-click-non">Miscellaneous</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="File Manager" href="{{ url_for('.file_manager') }}"><span class="mini-sub-pro">File Manager</span></a></li>
-                                <li><a title="Blog" href="blog.html"><span class="mini-sub-pro">Blog</span></a></li>
-                                <li><a title="Blog Details" href="blog-details.html"><span class="mini-sub-pro">Blog Details</span></a></li>
-                                <li><a title="404 Page" href="404.html"><span class="mini-sub-pro">404 Page</span></a></li>
-                                <li><a title="500 Page" href="500.html"><span class="mini-sub-pro">500 Page</span></a></li>
+                                <li><a title="Images Cropper" href="{{ url_for('admin.imagecropper')}}"><i class="icon nalika-info icon-wrap"></i><span class="mini-sub-pro">Images Cropper</span></a></li>
+                                <li><a title="Google Map" href="{{ url_for('admin.mapbox')}}"><i class="icon nalika-flag icon-wrap"></i><span class="mini-sub-pro">Mapbox</span></a></li>
+                                <li><a title="File Manager" href="{{ url_for('admin.file_manager') }}"><i class="icon nalika-new-file icon-wrap"></i><span class="mini-sub-pro">File Manager</span></a></li>
+                                <li><a title="File Manager" href="{{ url_for('admin.chart') }}"><i class="icon nalika-bar-chart icon-wrap"></i><span class="mini-sub-pro mini-click-non">Chart</span></a></li>
+                                <li><a title="Multi Upload" href="admin/upload"><i class="icon nalika-table icon-wrap"></i><span class="mini-sub-pro">Multi Upload</span></a></li>
                             </ul>
                         </li>
                         <li>
-                            <a class="has-arrow" href="{{ url_for('admin.inbox')}}" aria-expanded="false"><i class="icon nalika-bar-chart icon-wrap"></i> <span class="mini-click-non">Charts</span></a>
-                            <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="Bar Charts" href="bar-charts.html"><span class="mini-sub-pro">Bar Charts</span></a></li>
-                                <li><a title="Line Charts" href="line-charts.html"><span class="mini-sub-pro">Line Charts</span></a></li>
-                                <li><a title="Area Charts" href="area-charts.html"><span class="mini-sub-pro">Area Charts</span></a></li>
-                                <li><a title="Rounded Charts" href="rounded-chart.html"><span class="mini-sub-pro">Rounded Charts</span></a></li>
-                                <li><a title="C3 Charts" href="c3.html"><span class="mini-sub-pro">C3 Charts</span></a></li>
-                                <li><a title="Sparkline Charts" href="sparkline.html"><span class="mini-sub-pro">Sparkline Charts</span></a></li>
-                                <li><a title="Peity Charts" href="peity.html"><span class="mini-sub-pro">Peity Charts</span></a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="has-arrow" href="{{ url_for('.inbox') }}" aria-expanded="false"><i class="icon nalika-table icon-wrap"></i> <span class="mini-click-non">Data Tables</span></a>
+                            <a class="has-arrow" href="{{ url_for('.inbox') }}" aria-expanded="false"><i class="icon nalika-table icon-wrap"></i> <span class="mini-click-non">Uploads</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Peity Charts" href="static-table.html"><span class="mini-sub-pro">Static Table</span></a></li>
                                 <li><a title="Data Table" href="data-table.html"><span class="mini-sub-pro">Data Table</span></a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i class="icon nalika-forms icon-wrap"></i> <span class="mini-click-non">Forms Elements</span></a>
-                            <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="Basic Form Elements" href="basic-form-element.html"><span class="mini-sub-pro">Bc Form Elements</span></a></li>
-                                <li><a title="Advance Form Elements" href="advance-form-element.html"><span class="mini-sub-pro">Ad Form Elements</span></a></li>
-                                <li><a title="Password Meter" href="password-meter.html"><span class="mini-sub-pro">Password Meter</span></a></li>
-                                <li><a title="Multi Upload" href="multi-upload.html"><span class="mini-sub-pro">Multi Upload</span></a></li>
+                                <li>
                                 <li><a title="Text Editor" href="tinymc.html"><span class="mini-sub-pro">Text Editor</span></a></li>
                                 <li><a title="Dual List Box" href="dual-list-box.html"><span class="mini-sub-pro">Dual List Box</span></a></li>
                             </ul>
                         </li>
                         <li>
-                            <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i class="icon nalika-smartphone-call icon-wrap"></i> <span class="mini-click-non">App views</span></a>
+                            <a class="has-arrow" href="#" aria-expanded="false"><i class="icon nalika-forms icon-wrap"></i> <span class="mini-click-non">Products</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Basic Form Elements" href="basic-form-element.html"><span class="mini-sub-pro">Bc Form Elements</span></a></li>
+                                <li><a title="Advance Form Elements" href="advance-form-element.html"><span class="mini-sub-pro">Ad Form Elements</span></a></li>
+                                <li><a title="Product List" href="{{ url_for('admin.products')}}"><span class="mini-sub-pro">Products</span></a></li>
+                                <li><a title="Product Edit" href="{{ url_for('admin.product_edit')}}"><span class="mini-sub-pro">Product Edit</span></a></li>
+                                <li><a title="Product Detail" href="{{ url_for('admin.product_page')}}"><span class="mini-sub-pro">Product Detail</span></a></li>
+
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="{{ url_for('admin.mail')}}" aria-expanded="false"><i class="icon nalika-smartphone-call icon-wrap"></i> <span class="mini-click-non">Payments</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Product Cart" href="{{ url_for('admin.cart')}}"><span class="mini-sub-pro">Cart</span></a></li>
+                                <li><a title="Product Payment" href="{{ url_for('admin.payment')}}"><span class="mini-sub-pro">Payment</span></a></li>
                                 <li><a title="Notifications" href="notifications.html"><span class="mini-sub-pro">Notifications</span></a></li>
                                 <li><a title="Alerts" href="alerts.html"><span class="mini-sub-pro">Alerts</span></a></li>
                                 <li><a title="Modals" href="modals.html"><span class="mini-sub-pro">Modals</span></a></li>
@@ -119,8 +102,9 @@
                             </ul>
                         </li>
                         <li id="removable">
-                            <a class="has-arrow" href="#" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Pages</span></a>
+                            <a class="has-arrow" href="#" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Login/Register</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Password Meter" href="{{ url_for('admin.pw_meter')}}"><span class="mini-sub-pro">Password Meter</span></a></li>
                                 <li><a title="Login" href="{{ url_for('admin.login')}}"><span class="mini-sub-pro">Login</span></a></li>
                                 <li><a title="Register" href="{{ url_for('admin.register')}}"><span class="mini-sub-pro">Register</span></a></li>
                                 <li><a title="Lock" href="{{ url_for('admin.lock')}}"><span class="mini-sub-pro">Lock</span></a></li>
