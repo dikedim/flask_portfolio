@@ -19,11 +19,13 @@ from .admin.models import login_manager
 from dotenv import load_dotenv
 from sqlalchemy import event
 from app.home.routes import page_not_found, internal_server_error
+from flask_migrate import Migrate
 #from flask_hcaptcha import hCaptcha
 from sqlalchemy.event import listen
 
 
 #hcaptcha = hCaptcha(app)
+migrate = Migrate()
 
 
 # app = Flask(__name__, static_url_path="")
@@ -64,6 +66,7 @@ def register_admin(app):
 
 def register_blog(app):
     db.init_app(app)
+    migrate.init_app(app, db)
     with app.app_context():
         db.create_all()
 
