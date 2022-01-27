@@ -31,7 +31,20 @@ class Posts(db.Model):
     created_on = db.Column(db.DateTime(), default=datetime.utcnow)
     updated_on = db.Column(db.DateTime(), default=datetime.utcnow, onupdate=datetime.utcnow)
     category_id = db.Column(db.Integer(), db.ForeignKey('categories.id'))
-    comments = db.relationship('Comments', backref='title', lazy='dynamic')
+    comments = db.relationship('Comments', backref='posts', lazy='dynamic')
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def get_blog(id):
+        posts = Posts.query.filter_by(id=id).first()
+
+        return posts
 
 #    def get_comments(self):
 #        return Comments.query.filter_by(post_id=posts.id).order_by(Comments.posted_on.desc())
@@ -94,6 +107,19 @@ class Comments(db.Model):
 #    comments = db.relationship('Posts', secondary=post_comments, backref='comments', lazy=True)
     post_id = db.Column(db.Integer(), db.ForeignKey('posts.id'))
 
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.remove(self)
+        db.session.commit()
+
+    def get_comment(id):
+        comment = Comments.query.all(id=id)
+        return comment
+
     def __repr__(self):
         return "<Comments:{}>".format(self.id, self.name)
+
 

@@ -79,6 +79,9 @@ def blog_post(slug):
     poster = Posts.query.filter_by(slug=slug).one()
     postcom = Posts.query.all()
     commenter = Comments.query.all()
+#    #TODO Fix comments
+    comments = Comments.query.filter_by(post_id=id).all()
+    bloga = Posts.query.get(id)
     # posts = Posts.query.get_or_404(posts_id)
     if request.method == 'POST':
         if hcaptcha.verify():
@@ -102,7 +105,7 @@ def blog_post(slug):
 #        postcom = Posts.query.all()
 #        comment = Comments.query.all()
         return render_template("blog-post.html", title=post.title, posts=post, slug=post.slug, postcomment=postcom,
-                               form=form, user=commenter)
+                               form=form, user=commenter, bloga=bloga, comments=comments)
     except sqlalchemy.orm.exc.NoResultFound:
         abort(404)
 

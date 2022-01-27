@@ -236,7 +236,9 @@
 												<img src="{{ url_for('static', filename='images/man1.jpg')}}" alt="">
 												<div class="comment-info">
 													<div class="name">
-														<h6>{{ user.name }}<span>{{ user.posted_on }}</span></h6>
+                                                        {% for comment in comments %}
+														    <h6>{{ user.name }}<span>{{ user.posted_on }}</span></h6>
+                                                        {% endfor %}
 														<a href="#reply">Reply</a>
 													</div>
 													<p>
