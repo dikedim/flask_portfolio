@@ -32,7 +32,6 @@ class Config:
     HCAPTCHA_SITE_KEY = os.environ.get('HCAPTCHA_SITE_KEY')
     HCAPTCHA_SECRET_KEY = os.environ.get('HCAPTCHA_SECRET_KEY')
 
-#    MAP_BOX = "pk.eyJ1IjoiZGlrZWRpbSIsImEiOiJja201Zm9yeHMwZHg2MnhqeGY5Y3FjcjZ2In0.KVWOuFfUnn3G189s9CQ-tg"
     MAIL_DEFAULT_SENDER = MAIL_USERNAME
     WTF_CSRF_ENABLED = True
     WTF_CSRF_SECRET_KEY = os.environ.get('WTF_CSRF_SECRET_KEY')
@@ -52,7 +51,6 @@ class ProductionConfig(Config):
 
 
 class DevelopmentConfig(Config):
-    # MAP_BOX_KEY = "pk.eyJ1IjoiZGlrZWRpbSIsImEiOiJja201Zm9yeHMwZHg2MnhqeGY5Y3FjcjZ2In0.KVWOuFfUnn3G189s9CQ-tg"
     MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')
     MAP_BOX = os.getenv('MAP_BOX_KEY')
     DEBUG = True
