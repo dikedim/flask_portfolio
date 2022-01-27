@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import TextField, BooleanField, TextAreaField, SubmitField, StringField, SelectField
+from wtforms import TextField, BooleanField, TextAreaField, SubmitField, StringField, SelectField, FileField
 from wtforms.validators import DataRequired
 
 
@@ -37,3 +37,10 @@ class CommentForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired("Please enter your name")])
     body = TextAreaField("Message", validators=[DataRequired(" Can't send a blank message")])
     submit = SubmitField("Add Comment")
+
+
+class ClientsForm(FlaskForm):
+    name = StringField("Name", validators=[DataRequired("Please enter your name")])
+    website = StringField("Name", validators=[DataRequired("Please enter your name")])
+    #logo = FileField("logo", default=)
+    submit = SubmitField("Add Client")

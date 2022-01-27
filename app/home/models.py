@@ -123,3 +123,21 @@ class Comments(db.Model):
         return "<Comments:{}>".format(self.id, self.name)
 
 
+class Clients(db.Model):
+    __tablename__ = 'clients'
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    website = db.Column(db.String(255), nullable=False)
+    logo = db.Column(db.String(255), nullable=False, default='/static/images/clients/client_1.png')
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.remove(self)
+        db.session.commit()
+
+    def __repr__(self):
+        return "<Clients:{}>".format(self.id, self.name)
+

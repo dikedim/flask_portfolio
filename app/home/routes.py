@@ -1,7 +1,7 @@
 import os, sqlalchemy
 from app.home import home_bp, mailer
 from flask import (Blueprint, render_template, request, redirect, url_for, flash, jsonify, send_from_directory,
-                   send_file, current_app)
+                   send_file, current_app, render_template_string)
 # from flask import current_app as app
 from app.admin.routes import *
 from app.admin import routes
@@ -11,7 +11,7 @@ import app as ap
 from flask_wtf.csrf import CSRFError
 from dotenv import load_dotenv
 # import sqlalchemy as dba
-from .models import Posts, Category, Jobs, JobType, Comments, db
+from .models import Posts, Category, Jobs, JobType, Comments, db, Clients
 from app.app import hcaptcha
 from flask_sqlalchemy import SQLAlchemy
 
@@ -25,7 +25,9 @@ CONTACT_MAIL = os.environ.get('CONTACT_MAIL')
 
 @home_bp.route('/', methods=['GET', 'POST'])
 def index():
+#    load_clients()
     form = ContactForm()
+    client = Clients.query.all()
     # page = request.args.get('page', 1, type=int)
     # post = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
     #post = Posts.query.all()
@@ -36,21 +38,27 @@ def index():
     #mapapi = MAP_BOX_KEY
     page = request.args.get('page', 1, type=int)
     job = Jobs.query.order_by(Jobs.title.desc()).paginate(page=page, per_page=12, error_out=True)
+
     if request.method == 'POST':
         if hcaptcha.verify():
             send_mail()
             message = 'Thanks, your message was sent successfully.'
             return render_template('index.html', success=True, posts=post, categories=categories, jobs=job,
-                                   jobtypes=jobtype, message=message, mapapi=MAP_BOX_KEY)
+                                   jobtypes=jobtype, message=message, mapapi=MAP_BOX_KEY, client=client)
         else:
             message = 'Please fill out the ReCaptcha!'
         return render_template('index.html', success=False, mapapi=MAP_BOX_KEY, form=form, posts=post, categories=categories,
-                               jobs=job, jobtypes=jobtype, message=message)
+                               jobs=job, jobtypes=jobtype, message=message, client=client)
     else:
         pass
 #    MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')
         return render_template('index.html', mapapi=MAP_BOX_KEY, form=form, posts=post, categories=categories,
-                               jobs=job, jobtypes=jobtype)
+                               jobs=job, jobtypes=jobtype, client=client)
+
+
+#def load_clients():
+#        client = Clients.query.all()
+#        return render_template_string('', client=client)
 
 
 @home_bp.route('/blog', methods=['GET'])
@@ -197,5 +205,6 @@ def order():
 @home_bp.route('/directions', methods=['GET'])
 def directions():
     return render_template('directions.html', mapboxl=MAP_BOX_KEY)
+
 
 

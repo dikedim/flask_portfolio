@@ -730,9 +730,12 @@
 								<div class="col col-m-6 col-t-6 col-d-3 col-d-lg-3">
 									<div class="client-item card-box">
 										<div class="image">
-											<a target="_blank" href="https://www.pydesk.top/">
-												<img src="{{ url_for('static', filename='images/clients/client_3.png')}}" alt="" />
-											</a>
+                                            {% for client in clients %}
+                                                <a target="_blank" href="{{ client.website }}">
+                                                    <img src="{{ url_for('.job_photo', filename=client.logo) }}"
+                                                         alt=""/>
+                                                </a>
+                                            {% endfor %}
 										</div>
 									</div>
 								</div>
