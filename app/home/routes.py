@@ -86,9 +86,9 @@ def blog_post(slug):
     form = CommentForm()
     poster = Posts.query.filter_by(slug=slug).one()
     postcom = Posts.query.all()
-    commenter = Comments.query.all()
+    comments = Comments.query.all()
 #    #TODO Fix comments
-    comments = Comments.query.filter_by(post_id=id).all()
+    commenter = Comments.query.filter_by(post_id=id).all()
     bloga = Posts.query.get(id)
     # posts = Posts.query.get_or_404(posts_id)
     if request.method == 'POST':
@@ -98,21 +98,19 @@ def blog_post(slug):
                 comment = Comments(name=form.name.data, body=form.body.data)
                 db.session.add(comment)
                 db.session.commit()
-                return render_template('blog-post.html', success=True, posts=poster, postcomment=postcom,
+                return render_template('blog-post.html', success=True, poster=poster, postcom=postcom,
                                        user=commenter, message=message)
             else:
                 message = 'Please fill out the ReCaptcha!'
                 flash('All fields are required.')
                 return render_template('index.html', form=form, message=message)
 
-
-
     try:
         #        #post = Posts.query.get_or_404(slug)
         post = Posts.query.filter_by(slug=slug).one()
 #        postcom = Posts.query.all()
 #        comment = Comments.query.all()
-        return render_template("blog-post.html", title=post.title, posts=post, slug=post.slug, postcomment=postcom,
+        return render_template("blog-post.html", title=post.title, post=post, slug=post.slug, postcom=postcom,
                                form=form, user=commenter, bloga=bloga, comments=comments)
     except sqlalchemy.orm.exc.NoResultFound:
         abort(404)

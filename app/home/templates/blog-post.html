@@ -149,7 +149,7 @@
 					<div class="card-wrap col col-m-12 col-t-12 col-d-8 col-d-lg-6" data-simplebar>
 						
 						<!-- Blog Image -->
-						<div class="card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6" style="background-image: url({{ posts.photo }});"></div>
+						<div class="card-image col col-m-12 col-t-12 col-d-4 col-d-lg-6" style="background-image: url({{ post.photo }});"></div>
 						
 						<!--
 							Inner Top
@@ -174,10 +174,10 @@
 
 										<!-- blog detail -->
                                         {#% for post in posts %#}
-										    <h1>{{ posts.title }}</h1>
-										    <div class="blog-detail">{{  posts.date_posted.strftime('%Y-%B-%d') }}</div>
+										    <h1>{{ post.title }}</h1>
+										    <div class="blog-detail">{{  post.date_posted.strftime('%Y-%B-%d') }}</div>
 
-										    <div class="blog-content">{{ posts.content }}</div>
+										    <div class="blog-content">{{ post.content }}</div>
                                         {#% endfor %#}
                                         <!-- blog content -->
 										<!--div class="blog-content">
@@ -237,12 +237,12 @@
 												<div class="comment-info">
 													<div class="name">
                                                         {% for comment in comments %}
-														    <h6>{{ user.name }}<span>{{ user.posted_on }}</span></h6>
+														    <h6>{{ comment.name }}<span>{{ comment.posted_on }}</span></h6>
                                                         {% endfor %}
 														<a href="#reply">Reply</a>
 													</div>
 													<p>
-														Kept in sent gave feel will oh it we. Has pleasure procured men 
+														Kept in sent gave feel will oh it we. Has pleasure procured men
 														laughing shutters nay.
 													</p>
 												</div>
@@ -250,23 +250,25 @@
 
 											<!-- comment item -->
 											<li>
-                                                {% if postcomment.comments %}
-                                                    {% if postcomment.comments.count() > 0 %}
-                                                        <img src="{#  #}{ url_for('static', filename='images/man1.jpg') }}" alt="">
-                                                        <img src="{{ url_for('.job_photo', filename=comments.avatar) }}">
-                                                        <div class="comment-info">
-                                                            <div class="name">
-                                                                <h6>{{ user.name }}<span>{{ user.posted_on }}</span></h6>
-                                                                <a href="#reply">Reply</a>
+                                                {% for comment in comments %}
+                                                    {#% if postcom.comments %#}
+                                                        {#% if postcom.comments.count() > 0 %#}
+                                                            <img src="{{ comments.avatar }}">
+                                                            <div class="comment-info">
+                                                                <div class="name">
+                                                                    <h6>{{ comments.name }}<span>{{ comments.posted_on }}</span>
+                                                                    </h6>
+                                                                    <a href="#reply">Reply</a>
+                                                                </div>
+                                                                <p>
+
+                                                                    {{ comment.body }}
+
+                                                                </p>
                                                             </div>
-                                                            <p>
-                                                                {% for comment in user.postcomment %}
-                                                                    {{ user.body }}
-                                                                {% endfor %}
-                                                            </p>
-                                                        </div>
-                                                    {% endif %}
-                                                {% endif %}
+                                                        {#% endif %#}
+                                                    {#% endif %#}
+                                                {% endfor %}
 											</li>
 
 											<!-- comment item -->
