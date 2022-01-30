@@ -650,102 +650,31 @@
 							<div class="row client-items">
 
 								<!-- client item -->
-								<div class="col col-m-6 col-t-6 col-d-3 col-d-lg-3">
-									<div class="client-item card-box">
-										<div class="image">
-											<a target="_blank" href="https://www.skomi.com.ng">
-												<img src="{{ url_for('static', filename='images/clients/skomi.png')}}" alt="" />
-											</a>
-										</div>
-									</div>
-								</div>
-
-								<!-- client item -->
-								<div class="col col-m-6 col-t-6 col-d-3 col-d-lg-3">
-									<div class="client-item card-box">
-										<div class="image">
-											<a target="_blank" href="https://laloma.org">
-												<img src="{{ url_for('static', filename='images/clients/laloma.png')}}" alt="" />
-											</a>
-										</div>
-									</div>
-								</div>
-
-								<!-- client item -->
-								<div class="col col-m-6 col-t-6 col-d-3 col-d-lg-3">
-									<div class="client-item card-box">
-										<div class="image">
-											<a target="_blank" href="https://ckcabjalumni.com">
-												<img src="{{ url_for('static', filename='images/clients/ckc.png')}}" alt="" />
-											</a>
-										</div>
-									</div>
-								</div>
-
-								<!-- client item -->
-								<div class="col col-m-6 col-t-6 col-d-3 col-d-lg-3">
-									<div class="client-item card-box">
-										<div class="image">
-											<a target="_blank" href="https://vintagecarrentals.ng/">
-												<img src="{{ url_for('static', filename='images/clients/vintagecar.png')}}" alt="" />
-											</a>
-										</div>
-									</div>
-								</div>
-
-								<!-- client item -->
-								<div class="col col-m-6 col-t-6 col-d-3 col-d-lg-3">
-									<div class="client-item card-box">
-										<div class="image">
-											<a target="_blank" href="https://www.yabanhotel.com.ng">
-												<img src="{{ url_for('static', filename='images/clients/yaban.png')}}" alt="" />
-											</a>
-										</div>
-									</div>
-								</div>
-
-								<!-- client item -->
-								<div class="col col-m-6 col-t-6 col-d-3 col-d-lg-3">
-									<div class="client-item card-box">
-										<div class="image">
-											<a target="_blank" href="https://www.mcity.com.ng">
-												<img src="{{ url_for('static', filename='images/clients/mcity.png')}}" alt="" />
-											</a>
-										</div>
-									</div>
-								</div>
-
-								<!-- client item -->
-								<div class="col col-m-6 col-t-6 col-d-3 col-d-lg-3">
+								<!--div class="col col-m-6 col-t-6 col-d-3 col-d-lg-3">
 									<div class="client-item card-box">
 										<div class="image">
 											<a target="_blank" href="https://www.tehetem.com">
-												<img src="{{ url_for('static', filename='images/clients/client_3.png')}}" alt="" />
+												<img src="{#  #}{ url_for('static', filename='images/clients/client_3.png')}}" alt="" />
 											</a>
 										</div>
 									</div>
-								</div>
+								</div-->
 
-								<!-- client item -->
-								<div class="col col-m-6 col-t-6 col-d-3 col-d-lg-3">
-									<div class="client-item card-box">
-										<div class="image">
-                                            {% for client in clients %}
+								<!-- client items -->
+                                {% for client in clients %}
+                                    <div class="col col-m-6 col-t-6 col-d-3 col-d-lg-3">
+                                        <div class="client-item card-box">
+                                            <div class="image">
                                                 <a target="_blank" href="{{ client.website }}">
-                                                    <img src="{{ url_for('.job_photo', filename=client.logo) }}"
-                                                         alt=""/>
+                                                    <img src="{{ client.logo }}" alt=""/>
                                                 </a>
-                                            {% endfor %}
-										</div>
-									</div>
-								</div>
-
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
 							</div>
-
 						</div>
-
 					</div>
-
 				</div>
 			</div>
 
@@ -1705,7 +1634,7 @@
                                             <div class="box-item card-box">
                                                 <div class="image">
                                                     <a href="{{ url_for('home_bp.blog_post', slug=post.slug)}}">
-                                                        <img s src="{{ post.photo }}" alt="{{ url_for('static', filename='images/blog/blog1.jpg')}}" />
+                                                        <img src="{{ post.photo }}" alt="{{ url_for('static', filename='images/blog/blog1.jpg')}}" />
                                                         <span class="info">
                                                             {% if post.category_id == 1 %} {# travel #}
                                                                 <span class="icon la la-motorcycle"></span>

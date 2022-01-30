@@ -27,7 +27,7 @@ CONTACT_MAIL = os.environ.get('CONTACT_MAIL')
 def index():
 #    load_clients()
     form = ContactForm()
-    client = Clients.query.all()
+    clients = Clients.query.all()
     # page = request.args.get('page', 1, type=int)
     # post = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
     #post = Posts.query.all()
@@ -44,16 +44,16 @@ def index():
             send_mail()
             message = 'Thanks, your message was sent successfully.'
             return render_template('index.html', success=True, posts=post, categories=categories, jobs=job,
-                                   jobtypes=jobtype, message=message, mapapi=MAP_BOX_KEY, client=client)
+                                   jobtypes=jobtype, message=message, mapapi=MAP_BOX_KEY, clients=clients)
         else:
             message = 'Please fill out the ReCaptcha!'
         return render_template('index.html', success=False, mapapi=MAP_BOX_KEY, form=form, posts=post, categories=categories,
-                               jobs=job, jobtypes=jobtype, message=message, client=client)
+                               jobs=job, jobtypes=jobtype, message=message, clients=clients)
     else:
         pass
 #    MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')
         return render_template('index.html', mapapi=MAP_BOX_KEY, form=form, posts=post, categories=categories,
-                               jobs=job, jobtypes=jobtype, client=client)
+                               jobs=job, jobtypes=jobtype, clients=clients)
 
 
 #def load_clients():
@@ -205,6 +205,4 @@ def order():
 @home_bp.route('/directions', methods=['GET'])
 def directions():
     return render_template('directions.html', mapboxl=MAP_BOX_KEY)
-
-
 
