@@ -15,7 +15,7 @@
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicons/fav.ico') }}">
 
-    <link rel="stylesheet" type="text/sass" href="{{ url_for('static', filename='css/error_2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/error2.css') }}">
 
 </head>
 
@@ -27,7 +27,11 @@
 	<div class="left-section">
 		<div class="inner-content">
 			<h1 class="heading">404</h1>
-			<p class="subheading">Looks like the page you were looking for is no longer here.</p>
+			<p class="subheading">Oops! Looks like the page you were looking for is no longer here.
+                <br> <a href="#" onclick="goBack()">Go Back </a>
+                to the previous page.</p>
+
+        <br/>
 		</div>
 	</div>
 	<div class="right-section">
@@ -74,4 +78,9 @@
 	</div>
 </div>
 </body>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 </html>

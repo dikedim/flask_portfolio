@@ -204,3 +204,7 @@ def order():
 def directions():
     return render_template('directions.html', mapboxl=MAP_BOX_KEY)
 
+
+@home_bp.route('/back', methods=['GET'])
+def back():
+    return redirect(request.referrer)
