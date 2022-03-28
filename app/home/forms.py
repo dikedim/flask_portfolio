@@ -19,7 +19,7 @@ class Email:
         return body
 
 
-plan_types = ('0', 'Please select'),('1', 'Basic'), ('2', 'Plus'), ('3', 'Pro'), ('4', 'Max')
+plan_types = ('0', 'Please select'), ('1', 'Basic'), ('2', 'Plus'), ('3', 'Pro'), ('4', 'Max')
 additional_gigs = ('0', ''), ('1', 'Photo'), ('2', 'Complete Photography')
 
 
@@ -42,5 +42,5 @@ class CommentForm(FlaskForm):
 class ClientsForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired("Please enter your name")])
     website = StringField("Name", validators=[DataRequired("Please enter your name")])
-    #logo = FileField("logo", default=)
+#    #logo = FileField("logo", default=)
     submit = SubmitField("Add Client")

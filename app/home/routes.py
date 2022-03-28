@@ -1,4 +1,4 @@
-import os, sqlalchemy
+import os, sqlalchemy, timeago
 from app.home import home_bp, mailer
 from flask import (Blueprint, render_template, request, redirect, url_for, flash, jsonify, send_from_directory,
                    send_file, current_app, render_template_string)
@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 from .models import Posts, Category, Jobs, JobType, Comments, db, Clients
 from app.app import hcaptcha
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import func
 
 load_dotenv()
 
@@ -78,7 +79,7 @@ def archive(selected_date):
     post = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
     category = Category.query.all()
     # posts = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
-    return render_template("blog.html", posts=post, categories=category, selected_date=selected_date)
+    return render_template("archive.html", posts=post, categories=category, selected_date=selected_date)
 
 
 @home_bp.route('/blog/<string:slug>', methods=['GET', 'POST'])
@@ -86,9 +87,9 @@ def blog_post(slug):
     form = CommentForm()
     poster = Posts.query.filter_by(slug=slug).one()
     postcom = Posts.query.all()
-    comments = Comments.query.all()
+    commenter = Comments.query.all()
 #    #TODO Fix comments
-    commenter = Comments.query.filter_by(post_id=id).all()
+    comments = Comments.query.filter_by(post_id=id).all()
     bloga = Posts.query.get(id)
     # posts = Posts.query.get_or_404(posts_id)
     if request.method == 'POST':
@@ -98,8 +99,8 @@ def blog_post(slug):
                 comment = Comments(name=form.name.data, body=form.body.data)
                 db.session.add(comment)
                 db.session.commit()
-                return render_template('blog-post.html', success=True, poster=poster, postcom=postcom,
-                                       user=commenter, message=message)
+                return render_template('blog-post.html', success=True, poster=poster, postcom=poster,
+                                       user=commenter, message=message, post=poster)
             else:
                 message = 'Please fill out the ReCaptcha!'
                 flash('All fields are required.')
@@ -204,7 +205,3 @@ def order():
 def directions():
     return render_template('directions.html', mapboxl=MAP_BOX_KEY)
 
-
-@home_bp.route('/back', methods=['GET'])
-def back():
-    return redirect(request.referrer)

@@ -20,12 +20,15 @@ from dotenv import load_dotenv
 from sqlalchemy import event
 from app.home.routes import page_not_found, internal_server_error
 from flask_migrate import Migrate
+from flask_moment import Moment
 #from flask_hcaptcha import hCaptcha
 from sqlalchemy.event import listen
 
 
 #hcaptcha = hCaptcha(app)
 migrate = Migrate()
+moment = Moment()
+
 
 
 # app = Flask(__name__, static_url_path="")
@@ -94,6 +97,7 @@ def create_app():
     hcaptcha.init_app(app)
     app.register_error_handler(404, page_not_found)
     app.register_error_handler(500, internal_server_error)
+    moment.init_app(app)
     # insert_initial_values()
     load_dotenv()
 

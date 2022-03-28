@@ -3,6 +3,7 @@ from sqlalchemy.orm import mapper
 # from yourapplication.database import metadata, db_session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from sqlalchemy.ext.hybrid import hybrid_property
 import sqlalchemy
 
 
@@ -99,13 +100,18 @@ class JobType(db.Model):
 
 class Comments(db.Model):
     __tablename__ = 'comments'
-    id = db.Column(db.Integer(), primary_key=True)
+    id = db.Column(db.Integer(), primary_key=True, nullable=False)
     name = db.Column(db.String(255), nullable=False)
     body = db.Column(db.Text)
     posted_on = db.Column(db.DateTime(), default=datetime.utcnow)
+    post = db.relationship('Posts', secondary=post_comments, backref='posts', lazy=True)
     avatar = db.Column(db.String(255), nullable=False, default='/static/images/man1.jpg')
 #    comments = db.relationship('Posts', secondary=post_comments, backref='comments', lazy=True)
     post_id = db.Column(db.Integer(), db.ForeignKey('posts.id'))
+
+    @hybrid_property
+    def post_comment_id(self):
+        return self.posts.id
 
     def save(self):
         db.session.add(self)
