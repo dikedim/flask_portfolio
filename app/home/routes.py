@@ -85,13 +85,14 @@ def archive(selected_date):
 @home_bp.route('/blog/<string:slug>', methods=['GET', 'POST'])
 def blog_post(slug):
     form = CommentForm()
-    poster = Posts.query.filter_by(slug=slug).one()
-    postcom = Posts.query.all()
-    commenter = Comments.query.all()
-#    #TODO Fix comments
-    comments = Comments.query.filter_by(post_id=id).all()
-    bloga = Posts.query.get(id)
+    post = Posts.query.filter_by(slug=slug).one()
+    comments = Comments.query.filter_by(id=post.id).all()
+#    postcom = Posts.query.filter_by(id=post.id)
+#    commenter = Comments.query.all()
+#    bloga = Posts.query.get(id)
     # posts = Posts.query.get_or_404(posts_id)
+    #    #TODO Fix comments
+    #postcomments()
     if request.method == 'POST':
         if hcaptcha.verify():
             if form.validate():
@@ -99,8 +100,7 @@ def blog_post(slug):
                 comment = Comments(name=form.name.data, body=form.body.data)
                 db.session.add(comment)
                 db.session.commit()
-                return render_template('blog-post.html', success=True, poster=poster, postcom=poster,
-                                       user=commenter, message=message, post=poster)
+                return render_template('blog-post.html', success=True, message=message, post=post)
             else:
                 message = 'Please fill out the ReCaptcha!'
                 flash('All fields are required.')
@@ -111,10 +111,16 @@ def blog_post(slug):
         post = Posts.query.filter_by(slug=slug).one()
 #        postcom = Posts.query.all()
 #        comment = Comments.query.all()
-        return render_template("blog-post.html", title=post.title, post=post, slug=post.slug, postcom=postcom,
-                               form=form, user=commenter, bloga=bloga, comments=comments)
+        return render_template("blog-post.html", title=post.title, post=post, slug=post.slug,
+                               form=form, comments=comments)
     except sqlalchemy.orm.exc.NoResultFound:
         abort(404)
+
+
+def postcomments():
+    post = Posts.query.get(id)
+    comments = Comments.query.filter_by(id=post.id).all()
+    return render_template("blog-post.html", title=post.title, post=post, slug=post.slug, comments=comments)
 
 
 @home_bp.route('/jobs/', methods=['GET'])

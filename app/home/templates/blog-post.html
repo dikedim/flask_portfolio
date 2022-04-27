@@ -199,31 +199,27 @@
 
                                     <!-- comments items -->
                                     <ul class="post-comments">
-
-
-
                                         <!-- comment item -->
                                         {% for comment in comments %}
                                             <li>
-                                            <img src="{{ comment.avatar }}" alt="" />
-                                            <div class="comment-info">
-                                                <div class="name">
-                                                    <h6>
-                                                        {{ comment.name }} {{moment(comment.posted_on).fromNow() }}
-                                                    </h6>
-                                                    <a href="#reply">Reply</a>
+                                                <img src="{{ comment.avatar }}" alt=""/>
+                                                <div class="comment-info">
+                                                    <div class="name">
+                                                        <h6>
+                                                            {{ comment.name }} {{ moment(comment.posted_on).fromNow() }}
+                                                        </h6>
+                                                        <a href="#reply">Reply</a>
+                                                    </div>
+                                                    <p>{{ comment.body }}</p>
                                                 </div>
-                                                <p>{{ comment.body }}</p>
-                                            </div>
+                                            </li>
                                         {% endfor %}
-                                        </li>
-
                                         <!-- comment item -->
                                         <li>
                                             <img src="{{ url_for('static', filename='images/man1.jpg')}}" alt="">
                                             <div class="comment-info">
                                                 <div class="name">
-                                                    <h6>John Doe <span>6 hour ago</span></h6>
+                                                    <h6>John John <span>8 hour ago</span></h6>
                                                     <a href="#reply">Reply</a>
                                                 </div>
                                                 <p>
@@ -232,7 +228,6 @@
                                                 </p>
                                             </div>
                                         </li>
-
                                     </ul>
 
                                 </div>

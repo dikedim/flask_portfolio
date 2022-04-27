@@ -1,10 +1,10 @@
-from sqlalchemy import Table, Column, Integer, String
-from sqlalchemy.orm import mapper
+# from sqlalchemy import Table, Column, Integer, String
+# from sqlalchemy.orm import mapper
 # from yourapplication.database import metadata, db_session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from sqlalchemy.ext.hybrid import hybrid_property
-import sqlalchemy
+# import sqlalchemy
 
 
 db = SQLAlchemy()
@@ -47,8 +47,8 @@ class Posts(db.Model):
 
         return posts
 
-#    def get_comments(self):
-#        return Comments.query.filter_by(post_id=posts.id).order_by(Comments.posted_on.desc())
+    def get_comments(self):
+        return Comments.query.filter_by(post_id=Posts.id).order_by(Comments.posted_on)
 
     def __repr__(self):
         return "<{}:{}>".format(self.id, self.title[:10])
@@ -107,7 +107,7 @@ class Comments(db.Model):
     post = db.relationship('Posts', secondary=post_comments, backref='posts', lazy=True)
     avatar = db.Column(db.String(255), nullable=False, default='/static/images/man1.jpg')
 #    comments = db.relationship('Posts', secondary=post_comments, backref='comments', lazy=True)
-    post_id = db.Column(db.Integer(), db.ForeignKey('posts.id'))
+    post_id = db.Column(db.Integer(), db.ForeignKey('posts.id'), nullable=False)
 
     @hybrid_property
     def post_comment_id(self):
@@ -146,4 +146,3 @@ class Clients(db.Model):
 
     def __repr__(self):
         return "<Clients:{}>".format(self.id, self.name)
-

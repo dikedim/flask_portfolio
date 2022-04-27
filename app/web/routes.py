@@ -7,7 +7,7 @@ from app.home.models import Jobs
 #def web_portf(web_id):
 #
 #    jobs = fetch_jobs(app)[web_id]
-#    return render_template("web_porfolio.html")
+#    return render_template("web_portfolio.html")
 
 
 @web_bp.route('/portfolio/web', methods=['GET'])
