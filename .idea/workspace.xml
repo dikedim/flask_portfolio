@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/app/home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/home/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/home/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/home/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/home/templates/blog-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/home/templates/blog-post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/web/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -414,7 +413,8 @@
       <workItem from="1648077415766" duration="641000" />
       <workItem from="1648474315745" duration="18205000" />
       <workItem from="1648585454614" duration="3124000" />
-      <workItem from="1651083665201" duration="12331000" />
+      <workItem from="1651083665201" duration="12536000" />
+      <workItem from="1651258611137" duration="13100000" />
     </task>
     <task id="LOCAL-00001" summary="Added base working template">
       <created>1594733917155</created>
@@ -696,7 +696,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648509395027</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="edited comments">
+      <created>1651099850545</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1651099850545</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView">
@@ -788,7 +795,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="edited comments" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/flask_portfolio$Flask__wsgi_py_.coverage" NAME="Flask (wsgi.py) Coverage Results" MODIFIED="1651091997572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/flask_portfolio$Flask__wsgi_py_.coverage" NAME="Flask (wsgi.py) Coverage Results" MODIFIED="1651265600272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/static/css/error.scss" />

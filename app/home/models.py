@@ -32,7 +32,7 @@ class Posts(db.Model):
     created_on = db.Column(db.DateTime(), default=datetime.utcnow)
     updated_on = db.Column(db.DateTime(), default=datetime.utcnow, onupdate=datetime.utcnow)
     category_id = db.Column(db.Integer(), db.ForeignKey('categories.id'))
-    comments = db.relationship('Comments', backref='posts', lazy='dynamic')
+    comments = db.relationship('Comments', backref='title', lazy='dynamic')
 
     def save(self):
         db.session.add(self)

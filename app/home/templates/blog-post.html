@@ -29,7 +29,7 @@
 	<link rel="stylesheet" href="{{url_for('static', filename='css/line-awesome.css')}}" />
 	<link rel="stylesheet" href="{{url_for('static', filename='css/magnific-popup.css')}}" />
 	<link rel="stylesheet" href="{{url_for('static', filename='css/animate.css')}}" />
-	<link rel="stylesheet" href="{{url_for('static', filename='css/simplebar.css')}}" />
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/simplebar.css')}}">
 
 	<!-- theme colors blue, green, orange, red, pink, purple -->
 	<link rel="stylesheet" href="{{url_for('static', filename='css/theme-colors/orange.css')}}" />
@@ -78,25 +78,25 @@
 			<div class="top-menu">
 				<ul>
 					<li>
-						<a href="#home-card">
+						<a href="{{ url_for('home_bp.index')}}">
 							<span class="icon la la-home"></span>
 							<span class="link">Home</span>
 						</a>
 					</li>
 					<li>
-						<a href="#about-card">
+						<a href="{{ url_for('.index', _anchor='about-card')}}">
 							<span class="icon la la-user"></span>
 							<span class="link">About</span>
 						</a>
 					</li>
 					<li>
-						<a href="#resume-card">
+						<a href="{{ url_for('.index', _anchor='resume-card')}}">
 							<span class="icon la la-gear"></span>
 							<span class="link">Resume</span>
 						</a>
 					</li>
 					<li>
-						<a href="#works-card">
+						<a href="{{ url_for('.index', _anchor='works-card')}}">
 							<span class="icon la la-eye"></span>
 							<span class="link">Portfolio</span>
 						</a>
@@ -108,7 +108,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#contacts-card">
+						<a href="{{ url_for('.index', _anchor='contacts-card')}}">
 							<span class="icon la la-envelope"></span>
 							<span class="link">Contacts</span>
 						</a>
@@ -178,7 +178,7 @@
                                             <!-- blog detail -->
                                             <div class="blog-detail">{{ post.date_posted.strftime('%Y-%B-%d') }}</div>
                                             <!-- blog content -->
-                                            <div class="blog-content">{{ post.content }}</div>
+                                            <div class="blog-content">{{ post.content | safe }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -200,23 +200,25 @@
                                     <!-- comments items -->
                                     <ul class="post-comments">
                                         <!-- comment item -->
-                                        {% for comment in comments %}
-                                            <li>
-                                                <img src="{{ comment.avatar }}" alt=""/>
-                                                <div class="comment-info">
-                                                    <div class="name">
-                                                        <h6>
-                                                            {{ comment.name }} {{ moment(comment.posted_on).fromNow() }}
-                                                        </h6>
-                                                        <a href="#reply">Reply</a>
+                                        {% if post.comments %}
+                                            {% for comment in post.comments %}
+                                                <li>
+                                                    <img src="{{ comment.avatar }}" alt=""/>
+                                                    <div class="comment-info">
+                                                        <div class="name">
+                                                            <h6>
+                                                                {{ comment.name }} {{ moment(comment.posted_on).fromNow() }}
+                                                            </h6>
+                                                            <a href="#reply">Reply</a>
+                                                        </div>
+                                                        <p>{{ comment.body }}</p>
                                                     </div>
-                                                    <p>{{ comment.body }}</p>
-                                                </div>
-                                            </li>
-                                        {% endfor %}
+                                                </li>
+                                            {% endfor %}
+                                        {% endif %}
                                         <!-- comment item -->
-                                        <li>
-                                            <img src="{{ url_for('static', filename='images/man1.jpg')}}" alt="">
+                                        <!--li>
+                                            <img src="{#  #}{ url_for('static', filename='images/man1.jpg')}}" alt="">
                                             <div class="comment-info">
                                                 <div class="name">
                                                     <h6>John John <span>8 hour ago</span></h6>
@@ -227,7 +229,7 @@
                                                     laughing shutters nay.
                                                 </p>
                                             </div>
-                                        </li>
+                                        </li-->
                                     </ul>
 
                                 </div>
@@ -284,7 +286,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <!--

@@ -85,14 +85,9 @@ def archive(selected_date):
 @home_bp.route('/blog/<string:slug>', methods=['GET', 'POST'])
 def blog_post(slug):
     form = CommentForm()
+## TODO Add nested comments
     post = Posts.query.filter_by(slug=slug).one()
-    comments = Comments.query.filter_by(id=post.id).all()
-#    postcom = Posts.query.filter_by(id=post.id)
-#    commenter = Comments.query.all()
-#    bloga = Posts.query.get(id)
-    # posts = Posts.query.get_or_404(posts_id)
-    #    #TODO Fix comments
-    #postcomments()
+    comments = Comments.query.all()
     if request.method == 'POST':
         if hcaptcha.verify():
             if form.validate():
@@ -100,27 +95,18 @@ def blog_post(slug):
                 comment = Comments(name=form.name.data, body=form.body.data)
                 db.session.add(comment)
                 db.session.commit()
-                return render_template('blog-post.html', success=True, message=message, post=post)
+                return render_template('blog-post.html', success=True, message=message, post=post, comments=comments)
             else:
                 message = 'Please fill out the ReCaptcha!'
                 flash('All fields are required.')
-                return render_template('index.html', form=form, message=message)
+                return render_template('index.html', form=form, message=message, comments=comments)
 
     try:
-        #        #post = Posts.query.get_or_404(slug)
         post = Posts.query.filter_by(slug=slug).one()
-#        postcom = Posts.query.all()
-#        comment = Comments.query.all()
-        return render_template("blog-post.html", title=post.title, post=post, slug=post.slug,
-                               form=form, comments=comments)
+        return render_template("blog-post.html", title=post.title, post=post, slug=post.slug, comments=comments,
+                               form=form)
     except sqlalchemy.orm.exc.NoResultFound:
         abort(404)
-
-
-def postcomments():
-    post = Posts.query.get(id)
-    comments = Comments.query.filter_by(id=post.id).all()
-    return render_template("blog-post.html", title=post.title, post=post, slug=post.slug, comments=comments)
 
 
 @home_bp.route('/jobs/', methods=['GET'])
