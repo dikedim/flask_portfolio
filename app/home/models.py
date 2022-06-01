@@ -146,3 +146,64 @@ class Clients(db.Model):
 
     def __repr__(self):
         return "<Clients:{}>".format(self.id, self.name)
+
+
+class Degrees(db.Model):
+    __tablename__ = 'degrees'
+    id = db.Column(db.Integer(), primary_key=True)
+    school = db.Column(db.String(255), nullable=False)
+    date = db.Column(db.String(255), nullable=False)
+    city = db.Column(db.String(255), nullable=False)
+    degree = db.Column(db.String(255), nullable=False)
+    faculty = db.Column(db.String(255), nullable=False)
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.remove(self)
+        db.session.commit()
+
+    def __repr__(self):
+        return "<Degrees:[}>".format(self.id, self.degree)
+
+
+class Experience(db.Model):
+    __tablename__ = 'experience'
+    id = db.Column(db.Integer(), primary_key=True)
+    title = db.Column(db.Integer(), primary_key=True)
+    date = db.Column(db.String(255), nullable=False)
+    company = db.Column(db.String(255), nullable=False)
+    subheading = db.Column(db.String(255), nullable=False)
+    role = db.Column(db.Text)
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.remove(self)
+        db.session.commit()
+
+    def __repr__(self):
+        return "<Experience:[}>".format(self.id, self.title)
+
+
+class Certification(db.Model):
+    __tablename__ = 'certification'
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    date = db.Column(db.String(255), nullable=False)
+    mode = db.Column(db.String(255), nullable=False)
+    title = db.Column(db.String(255), nullable=False)
+    organization = db.Column(db.String(255), nullable=False)
+    certificate = db.Column(db.String(255), nullable=False, default='/static/images/man1.jpg')
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.remove(self)
+        db.session.commit()

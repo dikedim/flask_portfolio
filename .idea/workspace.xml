@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c1edacd-80a8-4de2-be4c-28b496cbd2a0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/static/images/clients/_lookitup.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/images/clients/skomi_.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/home/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/home/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/home/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/home/templates/blog-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/home/templates/blog-post.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -414,7 +414,8 @@
       <workItem from="1648474315745" duration="18205000" />
       <workItem from="1648585454614" duration="3124000" />
       <workItem from="1651083665201" duration="12536000" />
-      <workItem from="1651258611137" duration="13100000" />
+      <workItem from="1651258611137" duration="13203000" />
+      <workItem from="1654071455740" duration="2112000" />
     </task>
     <task id="LOCAL-00001" summary="Added base working template">
       <created>1594733917155</created>
@@ -703,7 +704,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651099850545</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Fixed base vairant comments">
+      <created>1651276802033</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1651276802033</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TodoView">
@@ -767,7 +775,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added first iteration of blog pages" />
     <MESSAGE value="Link portfolio and blog to backend" />
     <MESSAGE value="Fixed blog and portfolio pages" />
     <MESSAGE value="Fix image load for portfolio" />
@@ -792,10 +799,11 @@
     <MESSAGE value="blog comments section from db" />
     <MESSAGE value="Fixed error pages" />
     <MESSAGE value="edited comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="edited comments" />
+    <MESSAGE value="Fixed base vairant comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed base vairant comments" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/flask_portfolio$Flask__wsgi_py_.coverage" NAME="Flask (wsgi.py) Coverage Results" MODIFIED="1651265600272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/flask_portfolio$Flask__wsgi_py_.coverage" NAME="Flask (wsgi.py) Coverage Results" MODIFIED="1654072312508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/static/css/error.scss" />
