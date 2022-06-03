@@ -828,19 +828,22 @@
 									<div style="margin-top: 30px" class="title"><span >Additional</span> Certification</div>
 
 									<!-- resume items -->
-									<div class="resume-items card-box">
-
+									{% for certifications in certification %}
+                                        <div class="resume-items card-box">
 										<!-- resume item -->
-										<div class="resume-item">
-											<div class="name">Google</div>
-											<div class="date">2021 <span>|</span> Online</div>
-											<p>
-												Google IT Support Professional Certificate: Technical Support Fundamentals  <br />
-                                                Google | Coursera <br />
-                                                <a href="{{url_for('static', filename='docs/Coursera-AEZ556WTJFND.pdf') }}" target="_blank"><span><i class="icon la la-eye"></i> View certificate</span></a>
-											</p>
-										</div>
-                                    </div>
+                                            <div class="resume-item">
+                                                <div class="name">{{ certifications.name }}</div>
+                                                <div class="date">{{ certifications.date }}
+                                                    <span>|</span> {{ certifications.mode }}</div>
+                                                <p>
+                                                    {{ certifications.title }}<br/>
+                                                    {{ certifications.organization }} <br/>
+                                                    <a href="{{ certifications.certificate }}"
+                                                       target="_blank"><span><i class="icon la la-eye"></i> View certificate</span></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
                                     <!-- resume items -->
 									<div style="margin-top: 20px" class="resume-items card-box">
 

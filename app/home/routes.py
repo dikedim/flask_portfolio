@@ -11,7 +11,7 @@ import app as ap
 from flask_wtf.csrf import CSRFError
 from dotenv import load_dotenv
 # import sqlalchemy as dba
-from .models import Posts, Category, Jobs, JobType, Comments, db, Clients
+from .models import Posts, Category, Jobs, JobType, Comments, db, Clients, Degrees, Certification, Experience
 from app.app import hcaptcha
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
@@ -27,6 +27,9 @@ CONTACT_MAIL = os.environ.get('CONTACT_MAIL')
 @home_bp.route('/', methods=['GET', 'POST'])
 def index():
 #    load_clients()
+    degree = Degrees.query.all()
+    certification = Certification.query.all()
+    experience = Experience.query.all()
     form = ContactForm()
     clients = Clients.query.all()
     # page = request.args.get('page', 1, type=int)
@@ -49,12 +52,14 @@ def index():
         else:
             message = 'Please fill out the ReCaptcha!'
         return render_template('index.html', success=False, mapapi=MAP_BOX_KEY, form=form, posts=post, categories=categories,
-                               jobs=job, jobtypes=jobtype, message=message, clients=clients)
+                               jobs=job, jobtypes=jobtype, message=message, clients=clients, degree=degree,
+                               certification=certification, experience=experience)
     else:
         pass
 #    MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')
         return render_template('index.html', mapapi=MAP_BOX_KEY, form=form, posts=post, categories=categories,
-                               jobs=job, jobtypes=jobtype, clients=clients)
+                               jobs=job, jobtypes=jobtype, clients=clients, degree=degree, certification=certification,
+                               experience=experience)
 
 
 #def load_clients():
