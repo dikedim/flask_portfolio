@@ -778,20 +778,8 @@
 									<!-- resume items -->
 									<div class="resume-items card-box">
 
-										<!-- resume item -->
-										<div class="resume-item">
-											<div class="name">Tver State Technical University</div>
-											<div class="date">In-view <span>|</span> Tver, Russia</div>
-											<p>
-												Doctorate Degree <br />
-                                                Systems Analysis, Management and Information Processing <br />
-                                                Faculty of Information Systems, <br />
-                                                Tver, Russian Federation
-											</p>
-										</div>
-
                                         <!-- resume item -->
-										<div class="resume-item">
+										<!--div class="resume-item">
 											<div class="name">Tver State Technical University</div>
 											<div class="date">2014-2018 <span>|</span> Tver, Russia</div>
 											<p>
@@ -799,17 +787,24 @@
                                                 Faculty of Information Systems, <br />
                                                 Tver, Russian Federation
 											</p>
-										</div>
+										</div-->
 
 										<!-- resume item -->
-										<div class="resume-item">
-											<div class="name">Tver State Technical University</div>
-											<div class="date">2004-2011 <span>|</span> Tver, Russia</div>
-											<p>
-												Master's Degree in Computer Systems Engineering <br />
-                                                Faculty of Automated Systems, <br /> Tver, Russian Federation
-											</p>
-										</div>
+                                        {% for degrees in degree %}
+                                            <div class="resume-item">
+                                                <div class="name">{{ degrees.degree }}</div>
+                                                <div class="date">{{ degrees.date }}
+                                                    <span>|</span> {{ degrees.city | truncate(17, True) | safe }}
+                                                </div>
+                                                <p><b>{{ degrees.major }}</b> </p>
+                                                <p>
+                                                    {{ degrees.school | safe }}. <br/>
+                                                    {{ degrees.faculty }} <br/> {{ degrees.city }}. <br/>
+                                                    <a href=""
+                                                       target="_blank"><span><i class="icon la la-eye"></i> View Degree</span></a>
+                                                </p>
+                                            </div>
+                                        {% endfor %}
 
                                         <!-- resume item -->
 										<!--div class="resume-item">
@@ -829,7 +824,8 @@
 
 									<!-- resume items -->
 									{% for certifications in certification %}
-                                        <div class="resume-items card-box">
+                                        <!--div class="resume-items card-box" -->
+                                        <div style="margin-top: 20px" class="resume-items card-box">
 										<!-- resume item -->
                                             <div class="resume-item">
                                                 <div class="name">{{ certifications.name }}</div>

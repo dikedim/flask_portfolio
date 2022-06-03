@@ -153,6 +153,7 @@ class Degrees(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     school = db.Column(db.String(255), nullable=False)
     date = db.Column(db.String(255), nullable=False)
+    major = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(255), nullable=False)
     degree = db.Column(db.String(255), nullable=False)
     faculty = db.Column(db.String(255), nullable=False)
@@ -198,7 +199,27 @@ class Certification(db.Model):
     mode = db.Column(db.String(255), nullable=False)
     title = db.Column(db.String(255), nullable=False)
     organization = db.Column(db.String(255), nullable=False)
+    location = db.Column(db.String(255), nullable=True)
     certificate = db.Column(db.String(255), nullable=False, default='/static/images/man1.jpg')
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.remove(self)
+        db.session.commit()
+
+
+class Publications (db.Model):
+    __tablename__ = 'publication'
+    id = db.Column(db.Integer(), primary_key=True)
+    title = db.Column(db.String(255), nullable=False)
+    author = db.Column(db.String(255), nullable=False)
+    journal = db.Column(db.String(255), nullable=False)
+    link = db.Column(db.String(255), nullable=True)
+    page = db.Column(db.String(255), nullable=True)
+    language = db.Column(db.String(255), nullable=False)
 
     def save(self):
         db.session.add(self)
