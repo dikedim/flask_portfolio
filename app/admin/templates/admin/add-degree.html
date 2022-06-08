@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Degree</title>
+</head>
+<body>
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    {{ form.school.label (class= "form-label") }}
+    {{ form.school (class_= "form-control", placeholder ="Enter School name") }} <br/>
+    {{ form.faculty.label (class= "form-label") }}
+    {{ form.faculty (class_= "form-control", placeholder ="Enter Faculty") }} <br/>
+    {{ form.major.label (class_= "form-label") }}
+    {{ form.major (class_= "form-control", placeholder ="Enter Major") }}<br/>
+    Dates:
+    {{ form.date_from (class_= "form-control", placeholder ="Date From") }} -
+    {{ form.date_to (class_= "form-control", placeholder ="Date To") }} <br/>
+    {{ form.city.label (class= "form-label") }}
+    {{ form.city (class_= "form-control", placeholder ="Enter City") }} <br/>
+    {{ form.degree.label (class_= "form-label") }}
+    {{ form.degree (class_= "form-control") }}<br/>
+    {{ form.submit }}
+</form>
+
+</body>
+</html>

@@ -7,7 +7,8 @@ from werkzeug.utils import secure_filename
 from flask_login import (current_user, login_required, login_user, logout_user, confirm_login)
 from datetime import datetime
 from .models import User, login_manager, da, db
-from .forms import PostForm, EmailForm, LoginForm, JobForm
+from .forms import PostForm, EmailForm, LoginForm, JobForm, PublicationForm, ExperienceForm, CertificationForm, \
+    DegreeForm
 from app.home.models import Posts, Jobs
 from flask_mail import Message, Mail
 
@@ -266,3 +267,47 @@ def chart():
 @admin.route('/admin/upload', methods=['GET', 'POST'])
 def upload():
     return render_template('admin/images-cropper.html')
+
+
+@admin.route('/admin/add_publication', methods=['GET'])
+def add_pub():
+    form = PublicationForm()
+    return render_template('admin/add-publication.html', form=form)
+
+
+@admin.route('/admin/publications', methods=['GET'])
+def publications():
+    return render_template('admin/publication.html')
+
+
+@admin.route('/admin/add_experience', methods=['GET'])
+def add_exp():
+    form = ExperienceForm()
+    return render_template('admin/add-experience.html', form=form)
+
+
+@admin.route('/admin/experience', methods=['GET'])
+def experience():
+    return render_template('admin/experience.html')
+
+
+@admin.route('/admin/add_certification', methods=['GET'])
+def add_cert():
+    form = CertificationForm()
+    return render_template('admin/add-certification.html', form=form)
+
+
+@admin.route('/admin/certification', methods=['GET'])
+def certification():
+    return render_template('admin/certification.html')
+
+
+@admin.route('/admin/add_degree', methods=['GET'])
+def add_deg():
+    form = DegreeForm()
+    return render_template('Admin/add-degree.html', form=form)
+
+
+@admin.route('/admin/degree', methods=['GET'])
+def degree():
+    return render_template('admin/degree.html')

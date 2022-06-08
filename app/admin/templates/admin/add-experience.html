@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Experience</title>
+</head>
+<body>
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    {{ form.title.label (class= "form-label") }}
+    {{ form.title (class_= "form-control", placeholder ="Enter Job title") }} <br/>
+    {{ form.company.label (class= "form-label") }}
+    {{ form.company (class_= "form-control", placeholder ="Enter Company name") }} <br/>
+    Sub:
+    {{ form.sub (class_= "form-control", placeholder ="Enter Subheading") }}<br/>
+    Periods:
+    {{ form.date_from (class_= "form-control", placeholder ="Date From") }} -
+    {{ form.date_to (class_= "form-control", placeholder ="Date To") }} <br/>
+    {{ form.submit }}
+</form>
+</body>
+</html>

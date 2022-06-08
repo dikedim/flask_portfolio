@@ -82,3 +82,44 @@ class BlogForm(FlaskForm):
                                                              'Images only!')])
 
     submit = SubmitField('Post')
+
+
+class PublicationForm(FlaskForm):
+    authors = StringField('Authors: ', validators=[DataRequired()])
+    link = StringField('Link: ')
+    title = StringField('Title: ')
+    page = StringField('Page: ')
+    language = SelectField(u'Language: ', choices=[('1', 'English'), ('2', 'Russian'), ('3', 'Other')])
+    journal = StringField('Journal: ')
+    submit = SubmitField('Add Publication')
+
+
+class CertificationForm(FlaskForm):
+    name = StringField('Name: ', validators=[DataRequired()])
+    date = DateField('Date:', format='%d-%m-%Y')
+    mode = SelectField(u'Mode: ', choices=[('1', 'In-Person'), ('2', 'Online'), ('3', 'Hybrid')])
+    title = StringField('Title: ')
+    organization = StringField('Issuing Organization: ')
+    location = StringField('Location: ')
+    certificate = FileField('Certificate: ', validators=[FileRequired()])
+    submit = SubmitField('Add certification')
+
+
+class ExperienceForm(FlaskForm):
+    title = StringField('Title: ', validators=[DataRequired()])
+    date_from = DateField('Date From', format='%m-%Y')
+    date_to = DateField('Date To', format='%m-%Y')
+    company = StringField('Company: ', validators=[DataRequired()])
+    sub = StringField('Subheading')
+    submit = SubmitField('Add Experience')
+
+
+class DegreeForm(FlaskForm):
+    school = StringField('School: ')
+    date_from = DateField('Date From', format='%m-%Y', validators=[DataRequired()])
+    date_to = DateField('Date To', format='%m-%Y')
+    major = StringField('Major: ')
+    city = StringField('City: ')
+    faculty = StringField('Faculty: ')
+    degree = FileField(' Attach Certifcate: ')
+    submit = SubmitField('Add Degree')

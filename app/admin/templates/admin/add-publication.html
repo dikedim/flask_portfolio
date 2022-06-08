@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Publication</title>
+
+</head>
+<body>
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    {{ form.authors.label (class= "form-label") }}
+    {{ form.authors (class_= "form-control", placeholder ="Enter Authors") }} <br/>
+    {{ form.title.label (class= "form-label") }}
+    {{ form.title (class_= "form-control", placeholder ="Enter a Title") }} <br/>
+    {{ form.language.label (class_= "form-label") }}
+    {{ form.language (class_= "form-control", placeholder ="Please Choose a Language") }}<br/>
+    {{ form.journal.label (class_= "form-label") }}
+    {{ form.journal (class_= "form-control", placeholder ="Enter Journal name") }}<br/>
+    {{ form.link.label (class= "form-label") }}
+    {{ form.link (class_= "form-control", placeholder ="Please enter a URL") }} <br/>
+    {{ form.page.label (class= "form-label") }}
+    {{ form.page (class_= "form-control", placeholder ="Enter Page information") }} <br/>
+    {{ form.submit }}
+</form>
+
+</body>
+</html>

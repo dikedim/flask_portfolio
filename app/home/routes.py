@@ -202,3 +202,9 @@ def order():
 def directions():
     return render_template('directions.html', mapboxl=MAP_BOX_KEY)
 
+
+@home_bp.route('/soon', methods=['GET', 'POST'])
+def soon():
+    return render_template('coming_soon.html')
+
+

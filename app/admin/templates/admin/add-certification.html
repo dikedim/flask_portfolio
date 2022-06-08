@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Certificatin</title>
+</head>
+<body>
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    {{ form.name.label (class= "form-label") }}
+    {{ form.name (class_= "form-control", placeholder ="Enter Certification name") }} <br/>
+
+    {{ form.title.label (class= "form-label") }}
+    {{ form.title (class_= "form-control", placeholder ="Enter Title") }} <br/>
+    {{ form.organization.label (class_= "form-label") }}
+    {{ form.organization (class_= "form-control", placeholder ="Enter Issuing Organization") }}<br/>
+    {{ form.mode.label (class= "form-label") }}
+    {{ form.mode (class_= "form-control", placeholder ="Enter City") }} <br/>
+    {{ form.date.label (class_= "form-label") }}
+    {{ form.date (class_= "form-control", placeholder ="Date") }} <br/>
+    {{ form.location.label (class_= "form-label") }}
+    {{ form.location (class_= "form-control") }}<br/>
+    {{ form.certificate.label (class_= "form-label") }}
+    {{ form.certificate (class_= "form-control")}} <br/>
+    {{ form.submit }}
+</form>
+</body>
+</html>

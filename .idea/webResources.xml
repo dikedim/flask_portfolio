@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebResourcesPaths">
+    <contentEntries>
+      <entry url="file://$PROJECT_DIR$">
+        <entryData>
+          <resourceRoots>
+            <path value="file://$PROJECT_DIR$/app/admin/static" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/fonts" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/img" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/c3" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/calendar" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/chosen" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/code-editor" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/colorpicker" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/cropper" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/data-table" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/datapicker" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/dropzone" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/duallistbox" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/editor" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/form" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/ionRangeSlider" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/metisMenu" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/morrisjs" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/notifications" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/preloader" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/scrollbar" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/select2" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/summernote" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/touchspin" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/tree-viewer" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/css/summernote/fonts" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/c3-charts" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/calendar" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/chart" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/charts" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/chosen" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/code-editor" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/colorpicker" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/counterup" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/cropper" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/data-map" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/data-table" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/datapicker" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/dropzone" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/duallistbox" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/editable" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/flot" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/google.maps" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/icheck" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/input-mask" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/ionRangeSlider" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/knob" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/metisMenu" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/morrisjs" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/notifications" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/password-meter" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/pdf" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/peity" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/rangle-slider" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/scrollbar" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/select2" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/sparkline" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/summernote" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/touchspin" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/tree-line" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/vendor" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/js/wizard" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/img/blog-details" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/img/contact" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/img/cropper" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/img/logo" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/img/new-product" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/img/notification" />
+            <path value="file://$PROJECT_DIR$/app/admin/static/img/product" />
+            <path value="file://$PROJECT_DIR$/app/home/static" />
+          </resourceRoots>
+        </entryData>
+      </entry>
+    </contentEntries>
+  </component>
+</project>

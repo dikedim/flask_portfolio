@@ -152,7 +152,8 @@ class Degrees(db.Model):
     __tablename__ = 'degrees'
     id = db.Column(db.Integer(), primary_key=True)
     school = db.Column(db.String(255), nullable=False)
-    date = db.Column(db.String(255), nullable=False)
+    date_from = db.Column(db.String(255), nullable=False)
+    date_to = db.Column(db.String(255), nullable=True)
     major = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(255), nullable=False)
     degree = db.Column(db.String(255), nullable=False)
@@ -174,7 +175,8 @@ class Experience(db.Model):
     __tablename__ = 'experience'
     id = db.Column(db.Integer(), primary_key=True)
     title = db.Column(db.Integer(), primary_key=True)
-    date = db.Column(db.String(255), nullable=False)
+    date_from = db.Column(db.String(255), nullable=False)
+    date_to = db.Column(db.String(255))
     company = db.Column(db.String(255), nullable=False)
     subheading = db.Column(db.String(255), nullable=False)
     role = db.Column(db.Text)
