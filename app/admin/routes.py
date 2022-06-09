@@ -269,7 +269,7 @@ def upload():
     return render_template('admin/images-cropper.html')
 
 
-@admin.route('/admin/add_publication', methods=['GET'])
+@admin.route('/admin/add_publication', methods=['GET', 'POST'])
 def add_pub():
     form = PublicationForm()
     return render_template('admin/add-publication.html', form=form)
@@ -280,7 +280,7 @@ def publications():
     return render_template('admin/publication.html')
 
 
-@admin.route('/admin/add_experience', methods=['GET'])
+@admin.route('/admin/add_experience', methods=['GET', 'POST'])
 def add_exp():
     form = ExperienceForm()
     return render_template('admin/add-experience.html', form=form)
@@ -291,7 +291,7 @@ def experience():
     return render_template('admin/experience.html')
 
 
-@admin.route('/admin/add_certification', methods=['GET'])
+@admin.route('/admin/add_certification', methods=['GET', 'POST'])
 def add_cert():
     form = CertificationForm()
     return render_template('admin/add-certification.html', form=form)
@@ -302,7 +302,7 @@ def certification():
     return render_template('admin/certification.html')
 
 
-@admin.route('/admin/add_degree', methods=['GET'])
+@admin.route('/admin/add_degree', methods=['GET', 'POST'])
 def add_deg():
     form = DegreeForm()
     return render_template('Admin/add-degree.html', form=form)

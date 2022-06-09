@@ -60,8 +60,9 @@ class JobForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     link = StringField('Link')
     # category = StringField('Category', validators=[DataRequired()])
-    category = SelectField(u'Category', choices=[('1', 'Mobile'), ('2', 'Video'), ('3', 'Photo'), ('4', 'Web'),
-                                                 ('5', 'Desktop')])
+    category = SelectField(u'Category',
+                           choices=[('0', ''), ('1', 'Mobile'), ('2', 'Video'), ('3', 'Photo'), ('4', 'Web'),
+                                    ('5', 'Desktop')])
     content = TextAreaField('Content')
     photo = FileField("Attachments", validators=[FileRequired(),
                                                  FileAllowed(['jpg', 'jpeg', 'gif' 'png', 'tiff', 'bmp'],
@@ -75,7 +76,7 @@ class BlogForm(FlaskForm):
     link = StringField('Link')
     slug = StringField('Slug')
     # category = StringField('Category', validators=[DataRequired()])
-    category = SelectField(u'Category', choices=[('1', 'Travel'), ('2', 'Video'), ('3', 'Photo')])
+    category = SelectField(u'Category', choices=[('0', ''), ('1', 'Travel'), ('2', 'Video'), ('3', 'Photo')])
     content = TextAreaField('Content')
     photo = FileField("Attachments", validators=[FileRequired(),
                                                  FileAllowed(['jpg', 'jpeg', 'gif' 'png', 'tiff', 'bmp'],
@@ -89,7 +90,7 @@ class PublicationForm(FlaskForm):
     link = StringField('Link: ')
     title = StringField('Title: ')
     page = StringField('Page: ')
-    language = SelectField(u'Language: ', choices=[('1', 'English'), ('2', 'Russian'), ('3', 'Other')])
+    language = SelectField(u'Language: ', choices=[('0', ''), ('1', 'English'), ('2', 'Russian'), ('3', 'Other')])
     journal = StringField('Journal: ')
     submit = SubmitField('Add Publication')
 
@@ -97,7 +98,7 @@ class PublicationForm(FlaskForm):
 class CertificationForm(FlaskForm):
     name = StringField('Name: ', validators=[DataRequired()])
     date = DateField('Date:', format='%d-%m-%Y')
-    mode = SelectField(u'Mode: ', choices=[('1', 'In-Person'), ('2', 'Online'), ('3', 'Hybrid')])
+    mode = SelectField(u'Mode: ', choices=[('0', ''), ('1', 'In-Person'), ('2', 'Online'), ('3', 'Hybrid')])
     title = StringField('Title: ')
     organization = StringField('Issuing Organization: ')
     location = StringField('Location: ')
