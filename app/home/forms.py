@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import TextField, BooleanField, TextAreaField, SubmitField, StringField, SelectField, FileField
+from wtforms import BooleanField, TextAreaField, SubmitField, StringField, SelectField, FileField
 from wtforms.validators import DataRequired
 
 
