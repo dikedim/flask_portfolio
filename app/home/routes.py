@@ -1,4 +1,4 @@
-import os, sqlalchemy, timeago
+import sqlalchemy, timeago
 from app.home import home_bp, mailer
 from flask import (Blueprint, render_template, request, redirect, url_for, flash, jsonify, send_from_directory,
                    send_file, current_app, render_template_string)
@@ -26,20 +26,18 @@ CONTACT_MAIL = os.environ.get('CONTACT_MAIL')
 
 @home_bp.route('/', methods=['GET', 'POST'])
 def index():
-#    load_clients()
-    degree = Degrees.query.all()
-    certification = Certification.query.all()
-    experience = Experience.query.all()
+#    #load_clients()
     form = ContactForm()
     clients = Clients.query.all()
     # page = request.args.get('page', 1, type=int)
     # post = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
-    #post = Posts.query.all()
+#    #post = Posts.query.all()
     post = Posts.query.order_by(Posts.date_posted.desc()).limit(10)
     categories = Category.query.all()
-    # jobber = Jobs.query.all()
+    degree = Degrees.query.all()
+    certification = Certification.query.all()
+    experience = Experience.query.all()
     jobtype = JobType.query.all()
-    #mapapi = MAP_BOX_KEY
     page = request.args.get('page', 1, type=int)
     job = Jobs.query.order_by(Jobs.title.desc()).paginate(page=page, per_page=12, error_out=True)
 
@@ -51,9 +49,9 @@ def index():
                                    jobtypes=jobtype, message=message, mapapi=MAP_BOX_KEY, clients=clients)
         else:
             message = 'Please fill out the ReCaptcha!'
-        return render_template('index.html', success=False, mapapi=MAP_BOX_KEY, form=form, posts=post, categories=categories,
-                               jobs=job, jobtypes=jobtype, message=message, clients=clients, degree=degree,
-                               certification=certification, experience=experience)
+        return render_template('index.html', success=False, mapapi=MAP_BOX_KEY, form=form, posts=post,
+                               categories=categories, jobs=job, jobtypes=jobtype, message=message, clients=clients,
+                               degree=degree, certification=certification, experience=experience)
     else:
         pass
 #    MAP_BOX_KEY = os.environ.get('MAP_BOX_KEY')

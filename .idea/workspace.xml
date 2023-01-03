@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c1edacd-80a8-4de2-be4c-28b496cbd2a0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/admin/templates/includes/welcome-area.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/templates/admin/add-degree.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/templates/admin/add-degree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/templates/includes/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/templates/includes/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/home/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/home/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/home/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/home/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -437,7 +434,8 @@
       <workItem from="1654251409111" duration="3604000" />
       <workItem from="1654270362788" duration="31503000" />
       <workItem from="1656578041237" duration="36000" />
-      <workItem from="1656581408854" duration="1146000" />
+      <workItem from="1656581408854" duration="2135000" />
+      <workItem from="1672761088335" duration="323000" />
     </task>
     <task id="LOCAL-00001" summary="Added base working template">
       <created>1594733917155</created>
@@ -768,7 +766,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654779409373</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Feat: added degrees, publications pages to admin">
+      <created>1656582600535</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1656582600535</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TodoView">
