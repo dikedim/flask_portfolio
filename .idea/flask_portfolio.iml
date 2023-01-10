@@ -21,6 +21,7 @@
       <sourceFolder url="file://$MODULE_DIR$/app/static/images/uploads/clients" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/app/static/images/uploads/works" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/venv_" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7 (venv)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

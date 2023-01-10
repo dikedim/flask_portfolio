@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  app:
+    container_name: "Flask_Portfolio"
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+    links:
+      - mysqldb
+    stop_signal: SIGINT
+
+  db:
+    image: mysql:latest
+    container_name: "MYSQL_Database"
+    ports:
+      - "32000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db/docker-entrypoint-initdb.d/:ro
