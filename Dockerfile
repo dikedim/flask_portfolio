@@ -1,6 +1,6 @@
 FROM python:3.7
 FROM mysql:latest
-ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_ROOT_PASSWORD=DB_PASSWORD
 
 MAINTAINER Dike <dike.dim@protonmail.com>
 
