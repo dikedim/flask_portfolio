@@ -16,7 +16,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 #engine = da.create_engine('mysql+pymysql://root:ndzQWkym4#@localhost/db')
 
 engine = os.getenv('DB_ENGINE')
-db = SQLAlchemy()
+#db = SQLAlchemy()
 
 #home_bp = Blueprint('home_bp', __name__, template_folder='templates')
 

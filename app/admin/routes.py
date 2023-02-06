@@ -1,3 +1,5 @@
+import flask
+
 from app.admin import admin, maildaemon
 import os
 import imghdr
@@ -6,7 +8,8 @@ from flask import (render_template, flash, redirect, url_for, request, abort, cu
 from werkzeug.utils import secure_filename
 from flask_login import (current_user, login_required, login_user, logout_user, confirm_login)
 from datetime import datetime
-from .models import User, login_manager, da, db
+from app.admin import db
+from .models import User, login_manager, is_safe_url
 from .forms import PostForm, EmailForm, LoginForm, JobForm, PublicationForm, ExperienceForm, CertificationForm, \
     DegreeForm
 from app.home.models import Posts, Jobs
@@ -19,12 +22,22 @@ IMAGE_EXTENSIONS = os.environ.get('IMAGE_EXTENSIONS')
 
 
 @admin.route('/admin', methods=['GET'])
+@login_required
 def index():
     return render_template("admin/index.html")
 
 
 @admin.route('/admin/login', methods=['GET'])
 def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        login_user()
+        flask.flash('Logged in successfully')
+        next = flask.request.args.get('next')
+        if not is_safe_url(next):
+            return flask.abort(400)
+
+        return flask.redirect(next or flask.url_for('admin.index'))
     return render_template("admin/login.html")
 
 
@@ -39,6 +52,7 @@ def logout():
 
 
 @admin.route('/admin/inbox', methods=['GET'])
+@login_required
 def inbox():
     return render_template("admin/mailbox.html")
 
@@ -109,8 +123,8 @@ def create_post():
     if form.validate_on_submit():
         post = Posts(title=form.title.data, content=form.content.data, author='Admin', slug=form.slug.data,
                      subtitle=form.subtitle.data, category_id=form.category.data)
-        da.session.add(post)
-        da.session.commit()
+        db.session.add(post)
+        db.session.commit()
         flash('Your post has been created!', 'success')
         return redirect(url_for('admin.index'))
     return render_template('admin/blog_create.html', form=form)

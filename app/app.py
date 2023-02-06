@@ -13,8 +13,8 @@ from .home import mailer
 # from .home.main import *
 # from .home.forms import *
 from flask_wtf.csrf import CSRFProtect
-from .home.models import db, Category, JobType
-from .admin.models import da
+from .home.models import Category, JobType
+from app.admin import db
 from .admin.models import login_manager
 from dotenv import load_dotenv
 from sqlalchemy import event
@@ -63,11 +63,10 @@ UPLOAD_FOLDER = os.environ.get('UPLOAD_FOLDER')
 
 
 def register_admin(app):
-    da.init_app(app)
     login_manager.init_app(app)
 
 
-def register_blog(app):
+def register_db(app):
     db.init_app(app)
     migrate.init_app(app, db)
     with app.app_context():
@@ -92,7 +91,7 @@ def create_app():
     csrf = CSRFProtect(app)
     csrf.init_app(app)
     register_admin(app)
-    register_blog(app)
+    register_db(app)
     register_blueprints(app)
     hcaptcha.init_app(app)
     app.register_error_handler(404, page_not_found)

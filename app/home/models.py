@@ -1,13 +1,10 @@
 # from sqlalchemy import Table, Column, Integer, String
 # from sqlalchemy.orm import mapper
 # from yourapplication.database import metadata, db_session
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from sqlalchemy.ext.hybrid import hybrid_property
-# import sqlalchemy
+from app.admin import db
 
-
-db = SQLAlchemy()
 
 post_tags = db.Table('posts_tags', db.Column('posts_id', db.Integer, db.ForeignKey('posts.id')),
                      db.Column('tag_id', db.Integer, db.ForeignKey('tags.id')))

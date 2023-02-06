@@ -13,14 +13,15 @@ class Config:
     FLASK_ENV = environ.get('FLASK_ENV')
     # FLASK_DEBUG = environ.get('FLASK_DEBUG')
     FLASK_DEBUG = False
-
+    SESSION_COOKIE_SECURE = False
 
     SQLALCHEMY_DATABASE_URI = environ.get("SQLALCHEMY_DATABASE_URI")
+    SQLALCHEMY_BINDS = environ.get("SQLALCHEMY_BINDS")
     SQLALCHEMY_ECHO = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    MAIL_SERVER = 'mail.dikedim.com'
+    MAIL_SERVER = environ.get("MAIL_SERVER")
     MAIL_PORT = 465
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')or 'shout@dikedim.com'
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or environ.get("USER_EMAIL")
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     MAIL_USE_TLS = False
     MAIL_USE_SSL = True
@@ -47,6 +48,9 @@ class Config:
 
 class ProductionConfig(Config):
     # DATABASE_URI = 'mysql://user@localhost/foo'
+    FLASK_DEBUG = False
+    SESSION_COOKIE_SECURE = True
+    TESTING = True
     pass
 
 
@@ -56,7 +60,7 @@ class DevelopmentConfig(Config):
     DEBUG = True
     SESSION_COOKIE_SECURE = False
     FLASK_DEBUG = True
-    MAIL_SUPPRESS_SEND = False
+    MAIL_SUPPRESS_SEND = True
     TESTING = False
     JOB_IMAGES = os.environ.get('JOB_IMAGES')
 
