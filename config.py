@@ -14,9 +14,13 @@ class Config:
     # FLASK_DEBUG = environ.get('FLASK_DEBUG')
     FLASK_DEBUG = False
     SESSION_COOKIE_SECURE = False
+    ADMIN_DB = environ.get("ADMIN_DB")
+    ADMIN_ROOT = environ.get("ADMIN_ROOT")
+    ADMIN_PW = environ.get("ADMIN_PW")
 
     SQLALCHEMY_DATABASE_URI = environ.get("SQLALCHEMY_DATABASE_URI")
-    SQLALCHEMY_BINDS = environ.get("SQLALCHEMY_BINDS")
+    SQLALCHEMY_BINDS = {environ.get("ADMIN_ROOT"): 'mysql+pymysql://{admin}:{pw}@localhost/{admin_db}'.format(
+        admin=ADMIN_ROOT, pw=ADMIN_PW, admin_db=ADMIN_DB)}
     SQLALCHEMY_ECHO = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     MAIL_SERVER = environ.get("MAIL_SERVER")
@@ -63,6 +67,9 @@ class DevelopmentConfig(Config):
     MAIL_SUPPRESS_SEND = True
     TESTING = False
     JOB_IMAGES = os.environ.get('JOB_IMAGES')
+    ADMIN_DB = environ.get("ADMIN_DB")
+    ADMIN_ROOT = environ.get("ADMIN_ROOT")
+    ADMIN_PW = environ.get("ADMIN_PW")
 
 
 class TestingConfig(Config):

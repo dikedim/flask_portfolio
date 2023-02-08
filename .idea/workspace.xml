@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c1edacd-80a8-4de2-be4c-28b496cbd2a0" name="Default Changelist" comment="build: updated dockerfile">
+    <list default="true" id="5c1edacd-80a8-4de2-be4c-28b496cbd2a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/admin/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/home/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/home/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/home/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/home/main.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +134,6 @@
     <setting file="file://$PROJECT_DIR$/app/mobile/templates/mobile_portfolio.html" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/home/templates/blog.html" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/web/templates/web_portfolio.html" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/home/main.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/app.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/static/css/drop.css" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/home/routes.py" root0="FORCE_HIGHLIGHTING" />
@@ -451,14 +446,9 @@
       <workItem from="1673242318308" duration="5800000" />
       <workItem from="1673383306063" duration="3270000" />
       <workItem from="1673899311165" duration="1744000" />
-      <workItem from="1675654108116" duration="6427000" />
-    </task>
-    <task id="LOCAL-00003" summary="Added map and update links">
-      <created>1615509903107</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1615509903107</updated>
+      <workItem from="1675654108116" duration="8614000" />
+      <workItem from="1675748716291" duration="1832000" />
+      <workItem from="1675825046310" duration="6023000" />
     </task>
     <task id="LOCAL-00004" summary="Add index page">
       <created>1615511464387</created>
@@ -796,7 +786,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673404118084</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Fix: sqlalchemy binds multi-db fix">
+      <created>1675660696646</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1675660696646</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TodoView">
@@ -837,6 +834,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -906,7 +914,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed portfolio logic" />
     <MESSAGE value="Added blog archive" />
     <MESSAGE value="Added order page" />
     <MESSAGE value="Added navigation page" />
@@ -931,10 +938,11 @@
     <MESSAGE value="build: updated requirements" />
     <MESSAGE value="build: added docker and compose images" />
     <MESSAGE value="build: updated dockerfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="build: updated dockerfile" />
+    <MESSAGE value="Fix: sqlalchemy binds multi-db fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix: sqlalchemy binds multi-db fix" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/flask_portfolio$Flask__wsgi_py_.coverage" NAME="Flask (wsgi.py) Coverage Results" MODIFIED="1675660056559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/flask_portfolio$Flask__wsgi_py_.coverage" NAME="Flask (wsgi.py) Coverage Results" MODIFIED="1675829005038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/static/css/error.scss" />
