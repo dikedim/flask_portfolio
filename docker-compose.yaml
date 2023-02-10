@@ -9,11 +9,11 @@ services:
     ports:
       - "5000:5000"
     links:
-      - mysqldb
+      - db
     stop_signal: SIGINT
 
   db:
-    image: mysql:latest
+    image: mysql:8.0.32
     container_name: container-db
     ports:
       - "32000:3306"
@@ -21,4 +21,4 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: dba
     volumes:
-      - ./db/docker-entrypoint-initdb.d/:ro
+      - ./db/docker-entrypoint-initdb.d
