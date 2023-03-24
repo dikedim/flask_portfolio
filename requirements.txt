@@ -53,3 +53,4 @@ WTForms>=2.3.3
 zipp>=3.4.1
 Flask-Moment>=1.0.5
 timeago~=1.0.15
+cryptography>=39.0
