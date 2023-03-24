@@ -1,12 +1,18 @@
+# Flask-Portfolio
+## About the Project
+Portfolio website created in Flask. 
+## --------------------------------------------
+
+Primary database is MySQL but easily adaptible to POSTGRESQL or SQlite [details to come]
 ## Getting Started
 
 1. Fork / clone the project.
 2. Create an environment file .env file with your projects secret keys
   - DB_HOST = localhost
-  - DB_USER = ''  
-  - DB_PASS = ''
-  - DB_NAME = ''
-  - DB_PORT = 5432 
+  - DB_USER = ' '  
+  - DB_PASS = ' '
+  - DB_NAME = ' '
+  - DB_PORT = ' ' 
   - DB_PASSWORD = ' '
   - DB_USER = ' '
   - ADMIN_ROOT = ' '
